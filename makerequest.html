@@ -2,18 +2,79 @@
 <html lang="en">
 
 <head>
-	<title>Procurement | New Request</title>
+	<title>Procurement | Make a Request</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
+	<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
+		<img src="https://common.bangor.ac.uk/assets/svg/bangor_logo_c2_flush.svg" class="navbar-left"
+			alt="Bangor University" , height="50em">
+		<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
+			aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
+		<div class="collapse navbar-collapse" id="navBar">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">Homepage</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="makerequest.html">Make Request <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Admin</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
+						<a class="dropdown-item" href="#">Edit Users</a>
+						<a class="dropdown-item" href="#">Edit BudgetCodes</a>
+					</div>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<!-- Trigger logout modal -->
+				<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" ,
+					data-target="#modelLogout">Logout</button>
+			</form>
+		</div>
+	</nav>
+	<!-- Modal -->
+	<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Logging out?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					You are about to log out, are you sure? <br> You will need to log in again to continue using the
+					site.
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<form action="login.html">
+						<button type="submit" class="btn btn-danger">Logout</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<!-- Optional JavaScript -->
+	<main>
+
+	</main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
+	<div class="container-fluid">
+		<h2>Make Request</h2>
+	</div>
+	</main>
+
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

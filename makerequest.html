@@ -14,65 +14,107 @@
 
 <body>
 	<!-- Site Header -->
-	<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
-		<a href="index.html"><img src="img/bangor_logo_c2_flush.svg" navbar-left" alt="Bangor University" ,
-				height="50em"></a>
-		<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
-			aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
-		<div class="collapse navbar-collapse" id="navBar">
-			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item">
-					<a class="nav-link" href="index.html">Homepage</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="makerequest.html">Make Request <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">Admin</a>
-					<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
-						<a class="dropdown-item" href="#">Edit Users</a>
-						<a class="dropdown-item" href="#">Edit BudgetCodes</a>
+	<header>
+		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
+			<a href="index.html"><img src="img/bangor_logo_c2_flush.svg" class="navbar-left" alt="Bangor University",
+					height="50em"></a>
+			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
+				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<div class="collapse navbar-collapse" id="navBar">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Homepage</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="makerequest.html">Make Request <span
+								class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">Admin</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
+							<a class="dropdown-item" href="#">Edit Users</a>
+							<a class="dropdown-item" href="#">Edit BudgetCodes</a>
+						</div>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<!-- Trigger logout modal -->
+					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" ,
+						data-target="#modelLogout">Logout</button>
+				</form>
+			</div>
+		</nav>
+		<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Logging out?</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
-				</li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<!-- Trigger logout modal -->
-				<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" ,
-					data-target="#modelLogout">Logout</button>
-			</form>
-		</div>
-	</nav>
-	<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-		aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Logging out?</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					You are about to log out, are you sure? <br> You will need to log in again to continue using the
-					site.
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					<form action="login.html">
-						<button type="submit" class="btn btn-danger">Logout</button>
-					</form>
+					<div class="modal-body">
+						You are about to log out, are you sure? <br> You will need to log in again to continue using the
+						site.
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<form action="login.html">
+							<button type="submit" class="btn btn-danger">Logout</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</header>
 	<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 container-fluid">
-		<div class="col-md-3">
-			<h1>Make Request</h1>
-			<div class="form-label-group">
-				<input type="text" id="inputBudgetCode" class="form-control" placeholder="Budget Code" required>
-				<label for="inputBudgetCode">Budget Code</label>
+		<div class="row">
+			<div class="col-md-2">
+				<h2>Budget Code</h1>
+					<div class="form-label-group">
+						<input type="text" id="inputBudgetCode" class="form-control" placeholder="Budget Code" required>
+						<label for="inputBudgetCode">Budget Code</label>
+					</div>
+			</div>
+			<div class="col-md-2">
+				<strong>Name </strong> I.A.Jones <br />
+				<strong>Room No. </strong> 115 <br />
+				<strong>Telephone Number</strong> 2727 <br />
+				<strong>Email</strong> IJones@bangor.ac.uk <br />
+			</div>
+			<div class="col-md-8">
+				<table class="table table-bordered">
+					<thead class="thead-inverse">
+						<tr>
+							<th>Item</th>
+							<th>Description</th>
+							<th>Quantity</th>
+							<th>Cost (Each)</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row">1</td>
+								<td>6mm DIA ST/STEEL TUBE (437-3683)</td>
+								<td>5</td>
+								<td>£10.48</td>
+							</tr>
+							<tr>
+								<td scope="row">2</td>
+								<td>5mm STRAIGHT UNIONS (432-4681)</td>
+								<td>4</td>
+								<td>£8.99</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+				</table>
 			</div>
 		</div>
 	</main>

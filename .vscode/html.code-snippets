@@ -1,0 +1,53 @@
+{
+	// Snippets for development on vscode.
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	//  "scope": "javascript,typescript",
+	//  "prefix": "log",
+	//  "body": [
+	//      "console.log('$1');",
+	//      "$2"
+	//  ],
+	//  "description": "Log output to console"
+	// }
+	"ProcurementEditRow" :{
+		"scope": "html",
+		"prefix": "proRowEditable",
+		"description": "An Editable item row",
+		"body": ["<tr>",
+		"\t<td scope=\"row\">${1:rowId}</td>",
+		"\t<td><input type=\"text\" class=\"form-control\" name=\"${1:rowId}\" id=\"inputItem${1:rowId}Description\"></input></td>",
+		"\t<td><input type=\"number\" class=\"form-control\" name=\"inputItem${1:rowId}Quantity\" id=\"inputItem${1:rowId}Quantity\"></input></td>",
+		"\t<td>",
+		"\t\t<div class=\"input-group\">",
+		"\t\t\t<div class=\"input-group-prepend\"><span class=\"input-group-text\">£</span></div>",
+		"\t\t\t<input type=\"text\" class=\"form-control\" name=\"inputItem${1:rowId}Cost\" id=\"inputItem${1:rowId}Cost\"></input>",
+		"\t\t</div>",
+		"\t</td>",
+		"</tr>",
+		]
+	},
+	"ProcurementEditRowFilled" :{
+		"scope": "html",
+		"prefix": "proRowEditable",
+		"description": "A pre-filled editable item row",
+		"body": ["<tr>",
+		"\t<td scope=\"row\">${1:rowId}</td>",
+		"\t<td><input type=\"text\" class=\"form-control\" name=\"${1:rowId}\" id=\"inputItem${1:rowId}Description\" value=\"${2:description}\"></input></td>",
+		"\t<td><input type=\"number\" class=\"form-control\" name=\"inputItem${1:rowId}Quantity\" id=\"inputItem${1:rowId}Quantity\" value=\"${3:quantity}\"></input></td>",
+		"\t<td>",
+		"\t\t<div class=\"input-group\">",
+		"\t\t\t<div class=\"input-group-prepend\"><span class=\"input-group-text\">£</span></div>",
+		"\t\t\t<input type=\"text\" class=\"form-control\" name=\"inputItem${1:rowId}Cost\" id=\"inputItem${1:rowId}Cost\" value=\"${4:price (each)}\"></input>",
+		"\t\t</div>",
+		"\t</td>",
+		"</tr>",
+		]
+	}
+}

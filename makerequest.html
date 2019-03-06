@@ -16,7 +16,7 @@
 	<!-- Site Header -->
 	<header>
 		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
-			<a href="index.html"><img src="img/bangor_logo_c2_flush.svg" class="navbar-left" alt="Bangor University",
+			<a href="index.html"><img src="img/bangor_logo_c2_flush.svg" class="navbar-left" alt="Bangor University" ,
 					height="50em"></a>
 			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
 				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
@@ -69,51 +69,148 @@
 			</div>
 		</div>
 	</header>
-	<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 container-fluid">
+	<main role="main" class="col-md-12 ml-sm-auto px-4 container-fluid">
 		<div class="row">
-			<div class="col-md-2">
-				<h2>Budget Code</h1>
-					<div class="form-label-group">
-						<input type="text" id="inputBudgetCode" class="form-control" placeholder="Budget Code" required>
-						<label for="inputBudgetCode">Budget Code</label>
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col">
+						<h2>Budget Code</h2>
+						<div class="form-label-group">
+							<input type="text" id="inputBudgetCode" class="form-control is-valid"
+								placeholder="Budget Code" required value="R24-W21">
+							<label for="inputBudgetCode">Budget Code</label>
+							<div class="valid-feedback">Budget code exists!</div>
+						</div>
 					</div>
+					<div class="col">
+						<div class="card">
+							<div class="card-header">
+								Budget Code: R24-W21
+							</div>
+							<div class="card-body">
+								<p class="card-text">
+									<strong>Name </strong> I.A.Jones <br />
+									<strong>Room No. </strong> 115 <br />
+									<strong>Telephone Number</strong> 2727 <br />
+									<strong>Email</strong> IJones@bangor.ac.uk <br />
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<div class="card">
+							<div class="card-header">
+								Total Cost
+							</div>
+							<div class="card-body">
+								<h2  class="card-title">£102.93</h2>
+							</div>
+							<div class="card-footer">
+								<button type="button" class="btn btn-outline-primary btn-block" data-toggle="button" name="buttonRecurring"
+									id="buttonRecurring" autocomplete="off"> Recurring </button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col align-self-start">
+						<button type="button" name="buttonSubmit" id="buttonSubmit"
+							class="btn btn-success btn-lg btn-block">Submit</button>
+					</div>
+					<div class="col align-self-end">
+						<button type="button" name="buttonDraft" id="buttonDraft"
+							class="btn btn-primary btn-lg btn-block">Save Draft</button>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-2">
-				<strong>Name </strong> I.A.Jones <br />
-				<strong>Room No. </strong> 115 <br />
-				<strong>Telephone Number</strong> 2727 <br />
-				<strong>Email</strong> IJones@bangor.ac.uk <br />
-			</div>
+
 			<div class="col-md-8">
-				<table class="table table-bordered">
-					<thead class="thead-inverse">
-						<tr>
+
+				<table class="table table-bordered table-hover table-responsive-md text-center">
+						<caption>Table of Items - For more rows, fill in current entries.</caption>
+					<thead class="thead-dark">
+						<tr >
 							<th>Item</th>
 							<th>Description</th>
 							<th>Quantity</th>
 							<th>Cost (Each)</th>
 						</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td scope="row">1</td>
-								<td>6mm DIA ST/STEEL TUBE (437-3683)</td>
-								<td>5</td>
-								<td>£10.48</td>
-							</tr>
-							<tr>
-								<td scope="row">2</td>
-								<td>5mm STRAIGHT UNIONS (432-4681)</td>
-								<td>4</td>
-								<td>£8.99</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
+					</thead>
+					<tbody>
+						<tr>
+							<td scope="row">1</td>
+							<td><input type="text" class="form-control" name="1" id="inputItem1Description"
+									value="6mm DIA ST/STEEL TUBE (437-3683)"></input></td>
+							<td><input type="number" class="form-control" name="inputItem1Quantity"
+									id="inputItem1Quantity" value="5"></input></td>
+							<td>
+								<div class="input-group">
+									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
+									<input type="text" class="form-control" name="inputItem1Cost" id="inputItem1Cost"
+										value="10.48"></input>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td scope="row">2</td>
+							<td><input type="text" class="form-control" name="2" id="inputItem2Description"
+									value="6mm STRAIGHT UNIONS (432-4681)"></input></td>
+							<td><input type="number" class="form-control" name="inputItem2Quantity"
+									id="inputItem2Quantity" value="4"></input></td>
+							<td>
+								<div class="input-group">
+									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
+									<input type="text" class="form-control" name="inputItem2Cost" id="inputItem2Cost"
+										value="8.99"></input>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td scope="row">3</td>
+							<td><input type="text" class="form-control" name="3" id="inputItem3Description"
+									value="6mm → 1/4'' ADAPTER (439-666)"></input></td>
+							<td><input type="number" class="form-control" name="inputItem3Quantity"
+									id="inputItem3Quantity" value="5"></input></td>
+							<td>
+								<div class="input-group">
+									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
+									<input type="text" class="form-control" name="inputItem3Cost" id="inputItem3Cost"
+										value="2.27"></input>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td scope="row">4</td>
+							<td><input type="text" class="form-control" name="4" id="inputItem4Description"
+									value="HOSETAILS (506-7200)"></input></td>
+							<td><input type="number" class="form-control" name="inputItem4Quantity"
+									id="inputItem4Quantity" value="2"></input></td>
+							<td>
+								<div class="input-group">
+									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
+									<input type="text" class="form-control" name="inputItem4Cost" id="inputItem4Cost"
+										value="1.61"></input>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td scope="row">5</td>
+							<td><input type="text" class="form-control" name="5" id="inputItem5Description"></input>
+							</td>
+							<td><input type="number" class="form-control" name="inputItem5Quantity"
+									id="inputItem5Quantity"></input></td>
+							<td>
+								<div class="input-group">
+									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
+									<input type="text" class="form-control" name="inputItem5Cost"
+										id="inputItem5Cost"></input>
+								</div>
+							</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>

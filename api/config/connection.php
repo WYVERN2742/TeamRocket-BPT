@@ -22,9 +22,10 @@
                 echo("Connection error: ". $exception->getMessage());
             }
 
+            return $this->conn;
+
         }
     }
     $database = new Database();
-    $db = $database->getConnection();
-    
+    $db = $database->getConnection(); 
 ?>

@@ -10,7 +10,7 @@
         function __contruct(){
 
         }
-        public function getConnection(){
+        public function openConnection(){
             $this->conn = null;
 
             try{

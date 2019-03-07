@@ -3,7 +3,7 @@ class Procurement{
 
     //database connection
     private $conn;
-    private $table_name = "testTable";
+    private $tableName = "testTable";
 
     //object properties
     public $id;

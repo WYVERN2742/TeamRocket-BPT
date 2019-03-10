@@ -2,9 +2,9 @@
 	//used the and modified code from tutorial
 	class Database {
 		// specify your own database credentials
-		private $host = "localhost";
+		private $host = "192.168.0.19";
 		private $db_name = "testdb";
-		private $username = "teamrocketpi";
+		private $username = "teamrocketuser";
 		private $password = "teamrocket";
 		public $conn;
 		function __contruct(){
@@ -23,5 +23,6 @@
 
 			return $this->conn;
 		}
+
 	}
 ?>

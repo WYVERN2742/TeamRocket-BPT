@@ -12,5 +12,16 @@ class Procurement{
 	public function __construct($db){
 		$this->conn = $db;
 	}
+
+	//read procurements
+	function read(){
+		$query = "SELECT * FROM " . $this->tableName;
+
+		$stmt = $this->conn->prepare($query);
+
+		$stmt->execute();
+
+		return $stmt;
+	}	
 }
 ?>

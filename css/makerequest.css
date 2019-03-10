@@ -2,10 +2,9 @@ main {
 	padding-top: 2.5rem
 }
 
-.row{
-	padding-top: 15px
+.col{
+	padding-top: 20px
 }
-
 /* Floating Text Labels */
 .form-label-group {
 	position: relative;

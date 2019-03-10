@@ -12,7 +12,7 @@
     $db = $database->openConnection();
 
     //initialize object
-    $procurement = new procurement($db);
+    $procurement = new Procurement($db);
 
     //query procurements
     $stmt = $procurement->read();
@@ -37,7 +37,21 @@
                 "random" => $random
             );
 
-            array_push($procurement_arr["records"], $procurement_item);            
+            array_push($procurement_arr["records"], $procurement_item);
+           
         }
+
+        http_response_code(200);
+
+        echo json_encode($procurement_arr);
+    }
+    else{
+        //set response code - 404 not found
+        http_response_code(404);
+
+        //tell the suer no procurements fond
+        echo json_encode(
+            array("message" => "No products found.")
+        );
     }
 ?>

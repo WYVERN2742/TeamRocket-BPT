@@ -33,8 +33,13 @@
             extract($row);
 
             $procurement_item = array(
-                "id" => $id,
-                "random" => $random
+                "procurementId" => $procurementId,
+                "budgetCode" => $budgetCode,
+                "requesterId" => $requesterId,
+                "date" => $date,
+                "status" => $status,
+                "recurring" => $recurring,
+                "supplierId" => $supplierId
             );
 
             array_push($procurement_arr["records"], $procurement_item);

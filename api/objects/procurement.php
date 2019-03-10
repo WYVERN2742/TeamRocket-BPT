@@ -3,11 +3,16 @@ class Procurement{
 
 	//database connection
 	private $conn;
-	private $tableName = "testTable";
+	private $tableName = "Procurement";
 
 	//object properties
-	public $id;
-	public $random;
+	public $procurementId;
+	public $budgetCode;
+	public $requesterId;
+	public $date;
+	public $status;
+	public $recurring;
+	public $supplierId;
 
 	public function __construct($db){
 		$this->conn = $db;

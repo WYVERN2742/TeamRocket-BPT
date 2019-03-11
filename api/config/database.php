@@ -34,7 +34,7 @@
 		}
 
 		/**
-		 * Binds a paramter to the statement being prepared.
+		 * Binds a parameter to the statement being prepared.
 		 * @param $param The parameter to bind a value to
 		 * @param $value The value to be bound to a parameter
 		 * @param null $type The type of the value

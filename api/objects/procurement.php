@@ -14,13 +14,18 @@ class Procurement{
 	public $recurring;
 	public $supplierId;
 
-	public function __construct($db){
+	public function __construct($db, $passedID = null){
 		$this->conn = $db;
+		$this->$requesterId = $passedID;
 	}
 
 	//read procurements
 	function read(){
 		$query = "SELECT * FROM " . $this->tableName;
+
+		if($passedID != null){
+			$query = $query . "WHERE requesterId = " . $this->$requesterId;
+		}
 
 		$stmt = $this->conn->prepare($query);
 

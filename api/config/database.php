@@ -2,7 +2,7 @@
 	//used the and modified code from tutorial
 	class Database {
 		// specify your own database credentials
-		private $host = "192.168.0.19";
+		private $host = "localhost";
 		private $db_name = "TRPT";
 		private $username = "teamrocketuser";
 		private $password = "teamrocket";

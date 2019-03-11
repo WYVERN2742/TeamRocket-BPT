@@ -12,7 +12,7 @@
     $db = $database->openConnection();
 
     //initialize object
-    $procurement = new Procurement($db);
+    $procurement = new Procurement($db, 500);
 
     //query procurements
     $stmt = $procurement->read();

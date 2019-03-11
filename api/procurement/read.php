@@ -8,43 +8,19 @@
     include_once '../objects/procurement.php';
 
     //instantiate database and open connection
-    $database = new Database();
-    $db = $database->openConnection();
+    $db = new Database();
 
     //initialize object
-    $procurement = new Procurement($db, 500);
+    $procurement = new Procurement($db);
 
     //query procurements
     $stmt = $procurement->read();
-    $num = $stmt->rowCount();
+    $num = $db->rowCount();
 
     //check if more than 0 records found
     if($num > 0){
-        //procurement array
-        $procurement_arr = array();
-        $procurement_arr["records"] = array();
 
-        //retrieve out table contents
-        //fetch() is faster than fetchAll()
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            //extract row
-            //this will make $row['name'] to
-            //just $name only
-            extract($row);
-
-            $procurement_item = array(
-                "procurementId" => $procurementId,
-                "budgetCode" => $budgetCode,
-                "requesterId" => $requesterId,
-                "date" => $date,
-                "status" => $status,
-                "recurring" => $recurring,
-                "supplierId" => $supplierId
-            );
-
-            array_push($procurement_arr["records"], $procurement_item);
-           
-        }
+        $procurement_arr = $db->resultSet();
 
         http_response_code(200);
 

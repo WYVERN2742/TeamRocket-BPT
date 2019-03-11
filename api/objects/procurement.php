@@ -6,30 +6,23 @@ class Procurement{
 	private $tableName = "Procurement";
 
 	//object properties
-	public $procurementId;
-	public $budgetCode;
-	public $requesterId;
-	public $date;
-	public $status;
-	public $recurring;
-	public $supplierId;
+	private $procurementId;
+	private $budgetCode;
+	private $requesterId = 500;
 
-	public function __construct($db, $passedID = null){
+	public function __construct($db){
 		$this->conn = $db;
-		$this->$requesterId = $passedID;
+		//$this->$requesterId = $passedID;
 	}
 
 	//read procurements
 	function read(){
-		$query = "SELECT * FROM " . $this->tableName;
+		$query = "SELECT * FROM " . $this->tableName . " WHERE requesterId = :id";
+		$this->conn->query($query);
 
-		if($passedID != null){
-			$query = $query . "WHERE requesterId = " . $this->$requesterId;
-		}
+		$this->conn->bind(":id", $this->requesterId, PDO::PARAM_INT); 
 
-		$stmt = $this->conn->prepare($query);
-
-		$stmt->execute();
+		$stmt = $this->conn->execute();
 
 		return $stmt;
 	}	

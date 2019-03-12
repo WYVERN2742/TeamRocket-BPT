@@ -9,26 +9,15 @@
 class User {
 
 	private $conn;
-	private $table_name = "users";
 
 	public function __construct($conn) {
 		$this->conn = $conn;
 	}
 
-	public function login($id, $password) {
-		$this->conn->query("SELECT * FROM user WHERE user_id=:id");
-
-		//Maybe do something with $id?
-
-		$this->conn->bind(":id", $id);
-
-		$row = $this->conn->single();
-
-		if ($this->conn->rowCount() > 0) {
-			if (password_verify($password, $row["password"])) {
-				return $id;
-			}
-		}
+	public function login($email, $password) {
+		if ($email == "test@test.com" && $password == "test") {
+		    return 1;
+        }
 
 		return null;
 	}

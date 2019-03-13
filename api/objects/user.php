@@ -14,6 +14,11 @@ class User {
 		$this->conn = $conn;
 	}
 
+    /**
+     * @param $email
+     * @param $password
+     * @return int|null
+     */
 	public function login($email, $password) {
 		if ($email == "test@test.com" && $password == "test") {
 		    return 1;

@@ -5,19 +5,16 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once 'config/database.php';
+include_once 'config/Database.php';
 include_once 'objects/user.php';
 
 $db = new Database();
 $user = new User($db);
 
 $data = json_decode(file_get_contents("php://input"));
-//$data->email = "cgutridge0@dedecms.com";
-//$data->password = "password277";
 
 $user->email = $data->email;
-$email_exists = $user->emailExists();
-//$p = password_verify($data->password, $user->password);
+$email_exists = $user->emailExists();#
 
 include_once 'config/core.php';
 include_once 'libs/php-jwt-master/src/BeforeValidException.php';

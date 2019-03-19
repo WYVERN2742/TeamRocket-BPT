@@ -209,18 +209,6 @@
 			return "";
 		}
 
-		/*function loadTable(tableId, fields, data) {
-			var rows = '';
-			$.each(data, function(index, item) {
-				var row = '<tr>';
-				$.each(fields, function(index, field) {
-					row += '<td>' + item[field+''] + '</td>';
-				});
-				rows += row + '<tr>';
-			});
-			$('#' + tableId + ' tbody').html(rows);
-		}*/
-
 		var dynamicTable = (function() {
 
 			var _tableId, _table,
@@ -335,7 +323,7 @@
 				$row.find('td').each(function() {
 					var id = $(this).text();
 
-					if (id.indexOf(value) == 0) {
+					if (id.toLowerCase().indexOf(value.toLowerCase()) == 0) {
 						showRow = true;
 					}
 				});
@@ -400,7 +388,7 @@
 			setCookie("jwt", "", 1);
 			location.href = "login.html";
 
-			return false; //Need to allow redirect
+			return false; //Needed to allow redirect
 		});
 	</script>
 

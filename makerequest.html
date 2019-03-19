@@ -86,7 +86,7 @@
 							<input type="text" id="inputBudgetCode" class="form-control is-valid"
 								placeholder="Budget Code" required value="R24-W21">
 							<label for="inputBudgetCode">Budget Code</label>
-							<div class="valid-feedback">Budget code exists!</div>
+							<div class="valid-feedback" id="budget_code_response">Budget code exists!</div>
 						</div>
 					</div>
 					<div class="col">
@@ -280,6 +280,60 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		function getCookie(cname){
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i <ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' '){
+					c = c.substring(1);
+				}
+
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+
+		$('#inputBudgetCode').on("keyup", function() {
+			const jwt = getCookie('jwt');
+			$.post("api/validate_token.php", JSON.stringify({ jwt:jwt })).done(function(result) {
+				$.ajax({
+					type: "POST",
+					url: "api/budgetCodes.php",
+					contentType: 'application/json',
+					data: JSON.stringify(jwt),
+					success: function (ids) {
+						const input = $('#inputBudgetCode');
+						const response = $('#budget_code_response');
+						if ((ids.includes(input.val()))) {
+							response.text("Found");
+							input.removeClass("form-control is-invalid");
+							input.addClass("form-control is-valid");
+							response.removeClass("invalid-feedback");
+							response.addClass("valid-feedback");
+						} else {
+							response.text("Not Found!");
+							input.removeClass("form-control is-valid");
+							input.addClass("form-control is-invalid");
+							response.removeClass("valid-feedback");
+							response.addClass("invalid-feedback");
+						}
+					},
+					error: function (xhr, resp, text) {
+						// do something here
+					}
+				})
+			}).fail(function (result) {
+				location.href = "login.html";
+			});
+		});
+	</script>
 </body>
 
 </html>

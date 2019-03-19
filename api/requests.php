@@ -12,8 +12,8 @@ include_once 'libs/php-jwt-master/src/SignatureInvalidException.php';
 include_once 'libs/php-jwt-master/src/JWT.php';
 use \Firebase\JWT\JWT;
 
-include_once 'config/database.php';
-include_once 'objects/user.php';
+include_once 'config/Database.php';
+include_once 'objects/User.php';
 
 $db = new Database();
 $user = new User($db);

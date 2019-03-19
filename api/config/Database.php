@@ -6,10 +6,6 @@
 		private $db_name = "TRPT";
 		private $username = "teamrocketuser";
 		private $password = "teamrocket";
-		/*private $host = "mysql.cs.bangor.ac.uk";
-		private $db_name = "teamrocket";
-		private $username = "teamrocket";
-		private $password = "teamrocket";*/
 
 		private $conn;
 		private $error;

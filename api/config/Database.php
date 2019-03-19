@@ -2,14 +2,20 @@
 	//used the and modified code from tutorial
 	class Database {
 		// specify your own database credentials
+
+		// local database
+		/*
 		private $host = "teamrocketpi";
 		private $db_name = "TRPT";
 		private $username = "teamrocketuser";
 		private $password = "teamrocket";
-		/*private $host = "mysql.cs.bangor.ac.uk";
+		*/
+
+		// Uni database
+		private $host = "mysql.cs.bangor.ac.uk";
 		private $db_name = "teamrocket";
 		private $username = "teamrocket";
-		private $password = "teamrocket";*/
+		private $password = "teamrocket";
 
 		private $conn;
 		private $error;

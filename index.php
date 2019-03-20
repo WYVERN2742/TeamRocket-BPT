@@ -24,17 +24,17 @@ session_start()
 	<!-- Site Header -->
 	<header>
 		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
-			<a href="index.html"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University",
+			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University",
 					height="50em"></a>
 			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
 				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
 			<div class="collapse navbar-collapse" id="navBar">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active">
-						<a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Homepage <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Homepage <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="makerequest.html"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
+						<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"

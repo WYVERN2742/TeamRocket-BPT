@@ -13,8 +13,6 @@ include_once 'objects/User.php';
 $db = new Database();
 $user = new User($db);
 
-
-
 $data = json_decode(file_get_contents("php://input"));
 
 $user->email = $data->email;

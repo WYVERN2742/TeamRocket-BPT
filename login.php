@@ -24,7 +24,7 @@ if (isset($_SESSION['user'])) {
 	</head>
 
 <body class="">
-	<form class="form-signin" id="login_form">
+	<form class="form-signin" id="login_form" action="api/login.php" method="post">
 		<img class="mb-4" src="img/Bangor_Logo_A1.png" alt="" width="100%" height="100%">
 		<h1 class="text-center h3 mb-3 font-weight-normal">TRPT - Online Procurement</h1>
 

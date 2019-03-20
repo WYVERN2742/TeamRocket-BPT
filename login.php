@@ -48,9 +48,6 @@ if (isset($_SESSION['user'])) {
 		<p class="mt-5 mb-3 text-muted text-center">Bangor University &copy;2019</p>
 	</form>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="js/login.js"></script>
-
 </body>
 
 </html>

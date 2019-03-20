@@ -29,16 +29,19 @@ if($jwt){
         // decode jwt
         $decoded = JWT::decode($jwt, $key, array('HS256'));
 
-        $user->userId = $decoded->data->userId;
-
-        $db->query("SELECT * FROM Procurement WHERE requesterId = :requesterId");
-        $db->bind(":requesterId", $user->userId);
+        $db->query("SELECT budgetCode FROM BudgetCode");
         $db->execute();
         $rs = $db->resultSet();
+        $numRows = $db->rowCount();
+        $ids = [];
+        $i = 0;
+        foreach ($rs as $row) {
+            $ids[$i++] = $row['budgetCode'];
+        }
 
         http_response_code(200);
 
-        echo json_encode($rs);
+        echo json_encode($ids);
     } catch (Exception $e) {
 
         // set response code

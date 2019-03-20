@@ -1,6 +1,13 @@
 <?php
-session_start()
+session_start();
+
+if (isset($_SESSION['user'])) {
+	header("Location: index.php");
+	die();
+}
+
 ?>
+
 
 <!doctype html>
 <html lang="en">

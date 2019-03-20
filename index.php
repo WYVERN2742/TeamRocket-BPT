@@ -1,6 +1,5 @@
 <?php
-session_start()
-
+include "webphp/session.php"
 ?>
 
 <!doctype html>

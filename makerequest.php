@@ -1,3 +1,7 @@
+<?php
+include "webphp/session.php"
+?>
+
 <!doctype html>
 <html lang="en">
 

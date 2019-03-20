@@ -1,5 +1,5 @@
 <?php
-//header("Access-Control-Allow-Origin: http://localhost/");
+ //header("Access-Control-Allow-Origin: http://localhost/");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
@@ -24,31 +24,30 @@ include_once 'libs/php-jwt-master/src/JWT.php';
 use \Firebase\JWT\JWT;
 
 if ($email_exists && password_verify($data->password, $user->password)) {
-    $token = array(
-        "iss" => $iss,
-        "aud" => $aud,
-        "iat" => $iat,
-        "nbf" => $nbf,
-        "data" => array(
-            "userId" => $user->userId,
-            "firstName" => $user->firstName,
-            "lastName" => $user->lastName,
-            "email" => $user->email
-        )
-    );
+	$token = array(
+		"iss" => $iss,
+		"aud" => $aud,
+		"iat" => $iat,
+		"nbf" => $nbf,
+		"data" => array(
+			"userId" => $user->userId,
+			"firstName" => $user->firstName,
+			"lastName" => $user->lastName,
+			"email" => $user->email,
+			"role" => $user->role,
+		)
+	);
 
-    http_response_code(200);
+	http_response_code(200);
 
-    $jwt = JWT::encode($token, $key);
-    echo json_encode(
-        array(
-            "message" => "Successful login.",
-            "jwt" => $jwt
-        )
-    );
-
+	$jwt = JWT::encode($token, $key);
+	echo json_encode(
+		array(
+			"message" => "Successful login.",
+			"jwt" => $jwt
+		)
+	);
 } else {
-    http_response_code(401);
-
-    echo json_encode(array("message" => "Login failed."));
+	http_response_code(401);
+	echo json_encode(array("message" => "Login failed."));
 }

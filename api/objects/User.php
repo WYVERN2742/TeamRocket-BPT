@@ -11,48 +11,50 @@ class User {
 	private $conn;
 
 	public $userId;
-    public $email;
-    public $firstName;
-    public $lastName;
-    public $password;
+	public $email;
+	public $firstName;
+	public $lastName;
+	public $password;
+	public $access;
 
-    public function __construct($conn) {
+	public function __construct($conn) {
 		$this->conn = $conn;
 	}
 
-    /**
-     * @param $email
-     * @param $password
-     * @return int|null
-     */
+	/**
+	 * @param $email
+	 * @param $password
+	 * @return int|null
+	 */
 	public function login($email, $password) {
 		if ($email == "test@test.com" && $password == "test") {
-		    return 1;
-        }
+			return 1;
+		}
 
 		return null;
 	}
 
 	public function emailExists() {
-	    $this->conn->query("SELECT userId, firstName, lastName, password FROM User WHERE email = :email LIMIT 0,1");
+		$this->conn->query("SELECT userId, firstName, lastName, password, role FROM User WHERE email = :email LIMIT 0,1");
 
-	    $this->email = htmlspecialchars(strip_tags($this->email));
-	    $this->conn->bind(':email', $this->email);
-	    $this->conn->execute();
-	    $numRows = $this->conn->rowCount();
+		$this->email = htmlspecialchars(strip_tags($this->email));
+		$this->conn->bind(':email', $this->email);
+		$this->conn->execute();
+		$numRows = $this->conn->rowCount();
 
-	    if ($numRows > 0) {
-	        $row = $this->conn->single();
+		if ($numRows > 0) {
+			$row = $this->conn->single();
 
-	        $this->userId = $row['userId'];
-            $this->firstName = $row['firstName'];
-            $this->lastName = $row['lastName'];
-            $this->password = $row['password'];
+			$this->userId = $row['userId'];
+			$this->firstName = $row['firstName'];
+			$this->lastName = $row['lastName'];
+			$this->password = $row['password'];
+			$this->password = $row['role'];
 
-            return true;
-        }
+			return true;
+		}
 
-	    return false;
-    }
+		return false;
+	}
 
 }

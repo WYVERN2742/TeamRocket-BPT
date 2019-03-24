@@ -5,29 +5,28 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
+session_start();
+
 include_once 'config/Database.php';
 include_once 'objects/User.php';
-
-session_start();
 
 $db = new Database();
 $user = new User($db);
 
-if (isset($_SESSION['user'])) {
-    $db->query("SELECT * FROM Procurement WHERE requesterId = :requesterId");
-    $db->bind(":requesterId", $_SESSION['user']);
-    $db->execute();
-    $rs = $db->resultSet();
+$data = json_decode(file_get_contents("php://input"));
+
+$user->email = $data->email;
+$email_exists = $user->emailExists();
+
+if ($email_exists && password_verify($data->password, $user->password)) {
+    echo json_encode(
+        array(
+            "message" => "Successful login.",
+        )
+    );
 
     http_response_code(200);
-
-    echo json_encode($rs);
+    $_SESSION['user'] = $user->userId;
 } else {
-    // set response code
     http_response_code(401);
-
-    // show error message
-    echo json_encode(array(
-        "message" => "Access denied."
-    ));
 }

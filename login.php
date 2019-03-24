@@ -8,7 +8,6 @@ if (isset($_SESSION['user'])) {
 
 ?>
 
-
 <!doctype html>
 <html lang="en">
 
@@ -24,7 +23,7 @@ if (isset($_SESSION['user'])) {
 	</head>
 
 <body class="">
-	<form class="form-signin" id="login_form" action="api/login.php" method="post">
+	<form class="form-signin" id="login_form">
 		<img class="mb-4" src="img/Bangor_Logo_A1.png" alt="" width="100%" height="100%">
 		<h1 class="text-center h3 mb-3 font-weight-normal">TRPT - Online Procurement</h1>
 
@@ -47,6 +46,9 @@ if (isset($_SESSION['user'])) {
 		<button class="btn btn-lg btn-primary btn-block text-center" type="submit">Sign in</button>
 		<p class="mt-5 mb-3 text-muted text-center">Bangor University &copy;2019</p>
 	</form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
 

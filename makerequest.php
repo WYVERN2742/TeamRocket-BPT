@@ -72,7 +72,7 @@ include "webphp/session.php"
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i
 								class="fa fa-times "></i> Cancel</button>
-						<form action="login.html">
+						<form action="login.php">
 							<button type="submit" class="btn btn-danger"><i
 									class="fa fa-door-closed"></i>Logout</button>
 						</form>

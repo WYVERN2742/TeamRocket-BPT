@@ -1,5 +1,5 @@
 <?php
-include "webphp/session.php"
+include "webphp/session.php";
 ?>
 
 <!doctype html>
@@ -68,8 +68,8 @@ include "webphp/session.php"
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times "></i> Cancel</button>
-						<form id="do_logout">
-							<button type="submit" class="btn btn-danger"><i class="fa fa-door-closed"></i>Logout</button>
+						<form id="do_logout" action="api/logout.php" method="POST">
+							<button type="submit" class="btn btn-danger" name="do_logout"><i class="fa fa-door-closed"></i>Logout</button>
 						</form>
 					</div>
 				</div>
@@ -194,6 +194,8 @@ include "webphp/session.php"
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 

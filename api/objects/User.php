@@ -49,7 +49,7 @@ class User {
 			$this->firstName = $row['firstName'];
 			$this->lastName = $row['lastName'];
 			$this->password = $row['password'];
-			$this->password = $row['role'];
+			$this->role = $row['role'];
 
 			return true;
 		}

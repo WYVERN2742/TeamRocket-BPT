@@ -1,32 +1,3 @@
-function getCookie(cname) {
-	var name = cname + "=";
-	var decodedCookie = decodeURIComponent(document.cookie);
-	var ca = decodedCookie.split(';');
-	for (var i = 0; i < ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0) == ' ') {
-			c = c.substring(1);
-		}
-
-		if (c.indexOf(name) == 0) {
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
-}
-
-/*function loadTable(tableId, fields, data) {
-	var rows = '';
-	$.each(data, function(index, item) {
-		var row = '<tr>';
-		$.each(fields, function(index, field) {
-			row += '<td>' + item[field+''] + '</td>';
-		});
-		rows += row + '<tr>';
-	});
-	$('#' + tableId + ' tbody').html(rows);
-}*/
-
 var dynamicTable = (function () {
 
 	var _tableId, _table,
@@ -153,68 +124,59 @@ function search() {
 	});
 }
 
-const jwt = getCookie('jwt');
+$.ajax({
+	type: "GET",
+	url: "api/requests.php",
+	contentType: 'application/json',
 
-$.post("api/validate_token.php", JSON.stringify({ jwt: jwt })).done(function (result) {
-	$.ajax({
-		type: "POST",
-		url: "api/requests.php",
-		contentType: 'application/json',
-		data: JSON.stringify(jwt),
+	success: function (rows) {
+		const numRows = rows.length;
+		$('#pending_requests').html(numRows);
 
-		success: function (rows) {
-			const numRows = rows.length;
-			$('#pending_requests').html(numRows);
+		var count = 0;
+		const dt = dynamicTable.config('requests_table',
+			['procurementId', 'budgetCode', 'requesterId', 'status'], null, 'No requests');
 
-			var count = 0;
-			const dt = dynamicTable.config('requests_table',
-				['procurementId', 'budgetCode', 'requesterId', 'status'], null, 'No requests');
+			for (var i = 0; i < 5; i++) {
+			dt.load([rows[count++]], true);
+		}
 
-				for (var i = 0; i < 5; i++) {
-				dt.load([rows[count++]], true);
+		const viewMore = $('#inputViewMore');
+
+		viewMore.click(function () {
+			for (var i = 0; i < 5; i++) {
+				if (count < numRows) {
+					dt.load([rows[count++]], true);
+				}
 			}
 
-			const viewMore = $('#inputViewMore');
+			search();
 
-			viewMore.click(function () {
-				for (var i = 0; i < 5; i++) {
-					if (count < numRows) {
-						dt.load([rows[count++]], true);
-					}
-				}
+			$('#inputViewMore').html("View More (" + count + "/" + numRows + ")");
 
-				search();
+		});
 
-				$('#inputViewMore').html("View More (" + count + "/" + numRows + ")");
+		viewMore.html("View More (" + count + "/" + numRows + ")");
+	},
 
-			});
-
-			viewMore.html("View More (" + count + "/" + numRows + ")");
-		},
-
-		error: function (xhr, resp, text) {
-			// do something here
-		}
-	});
-
-}).fail(function (result) {
-	location.href = "login.html";
+	error: function (xhr, resp, text) {
+		console.log(text);
+	}
 });
 
 $("#search").on("keyup", function () {
 	search();
 });
 
-function setCookie(cname, cvalue, exdays) {
-	const d = new Date();
-	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-	const expires = "expires=" + d.toUTCString();
-	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+/*$(document).on('submit', '#do_logout', function () {
+	console.log("logout");
+	$.ajax({
+		type: "GET",
+		url: "api/logout.php",
+		success: function() {
+			location.href='login.php';
+		}
+	});
 
-$(document).on('submit', '#do_logout', function () {
-	setCookie("jwt", "", 1);
-	location.href = "login.html";
-
-	return false; //Need to allow redirect
-});
+	return false;
+});*/

@@ -12,10 +12,8 @@ class User {
 
 	public $userId;
 	public $email;
-	public $firstName;
-	public $lastName;
 	public $password;
-	public $access;
+	public $role;
 
 	public function __construct($conn) {
 		$this->conn = $conn;

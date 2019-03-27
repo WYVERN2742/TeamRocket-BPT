@@ -35,7 +35,7 @@ include "webphp/session.php";
 					<li class="nav-item">
 						<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
 					</li>
-					<li class="nav-item active" class="nav-item dropdown">
+					<li class="nav-item dropdown active">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench" aria-hidden="true"></i>Admin</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownAdmin">

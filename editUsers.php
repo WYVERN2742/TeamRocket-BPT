@@ -6,7 +6,7 @@ include "webphp/session.php";
 <html lang="en">
 
 <head>
-	<title>Procurement | Homepage</title>
+	<title>Procurement | Edit Users</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,17 +29,17 @@ include "webphp/session.php";
 				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
 			<div class="collapse navbar-collapse" id="navBar">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item active">
+					<li>
 						<a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Homepage <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
 					</li>
-					<li class="nav-item dropdown">
+					<li class="nav-item active" class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench" aria-hidden="true"></i>Admin</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
-							<a class="dropdown-item" href="editUsers.php"><i class="fa fa-user" aria-hidden="true"></i> Edit Users</a>
+							<a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i> Edit Users</a>
 							<a class="dropdown-item" href="#"><i class="fa fa-wrench" aria-hidden="true"></i> Edit BudgetCodes</a>
 						</div>
 					</li>
@@ -146,7 +146,7 @@ include "webphp/session.php";
 			<div class="col-lg-8">
 				<div class="row">
 					<div class="col container-fluid">
-						<h1>Requests</h1>
+						<h1>Users</h1>
 					</div>
 					<div class="col">
 						<div class="input-group">
@@ -164,10 +164,13 @@ include "webphp/session.php";
 						<table class="table table-bordered table-hover table-responsive-md text-center" id="requests_table">
 							<thead class="thead-dark">
 								<tr>
-									<th>ID</th>
-									<th>Budget Code</th>
-									<th>Requester</th>
-									<th>Status</th>
+									<th>User ID</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Role</th>
+									<th>Room Number</th>
+									<th>Telephone Number</th>
+									<th>Email Address</th>
 								</tr>
 							</thead>
 							<tbody>

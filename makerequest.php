@@ -23,7 +23,7 @@ include "webphp/session.php"
 	<!-- Site Header -->
 	<header>
 		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
-			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University" , height="50em"></a>
+			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University" height="50em"></a>
 			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
 				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
 			<div class="collapse navbar-collapse" id="navBar">
@@ -48,7 +48,7 @@ include "webphp/session.php"
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<!-- Trigger logout modal -->
-					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" ,
+					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" data-toggle="modal"
 						data-target="#modelLogout"><i class="fa fa-door-closed"></i>Logout</button>
 				</form>
 			</div>
@@ -92,18 +92,18 @@ include "webphp/session.php"
 					</div>
 					<div class="col">
 						<div class="form-label-group">
-							<input type="text" id="inputSupplier" class="form-control" placeholder="Budget Code"
-								required value="R.H. Components">
+							<input type="text" id="inputSupplier" class="form-control" name="inputSupplier">
 							<label for="inputSupplier">Supplier</label>
+                            <div class="valid-feedback" id="supplier_response"></div>
 						</div>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col">
+					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-header">
-								Budget Code
+								Budget Code Owner
 							</div>
 							<div class="card-body">
 								<div class="card-text">
@@ -115,37 +115,34 @@ include "webphp/session.php"
 							</div>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-header">
-								Supplier: R.H. Components
+								Supplier
 							</div>
 							<div class="card-body">
-								<p class="card-text">
-									Address:
-									<div class="form-group">
-										<div class="form-label-group">
-											<input type="text" id="inputAddress1" class="form-control"
-												placeholder="Budget Code" required value="R.H. Components Warehouse">
-											<label for="inputAddress1">Address Line 1</label>
-										</div>
-										<div class="form-label-group">
-											<input type="text" id="inputAddress2" class="form-control"
-												placeholder="Budget Code" required value="Baglan Industrial Park">
-											<label for="inputAddress2">Address Line 2</label>
-										</div>
-										<div class="form-label-group">
-											<input type="text" id="inputAddressPostcode" class="form-control"
-												placeholder="Budget Code" required value="SA12 7DJ">
-											<label for="inputAddressPostcode">Postcode</label>
-										</div>
-										<div class="form-label-group">
-											<input type="text" id="inputAddressCity" class="form-control"
-												placeholder="Budget Code" required value="Port Talbot">
-											<label for="inputAddressCity">City / Town</label>
-										</div>
-									</div>
-								</p>
+                                <div class="form-group">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputSupplierName" class="form-control">
+                                        <label for="inputAddress1">Name</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputSupplierAddress1" class="form-control">
+                                        <label for="inputAddress1">Address Line 1</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputSupplierAddress2" class="form-control">
+                                        <label for="inputAddress2">Address Line 2</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputSupplierAddressPostcode" class="form-control">
+                                        <label for="inputAddressPostcode">Postcode</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="inputSupplierAddressCity" class="form-control">
+                                        <label for="inputAddressCity">City / Town</label>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -199,70 +196,70 @@ include "webphp/session.php"
 						<tr>
 							<td scope="row">1</td>
 							<td><input type="text" class="form-control" name="1" id="inputItem1Description"
-									value="6mm DIA ST/STEEL TUBE (437-3683)"></input></td>
+									value="6mm DIA ST/STEEL TUBE (437-3683)"></td>
 							<td><input type="number" class="form-control" name="inputItem1Quantity"
-									id="inputItem1Quantity" value="5"></input></td>
+									id="inputItem1Quantity" value="5"></td>
 							<td>
 								<div class="input-group">
 									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
 									<input type="text" class="form-control" name="inputItem1Cost" id="inputItem1Cost"
-										value="10.48"></input>
+										value="10.48">
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td scope="row">2</td>
 							<td><input type="text" class="form-control" name="2" id="inputItem2Description"
-									value="6mm STRAIGHT UNIONS (432-4681)"></input></td>
+									value="6mm STRAIGHT UNIONS (432-4681)"></td>
 							<td><input type="number" class="form-control" name="inputItem2Quantity"
-									id="inputItem2Quantity" value="4"></input></td>
+									id="inputItem2Quantity" value="4"></td>
 							<td>
 								<div class="input-group">
 									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
 									<input type="text" class="form-control" name="inputItem2Cost" id="inputItem2Cost"
-										value="8.99"></input>
+										value="8.99">
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td scope="row">3</td>
 							<td><input type="text" class="form-control" name="3" id="inputItem3Description"
-									value="6mm → 1/4'' ADAPTER (439-666)"></input></td>
+									value="6mm → 1/4'' ADAPTER (439-666)"></td>
 							<td><input type="number" class="form-control" name="inputItem3Quantity"
-									id="inputItem3Quantity" value="5"></input></td>
+									id="inputItem3Quantity" value="5"></td>
 							<td>
 								<div class="input-group">
 									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
 									<input type="text" class="form-control" name="inputItem3Cost" id="inputItem3Cost"
-										value="2.27"></input>
+										value="2.27">
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td scope="row">4</td>
 							<td><input type="text" class="form-control" name="4" id="inputItem4Description"
-									value="HOSETAILS (506-7200)"></input></td>
+									value="HOSETAILS (506-7200)"></td>
 							<td><input type="number" class="form-control" name="inputItem4Quantity"
-									id="inputItem4Quantity" value="2"></input></td>
+									id="inputItem4Quantity" value="2"></td>
 							<td>
 								<div class="input-group">
 									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
 									<input type="text" class="form-control" name="inputItem4Cost" id="inputItem4Cost"
-										value="1.61"></input>
+										value="1.61">
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td scope="row">5</td>
-							<td><input type="text" class="form-control" name="5" id="inputItem5Description"></input>
+							<td><input type="text" class="form-control" name="5" id="inputItem5Description">
 							</td>
 							<td><input type="number" class="form-control" name="inputItem5Quantity"
-									id="inputItem5Quantity"></input></td>
+									id="inputItem5Quantity"></td>
 							<td>
 								<div class="input-group">
 									<div class="input-group-prepend"><span class="input-group-text">£</span></div>
 									<input type="text" class="form-control" name="inputItem5Cost"
-										id="inputItem5Cost"></input>
+										id="inputItem5Cost">
 								</div>
 							</td>
 						</tr>

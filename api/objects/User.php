@@ -15,7 +15,7 @@ class User {
 	public $password;
 	public $role;
 
-	public function __construct($conn) {
+	public function __construct(Database $conn) {
 		$this->conn = $conn;
 	}
 
@@ -44,8 +44,6 @@ class User {
 			$row = $this->conn->single();
 
 			$this->userId = $row['userId'];
-			$this->firstName = $row['firstName'];
-			$this->lastName = $row['lastName'];
 			$this->password = $row['password'];
 			$this->role = $row['role'];
 

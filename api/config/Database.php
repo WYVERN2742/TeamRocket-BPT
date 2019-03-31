@@ -8,6 +8,7 @@
 
 		private $conn;
 		private $error;
+        /** @var PDOStatement */
 		private $stmt;
 
 		/**
@@ -94,4 +95,3 @@
 		}
 
 	}
-?>

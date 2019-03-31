@@ -1,8 +1,7 @@
 <?php
 	//used the and modified code from tutorial
 	class Database {
-		// specify your own database credentials
-		private $host = "localhost";
+		private $host = "90.201.211.212";
 		private $db_name = "TRPT";
 		private $username = "teamrocketuser";
 		private $password = "teamrocket";
@@ -21,13 +20,14 @@
 				$this->conn = new PDO("mysql:host=" . $this->host . ";port=3306;dbname=" . $this->db_name, $this->username, $this->password);
 				$this->conn->exec("set names utf8");
 			}catch(PDOException $e){
+				print_r("failed to connect");
 				$this->error = $e->getMessage();
 			}
 		}
 
 		/**
 		 * Creates a new query to be executed.
-		 * @param $query The query to be executed
+		 * @param string $query The query to be executed
 		 */
 		public function query($query) {
 			$this->stmt = $this->conn->prepare($query);
@@ -35,9 +35,9 @@
 
 		/**
 		 * Binds a parameter to the statement being prepared.
-		 * @param $param The parameter to bind a value to
-		 * @param $value The value to be bound to a parameter
-		 * @param null $type The type of the value
+		 * @param string $param The parameter to bind a value to
+		 * @param mixed $value The value to be bound to a parameter
+		 * @param mixed $type The type of the value
 		 */
 		public function bind($param, $value, $type = null) {
 			if (is_null($type)) {

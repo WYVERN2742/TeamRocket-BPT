@@ -1,3 +1,7 @@
+<?php
+include "webphp/session.php"
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,17 +23,17 @@
 	<!-- Site Header -->
 	<header>
 		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
-			<a href="index.html"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University" , height="50em"></a>
+			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University" , height="50em"></a>
 			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
 				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
 			<div class="collapse navbar-collapse" id="navBar">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Homepage
+						<a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Homepage
 							</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="makerequest.html"><i class="fa fa-pen-fancy" aria-hidden="true"></i>
+						<a class="nav-link active" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i>
 							Make Request<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item dropdown">
@@ -37,10 +41,8 @@
 							aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench"
 								aria-hidden="true"></i>Admin</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
-							<a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i> Edit
-								Users</a>
-							<a class="dropdown-item" href="#"><i class="fa fa-wrench" aria-hidden="true"></i> Edit
-								BudgetCodes</a>
+							<a class="dropdown-item" href="editUsers.php"><i class="fa fa-user" aria-hidden="true"></i> Edit Users</a>
+							<a class="dropdown-item" href="editBudgetCodes.php"><i class="fa fa-wrench" aria-hidden="true"></i> Edit Budget Codes</a>
 						</div>
 					</li>
 				</ul>
@@ -68,7 +70,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i
 								class="fa fa-times "></i> Cancel</button>
-						<form action="login.html">
+						<form action="login.php">
 							<button type="submit" class="btn btn-danger"><i
 									class="fa fa-door-closed"></i>Logout</button>
 						</form>
@@ -83,10 +85,9 @@
 				<div class="row">
 					<div class="col">
 						<div class="form-label-group">
-							<input type="text" id="inputBudgetCode" class="form-control is-valid"
-								placeholder="Budget Code" required value="R24-W21">
+							<input type="text" id="inputBudgetCode" class="form-control" name="inputBudgetCode">
 							<label for="inputBudgetCode">Budget Code</label>
-							<div class="valid-feedback">Budget code exists!</div>
+                            <div class="valid-feedback" id="budget_code_response"></div>
 						</div>
 					</div>
 					<div class="col">
@@ -102,15 +103,15 @@
 					<div class="col">
 						<div class="card">
 							<div class="card-header">
-								Budget Code: R24-W21
+								Budget Code
 							</div>
 							<div class="card-body">
-								<p class="card-text">
-									<strong>Name </strong> I.A.Jones <br />
-									<strong>Room No. </strong> 115 <br />
-									<strong>Telephone Number</strong> 2727 <br />
-									<strong>Email</strong> IJones@bangor.ac.uk <br />
-								</p>
+								<div class="card-text">
+                                    <strong>Name </strong> <div id="budgetCodeName">I.A.Jones</div>
+									<strong>Room No. </strong> <div id="budgetCodeRoom">115</div>
+									<strong>Telephone Number</strong> <div id="budgetCodeNum">2727</div>
+									<strong>Email</strong> <div id="budgetCodeEmail">ijones@bangor.ac.uk</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -271,15 +272,15 @@
 		</div>
 	</main>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 		crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+    <script src="js/makerequest.js"></script>
+
 </body>
 
 </html>

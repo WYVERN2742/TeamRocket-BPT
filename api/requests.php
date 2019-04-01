@@ -6,18 +6,15 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once 'config/Database.php';
-include_once 'objects/User.php';
+include_once 'objects/Procurement.php';
 
 session_start();
 
 $db = new Database();
-$user = new User($db);
+$procurement = new Procurement($db);
 
 if (isset($_SESSION['user'])) {
-    $db->query("SELECT * FROM Procurement WHERE requesterId = :requesterId");
-    $db->bind(":requesterId", $_SESSION['user']);
-    $db->execute();
-    $rs = $db->resultSet();
+    $rs = $procurement->readAll();
 
     http_response_code(200);
 

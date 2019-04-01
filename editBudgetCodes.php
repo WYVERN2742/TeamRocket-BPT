@@ -171,7 +171,7 @@ include "webphp/session.php";
 							</thead>
 							<tbody>
 								<tr>
-									<td colspan="4">Loading...</td>
+									<td colspan="3">Loading...</td>
 								</tr>
 							</tbody>
 						</table>

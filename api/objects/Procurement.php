@@ -32,11 +32,18 @@ class Procurement{
 
 	}
 
-	public function insert($budgetCode, $date, $status, $recurring, $supplierId) {
-
+	public function insert($budgetCode, $requesterID, $date, $status, $declineReason, $recurring, $supplierId) {
+		$this->conn->query("INSERT INTO Procurement (budgetCode, requesterID, date, status, declineReason, recurring, supplierID) VALUES (:budgetCode, :requesterID, :date, :status, :declineReason, :recurring, :supplierID)");
+		$this->conn->bind(':budgetCode', $budgetCode);
+		$this->conn->bind(':requesterID', $requesterID);
+		$this->conn->bind(':date', $date);
+		$this->conn->bind(':status', $status);
+		$this->conn->bind(':declineReason', $declineReason);
+		$this->conn->bind(':recurring', $recurring);
+		$this->conn->bind(':supplierID', $supplierId);
 	}
 
-	public function edit($procurementId, $budgetCode, $date, $status, $recurring, $supplierId) {
+	public function edit($budgetCode, $requesterID, $date, $status, $declineReason, $recurring, $supplierId) {
 
 	}
 

@@ -46,6 +46,8 @@ class Procurement
 		$this->conn->bind(':declineReason', $declineReason);
 		$this->conn->bind(':recurring', $recurring);
 		$this->conn->bind(':supplierId', $supplierId);
+
+		$this->conn->execute();
 	}
 
 	public function edit($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId, $procurementId)
@@ -58,6 +60,8 @@ class Procurement
 		$this->conn->bind(':declineReason', $declineReason);
 		$this->conn->bind(':recurring', $recurring);
 		$this->conn->bind(':supplierId', $supplierId);
+
+		$this->conn->execute();
 	}
 
 	public function delete($procurementId)

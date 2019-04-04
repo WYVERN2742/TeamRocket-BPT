@@ -48,10 +48,20 @@ class CentralFinance extends User {
         }
     }
 
-    public function editUser($userId) {
+    public function editUser($userId, $password, $firstName, $lastName, $role, $roomNo, $telephoneNo, $email) { //
         try{
-            $str = "UPDATE User SET = ";
-            $this->db->query($str);
+            $this->db->query("UPDATE User SET password=:password, firstName=:firstName, lastName=:lastName, role=:role, roomNo=:roomNo, telephoneNo=:telephoneNo, email=:email WHERE userId=:userId");
+            $this->db->bind(":userId", $userId);
+            $this->db->bind(":password", $password);
+            $this->db->bind(":firstName", $firstName);
+            $this->db->bind(":lastName", $lastName);
+            $this->db->bind(":role", $role);
+            $this->db->bind(":roomNo", $roomNo);
+            $this->db->bind(":telephoneNo", $telephoneNo);
+            $this->db->bind(":email", $email);
+
+            $this->db-execute();
+
         }catch(PDOException $e){
             echo "Error: " . $e->getMessage();
         }

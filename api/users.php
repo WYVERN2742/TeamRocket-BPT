@@ -6,15 +6,15 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once 'config/Database.php';
-include_once 'objects/User.php';
+include_once 'objects/CentralFinance.php';
 
 session_start();
 
 $db = new Database();
-$users = new Users($db);
+$centralFinance = new CentralFinance($db);
 
 if (isset($_SESSION['user'])) {
-    $rs = $users->readAll();
+    $rs = $centralFinance->viewUsers();
 
     http_response_code(200);
 

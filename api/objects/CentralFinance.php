@@ -6,7 +6,7 @@
  * Time: 21:47
  */
 
-class CentralFinance extends User {
+class CentralFinance {
     
     //database connection
     private $db;
@@ -79,7 +79,7 @@ class CentralFinance extends User {
     public function viewUser($userId){//would be better to combine this with the method above.
         $this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User WHERE userId=:userId"); //all users in the database.
         $this->db->bind(":userId", $userId);
-        $rs = $this->db->resultSet();
+        $rs = $this->db->single();
 		return $rs;
     }
 
@@ -92,7 +92,7 @@ class CentralFinance extends User {
     public function viewBudgetcode($budgetCode){
         $this->db->query("SELECT budgetCode, ownerId, procurementOfficer FROM BudgetCode WHERE budgetCode=:budgetCode");
         $this->db->bind(":budgetCode", $budgetCode);
-        $rs = $this->db->resultSet();
+        $rs = $this->db->single();
         return $rs;
     }
 

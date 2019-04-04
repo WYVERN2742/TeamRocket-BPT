@@ -18,7 +18,6 @@ class Procurement
 	{
 		$this->db->query("SELECT * FROM Procurement WHERE requesterId = :requesterId");
 		$this->db->bind(":requesterId", $_SESSION['user']);
-		$this->db->execute();
 		$rs = $this->db->resultSet();
 		return $rs;
 	}

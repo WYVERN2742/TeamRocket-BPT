@@ -33,6 +33,8 @@ class CentralFinance extends User {
             $this->db->execute();
         }catch(PDOException $e){
             echo "Error: " . $e->getMessage();
+
+            return false;
         }
 
     }
@@ -45,6 +47,8 @@ class CentralFinance extends User {
             $this->db->execute();
         }catch(PDOException $e){
             echo "Error: " . $e->getMessage();
+
+            return false;
         }
     }
 
@@ -73,13 +77,14 @@ class CentralFinance extends User {
 
     public function viewUsers() {
         $this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User"); //all users in the database.
-		$this->db->execute();
 		$rs = $this->db->resultSet();
 		return $rs;
     }
 
     public function viewBudgetCodes() {
-
+        $this->db->query("SELECT budgetCode, ownerId, procurementOfficer FROM BudgetCode");
+        $rs = $this->db->resultSet();
+        return $rs;
     }
 
 }

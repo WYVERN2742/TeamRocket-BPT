@@ -93,5 +93,4 @@
 		public function cancelTransaction() {
 			return $this->conn->rollBack();
 		}
-
 	}

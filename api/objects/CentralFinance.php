@@ -71,8 +71,29 @@ class CentralFinance extends User {
         }
     }
 
-    public function createBudgetCode() {
+    public function createBudgetCode($budgetCode, $ownerId, $procurementOfficer) {
+        try{
+            $this->db->query("INSERT INTO BudgetCode(budgetCode, ownerId, procurementOfficer) VALUES (:budgetCode, :ownerId, :procurementOfficer)");
+            $this->db->bind(":budgetCode", $budgetCode);
+            $this->db->bind(":ownerId", $ownerId);
+            $this->db->bind(":procurementOfficer", $procurementOfficer);
 
+            $this->db->execute();
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function updateBudgetCode($ownerId, $procurementOfficer){
+        try{
+            $this->db->query("UPDATE BudgetCode SET ownerId=:ownerId, procurementOfficer=:procurementOfficer WHERE budgetCode=:budgetCode");
+            $this->db->bind(":ownerId", $ownerId);
+            $this->db->bind(":procurementOfficer", $procurementOfficer);
+
+            $this->db->execute();
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
     }
 
     public function viewUsers() {
@@ -87,4 +108,6 @@ class CentralFinance extends User {
         return $rs;
     }
 
+
+    //might need to add remove budget code function
 }

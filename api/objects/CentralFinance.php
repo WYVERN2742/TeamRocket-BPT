@@ -96,4 +96,10 @@ class CentralFinance {
         return $rs;
     }
 
+    public function getBudgetcodeOwner($budgetCode){
+        $this->db->query("SELECT firstName, lastName, roomNo, telephoneNo, email FROM User WHERE userId = (SELECT ownerId FROM BudgetCode WHERE budgetCode = :budgetCode) LIMIT 0,1");
+        $this->db->bind("budgetCode", $budgetCode);
+        $rs = $this->db->single();
+        return $rs;
+    }
 }

@@ -126,7 +126,7 @@ function search() {
 
 $.ajax({
 	type: "GET",
-	url: "api/users.php",
+	url: "api/user_management/users.php",
 	contentType: 'application/json',
 
 	success: function (rows) {

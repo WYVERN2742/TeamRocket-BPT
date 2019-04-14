@@ -126,7 +126,7 @@ function search() {
 
 $.ajax({
 	type: "GET",
-	url: "api/requests.php",
+	url: "api/procurement/requests.php",
 	contentType: 'application/json',
 
 	success: function (rows) {

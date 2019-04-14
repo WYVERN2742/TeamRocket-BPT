@@ -13,6 +13,8 @@ session_start();
 $db = new Database();
 $user = new User($db);
 
+//this doesn't work, not sure what it's purpose is.
+
 if (isset($_SESSION['user'])) {
     $rs = $user->readAll();
 

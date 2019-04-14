@@ -6,22 +6,27 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once 'config/Database.php';
-include_once 'objects/User.php';
+include_once 'objects/CentralFinance.php';
+
+
+/**
+ * Returns the details of a specific budget code owner.
+ * @param $data refers the the budget code being checked
+ * $data is passed to the Central finance object which returns the owner.
+ */
 
 session_start();
 
 $db = new Database();
-$user = new User($db);
+$CentralFinance = new CentralFinance($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
-    $db->query("SELECT firstName, lastName, roomNo, telephoneNo, email FROM User WHERE userId = (SELECT ownerId FROM BudgetCode WHERE budgetCode = :budgetCode) LIMIT 0,1");
-    $db->bind("budgetCode", $data);
-    $row = $db->single();
+    $rs = $CentralFinance->getBudgetcodeOwner($data);
 
     http_response_code(200);
-    echo json_encode($row);
+    echo json_encode($rs);
 } else {
     // set response code
     http_response_code(401);

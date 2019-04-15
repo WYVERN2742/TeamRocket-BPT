@@ -12,7 +12,7 @@
 		private $stmt;
 
 		/**
-		 * Creates a new database connection.
+		 * Creates a new database connection.	
 		 */
 		public function __construct(){
 			$this->conn = null;
@@ -92,5 +92,13 @@
 
 		public function cancelTransaction() {
 			return $this->conn->rollBack();
+		}
+
+		public function getError() {
+			return $this->stmt->errorInfo();
+		}
+
+		public function getErrorCode() {
+			return $this->stmt->errorCode();
 		}
 	}

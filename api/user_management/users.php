@@ -11,10 +11,10 @@ include_once '../objects/CentralFinance.php';
 session_start();
 
 $db = new Database();
-$centralFinance = new CentralFinance($db);
+$CentralFinance = new CentralFinance($db);
 
 if (isset($_SESSION['user'])) {
-    $rs = $centralFinance->viewUsers();
+    $rs = $CentralFinance->viewUsers();
 
     http_response_code(200);
 

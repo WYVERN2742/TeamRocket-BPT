@@ -14,22 +14,22 @@ $db = new Database();
 $user = new User($db);
 
 if (isset($_SESSION['user'])) {
-    $db->query("SELECT budgetCode FROM BudgetCode");
-    $rs = $db->resultSet();
-    $ids = [];
-    $i = 0;
-    foreach ($rs as $row) {
-        $ids[$i++] = $row['budgetCode'];
-    }
+	$db->query("SELECT budgetCode FROM BudgetCode");
+	$rs = $db->resultSet();
+	$ids = [];
+	$i = 0;
+	foreach ($rs as $row) {
+		$ids[$i++] = $row['budgetCode'];
+	}
 
-    http_response_code(200);
-    echo json_encode($ids);
+	http_response_code(200);
+	echo json_encode($ids);
 } else {
-    // set response code
-    http_response_code(401);
+	// set response code
+	http_response_code(401);
 
-    // show error message
-    echo json_encode(array(
-        "message" => "Access denied."
-    ));
+	// show error message
+	echo json_encode(array(
+		"message" => "Access denied."
+	));
 }

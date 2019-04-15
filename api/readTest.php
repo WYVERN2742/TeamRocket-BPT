@@ -9,11 +9,11 @@ $db->execute();
 $rows = $db->rowCount();
 
 if ($rows > 0) {
-    http_response_code(200);
+	http_response_code(200);
 
-    echo json_encode(array("message" => "Users found."));
+	echo json_encode(array("message" => "Users found."));
 } else {
-    http_response_code(400);
+	http_response_code(400);
 
-    echo json_encode(array("message" => "No users found"));
+	echo json_encode(array("message" => "No users found"));
 }

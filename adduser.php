@@ -15,7 +15,65 @@ include "webphp/session.php";
 </head>
 
 <body>
-	<main class="container">
+
+	<!-- Site Header -->
+	<header>
+		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
+			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University",
+					height="50em"></a>
+			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
+				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<div class="collapse navbar-collapse" id="navBar">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+						<a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Homepage <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench" aria-hidden="true"></i>Admin</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
+							<a class="dropdown-item" href="editUsers.php"><i class="fa fa-user" aria-hidden="true"></i> Edit Users</a>
+							<a class="dropdown-item" href="editBudgetCodes.php"><i class="fa fa-wrench" aria-hidden="true"></i> Edit Budget Codes</a>
+						</div>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<!-- Trigger logout modal -->
+					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" ,
+						data-target="#modelLogout"><i class="fa fa-door-closed"></i>Logout</button>
+				</form>
+			</div>
+		</nav>
+
+		<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Logging out?</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						You are about to log out, are you sure? <br> You will need to log in again to continue using the
+						site.
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times "></i> Cancel</button>
+						<form id="do_logout" action="api/logout.php" method="POST">
+							<button type="submit" class="btn btn-danger" name="do_logout"><i class="fa fa-door-closed"></i>Logout</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 container">
 		<h1 class="display-1">
 				New User
 		</h1>
@@ -23,7 +81,7 @@ include "webphp/session.php";
 			<div class="card-body">
 				<h4 class="card-title">DEVELOPMENT - New User</h4>
 				<!-- Change Form Submit action -->
-				<form action="OrderServlet" method="post" class="col-10">
+				<form action="api/user_management/insert_user.php" method="post" class="col-10">
 					<!-- ^^^^^^^^^^^^^^^^^^ -->
 					<div class="form-group row">
 						<label class="col-sm-3 col-form-label" for="password">Password</label>
@@ -32,6 +90,10 @@ include "webphp/session.php";
 					<div class="form-group row">
 						<label for="firstName" class="col-sm-3 col-form-label">First Name</label>
 						<input type="text" name="firstName" id="firstName" class="form-control col-sm-9" placeholder="Code" required>
+					</div>
+					<div class="form-group row">
+						<label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
+						<input type="text" name="lastName" id="lastName" class="form-control col-sm-9" placeholder="Code" required>
 					</div>
 					<div class="form-group row">
 						<label for="roomNumber" class="col-sm-3 col-form-label">Room Number</label>
@@ -44,19 +106,25 @@ include "webphp/session.php";
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="role" id="role1" value="1" checked>
 									<label class="form-check-label" for="role1">
-										Admin
+										Requester
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="role" id="role2" value="2" checked>
+									<input class="form-check-input" type="radio" name="role" id="role2" value="2">
 									<label class="form-check-label" for="role2">
-										Finance
+										Budget Code Owner
 									</label>
 								</div>
-								<div class="form-check disabled">
+								<div class="form-check">
 									<input class="form-check-input" type="radio" name="role" id="role3" value="3">
 									<label class="form-check-label" for="role3">
-										Root
+										Central Finance
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="role" id="role4" value="4">
+									<label class="form-check-label" for="role4">
+										Requisition Officer
 									</label>
 								</div>
 							</div>

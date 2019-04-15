@@ -14,22 +14,22 @@ $db = new Database();
 $user = new User($db);
 
 if (isset($_SESSION['user'])) {
-    $db->query("SELECT name FROM Supplier");
-    $rs = $db->resultSet();
-    $names = [];
-    $i = 0;
-    foreach ($rs as $row) {
-        $names[$i++] = $row['name'];
-    }
+	$db->query("SELECT name FROM Supplier");
+	$rs = $db->resultSet();
+	$names = [];
+	$i = 0;
+	foreach ($rs as $row) {
+		$names[$i++] = $row['name'];
+	}
 
-    http_response_code(200);
-    echo json_encode($names);
+	http_response_code(200);
+	echo json_encode($names);
 } else {
-    // set response code
-    http_response_code(401);
+	// set response code
+	http_response_code(401);
 
-    // show error message
-    echo json_encode(array(
-        "message" => "Access denied."
-    ));
+	// show error message
+	echo json_encode(array(
+		"message" => "Access denied."
+	));
 }

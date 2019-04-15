@@ -19,14 +19,14 @@ $user->email = $data->email;
 $email_exists = $user->emailExists();
 
 if ($email_exists && password_verify($data->password, $user->password)) {
-    echo json_encode(
-        array(
-            "message" => "Successful login.",
-        )
-    );
+	echo json_encode(
+		array(
+			"message" => "Successful login.",
+		)
+	);
 
-    http_response_code(200);
-    $_SESSION['user'] = $user->userId;
+	http_response_code(200);
+	$_SESSION['user'] = $user->userId;
 } else {
-    http_response_code(401);
+	http_response_code(401);
 }

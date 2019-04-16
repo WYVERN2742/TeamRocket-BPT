@@ -40,7 +40,7 @@ class CentralFinance {
 		$this->db->query("DELETE FROM User WHERE userId = :userId");
 		$this->db->bind(":userId", $userId);
 		
-		$this->db->execute();
+		return $this->db->execute();
 	}
 
 	public function editUser($userId, $password, $firstName, $lastName, $role, $roomNo, $telephoneNo, $email) {
@@ -54,6 +54,7 @@ class CentralFinance {
 		$this->db->bind(":telephoneNo", $telephoneNo);
 		$this->db->bind(":email", $email);
 
+		return $this->db->excute();
 	}
 
 	public function createBudgetCode($budgetCode, $ownerId, $procurementOfficer) {
@@ -62,6 +63,7 @@ class CentralFinance {
 		$this->db->bind(":ownerId", $ownerId);
 		$this->db->bind(":procurementOfficer", $procurementOfficer);
 
+		return $this->db->execute();
 	}
 
 	public function updateBudgetCode($ownerId, $procurementOfficer){
@@ -69,6 +71,7 @@ class CentralFinance {
 		$this->db->bind(":ownerId", $ownerId);
 		$this->db->bind(":procurementOfficer", $procurementOfficer);
 
+		return $this->db->execute();
 	}
 
 	public function viewUsers() {

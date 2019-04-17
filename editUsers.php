@@ -78,7 +78,7 @@ include "webphp/session.php";
 	</header>
 	<!-- Page Content-->
 	<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 container-fluid">
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col">
@@ -96,57 +96,13 @@ include "webphp/session.php";
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col">
-						<table class="table table-bordered table-hover table-responsive-md text-center">
-							<thead class="thead-dark">
-								<tr>
-									<th>Drafts</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<div class="btn-block btn-group btn-group-justified" role="group"
-											aria-label="Draft #1">
-											<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
-												#1</button>
-											<button type="button" class="btn btn-danger"><i class="fa fa-trash"
-													aria-hidden="true"></i></button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="btn-block btn-group btn-group-justified" role="group"
-											aria-label="Draft #2">
-											<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
-												#2</button>
-											<button type="button" class="btn btn-danger"><i class="fa fa-trash"
-													aria-hidden="true"></i></button>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="btn-block btn-group btn-group-justified" role="group"
-											aria-label="Draft #3">
-											<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
-												#3</button>
-											<button type="button" class="btn btn-danger"><i class="fa fa-trash"
-													aria-hidden="true"></i></button>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
 			</div>
-			<div class="col-lg-8">
+		</div> -->
+		<div class="row">
+			<div class="col-lg-12">
 				<div class="row">
 					<div class="col container-fluid">
-						<h1>Users</h1>
+						<h1>No of users: </h1><h1 id="pending_requests">0</h1>
 					</div>
 					<div class="col">
 						<div class="input-group">
@@ -171,12 +127,12 @@ include "webphp/session.php";
 									<th>Room Number</th>
 									<th>Telephone Number</th>
 									<th>Email Address</th>
-									<th>Delete</th>
+									<th>Options	</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td colspan="7">Loading...</td>
+									<td colspan="8">Loading...</td>
 								</tr>
 							</tbody>
 						</table>
@@ -192,7 +148,7 @@ include "webphp/session.php";
 				<div class="row">
 					<div class="col">
 					<button type="button" onclick="window.location.href='adduser.php'" name="addUser" id="addUser"
-							class="btn btn-primary btn-lg btn-block">Add User</button>
+							class="btn btn-success btn-lg btn-block">Add User</button>
 							</div>
 						</div>
 					</div>

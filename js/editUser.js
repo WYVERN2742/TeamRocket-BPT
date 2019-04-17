@@ -12,23 +12,6 @@ var dynamicTable = (function () {
 		if (names && names.length > 0) {
 			$.each(names, function (index, name) {
 				var c = item ? item[name + ''] : name;
-				switch (c) {
-					case "BEFORE_BUDGET_APPROVAL":
-						c = '<span class="badge badge-primary badge-pill">Awaiting Budget Code Approval</span>';
-						break;
-					case "BEFORE_FINANCE_APPROVAL":
-						c = '<strong><span class="badge badge-info badge-warning">Awaiting Finance Approval</span></strong>';
-						break;
-					case "BEFORE_REQ_APPROVAL":
-						c = '<strong><span class="badge badge-info badge-pill">Awaiting Requisition Approval</span></strong>';
-						break;
-					case "DONE":
-						c = '<strong><span class="badge badge-success badge-pill">Ordered</span></strong>';
-						break;
-					case "DENIED":
-						c = '<strong><span class="badge badge-danger badge-pill">Denied</span></strong>';
-						break;
-				}
 				row += '<td>' + c + '</td>';
 			});
 			row += '<td>' + '<button type="button" class="btn btn-danger userDelete" id="deleteRow"><i class="fa fa-trash" aria-hidden="true"></i></button> <button type="button" class="btn btn-primary userEdit" id="deleteRow"><i class="fa fa-bars" aria-hidden="true"></i></button>' + '</td>'; //adds delete button to all of the rows

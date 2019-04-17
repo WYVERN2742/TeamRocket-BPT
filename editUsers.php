@@ -86,7 +86,7 @@ include "webphp/session.php";
 							<div class="card-body">
 								<div class="row">
 									<div class="col-7">
-										<h4 class="display-4">Pending</br> Requests</h4>
+										<h4 class="display-4">Number of</br> Users</h4>
 									</div>
 									<div class="col-5">
 										<p class="display-1" id="pending_requests">0</p>
@@ -171,6 +171,7 @@ include "webphp/session.php";
 									<th>Room Number</th>
 									<th>Telephone Number</th>
 									<th>Email Address</th>
+									<th>Delete</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -185,6 +186,18 @@ include "webphp/session.php";
 				</div>
 			</div>
 		</div>
+		<!-- This is the ghetto add user button -->
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="col">
+					<button type="button" onclick="window.location.href='adduser.php'" name="addUser" id="addUser"
+							class="btn btn-primary btn-lg btn-block">Add User</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div> 
 	</main>
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -199,6 +212,7 @@ include "webphp/session.php";
 		crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/editUser.js"></script>
+		<script src="js/deleteUser.js"></script>
 
 </body>
 

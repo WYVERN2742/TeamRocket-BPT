@@ -31,6 +31,7 @@ var dynamicTable = (function () {
 				}
 				row += '<td>' + c + '</td>';
 			});
+			row += '<td>' + '<button type="button" class="btn btn-danger userDelete" id="deleteRow"><i class="fa fa-trash" aria-hidden="true"></i></button> <button type="button" class="btn btn-primary userEdit" id="deleteRow"><i class="fa fa-bars" aria-hidden="true"></i></button>' + '</td>'; //adds delete button to all of the rows
 		}
 		row += '</tr>';
 		return row;

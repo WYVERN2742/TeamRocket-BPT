@@ -15,6 +15,11 @@ PHP:
 	☐ Split up php scripts and objects
 	☐ Make names more distinguished
 		We have (user.php, users.php, User.php)
+
+	Functionality:
+		☐ Get all budget codes
+			Budget Code, Owner Name, Procurement Officer Name
+
 	Document php files:
 		☐ CentralFinance.php
 		☐ Procurement.php

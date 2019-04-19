@@ -96,11 +96,11 @@ include "pageSections/header.php";
 						</thead>
 						<tbody>
 							<tr>
-								<td colspan="4">Loading...</td>
+								<td colspan="4"><div class="spinner-border" role="status"></div></td>
 							</tr>
 						</tbody>
 					</table>
-					<button type="button" name="viewInput" id="viewInput" class="btn btn-primary btn-lg btn-block">View More </button>
+					<button type="button" name="viewInput" id="viewInput" class="btn btn-primary btn-lg btn-block">Loading...</button>
 				</div>
 			</div>
 		</div>

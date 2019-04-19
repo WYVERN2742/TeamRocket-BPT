@@ -41,11 +41,10 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="8">Loading...</td>
+										<td colspan="8"><div class="spinner-border" role="status"></div></td>
 									</tr>
 								</tbody>
 							</table>
-							<button type="button" name="inputViewMore" id="inputViewMore" class="btn btn-primary btn-lg btn-block">View More</button>
 						</div>
 					</div>
 				</div>

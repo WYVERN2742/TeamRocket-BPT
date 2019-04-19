@@ -19,6 +19,7 @@ $.ajax({
 			for (let i = 0; i < 5; i++) {
 				if (count < numRows) {
 					dt.load([rows[count++]], true);
+					viewMore.html("View More (" + count + "/" + numRows + ")");
 				} else {
 					viewMore.remove();
 					break;

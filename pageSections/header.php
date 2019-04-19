@@ -11,9 +11,6 @@
 				<li class="nav-item <?=($page=="makeRequest") ? "active" : ""?>">
 					<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
 				</li>
-				<li class="nav-item <?=($page=="test") ? "active" : ""?>">
-					<a class="nav-link" href="modular.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Modular test</a>
-				</li>
 				<?php
 				// Include admin dropdown if user is admin
 					if ($_SESSION['userRole'] = "CENTRAL_FINANCE") {

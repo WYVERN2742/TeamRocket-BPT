@@ -7,7 +7,7 @@
  */
 
 class CentralFinance {
-	
+
 	//database connection
 	private $db;
 
@@ -15,14 +15,14 @@ class CentralFinance {
 	* Central finance constructor.
 	* @param $db
 	*/
-	public function __construct($db){
+	public function __construct($db) {
 		$this->db = $db;
 	}
 
 	public function addUser($password, $firstName, $lastName, $role, $roomNo, $telephoneNo, $email) {
 		$this->db->query("INSERT INTO User(password, firstName, lastName, role, roomNo, telephoneNo, email) VALUES (:password, :firstName, :lastName, :role, :roomNo, :telephoneNo, :email)");
-		
-		$this->db->bind(":password", $password); 
+
+		$this->db->bind(":password", $password);
 		$this->db->bind(":firstName", $firstName);
 		$this->db->bind(":lastName", $lastName);
 		$this->db->bind(":role", $role);
@@ -32,14 +32,14 @@ class CentralFinance {
 		return $this->db->execute();
 	}
 
-    public function getError() {
-        return $this->db->getError();
-    }
+	public function getError() {
+		return $this->db->getError();
+	}
 
 	public function removeUser($userId) {
 		$this->db->query("DELETE FROM User WHERE userId = :userId");
 		$this->db->bind(":userId", $userId);
-		
+
 		return $this->db->execute();
 	}
 
@@ -54,7 +54,7 @@ class CentralFinance {
 		$this->db->bind(":telephoneNo", $telephoneNo);
 		$this->db->bind(":email", $email);
 
-		return $this->db->excute();
+		return $this->db->execute();
 	}
 
 	public function createBudgetCode($budgetCode, $ownerId, $procurementOfficer) {
@@ -66,7 +66,7 @@ class CentralFinance {
 		return $this->db->execute();
 	}
 
-	public function updateBudgetCode($ownerId, $procurementOfficer){
+	public function updateBudgetCode($ownerId, $procurementOfficer) {
 		$this->db->query("UPDATE BudgetCode SET ownerId=:ownerId, procurementOfficer=:procurementOfficer WHERE budgetCode=:budgetCode");
 		$this->db->bind(":ownerId", $ownerId);
 		$this->db->bind(":procurementOfficer", $procurementOfficer);
@@ -80,7 +80,7 @@ class CentralFinance {
 		return $rs;
 	}
 
-	public function viewUser($userId){
+	public function viewUser($userId) {
 		$this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User WHERE userId=:userId"); //all users in the database.
 		$this->db->bind(":userId", $userId);
 		$rs = $this->db->single();
@@ -93,15 +93,15 @@ class CentralFinance {
 		return $rs;
 	}
 
-	public function viewBudgetcode($budgetCode){
+	public function viewBudgetCode($budgetCode) {
 		$this->db->query("SELECT budgetCode, ownerId, procurementOfficer FROM BudgetCode WHERE budgetCode=:budgetCode");
 		$this->db->bind(":budgetCode", $budgetCode);
 		$rs = $this->db->single();
 		return $rs;
 	}
 
-	public function getBudgetcodeOwner($budgetCode){
-		$this->db->query("SELECT firstName, lastName, roomNo, telephoneNo, email FROM User WHERE userId = (SELECT ownerId FROM BudgetCode WHERE budgetCode = :budgetCode) LIMIT 0,1");
+	public function getBudgetCodeOwner($budgetCode) {
+		$this->db->query("SELECT firstName, lastName, roomNo, telephoneNo, email FROM User WHERE userId = (SELECT ownerId FROM BudgetCode WHERE budgetCode = :budgetCode) LIMIT 0, 1");
 		$this->db->bind("budgetCode", $budgetCode);
 		$rs = $this->db->single();
 		return $rs;

@@ -23,10 +23,8 @@ include "webphp/session.php";
 	<!-- Site Header -->
 	<header>
 		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
-			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University",
-					height="50em"></a>
-			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
-				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University" , height="50em"></a>
+			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
 			<div class="collapse navbar-collapse" id="navBar">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active">
@@ -36,8 +34,7 @@ include "webphp/session.php";
 						<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench" aria-hidden="true"></i>Admin</a>
+						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench" aria-hidden="true"></i>Admin</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
 							<a class="dropdown-item" href="editUsers.php"><i class="fa fa-user" aria-hidden="true"></i> Edit Users</a>
 							<a class="dropdown-item" href="editBudgetCodes.php"><i class="fa fa-wrench" aria-hidden="true"></i> Edit Budget Codes</a>
@@ -46,14 +43,12 @@ include "webphp/session.php";
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<!-- Trigger logout modal -->
-					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" ,
-						data-target="#modelLogout"><i class="fa fa-door-closed"></i>Logout</button>
+					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" , data-target="#modelLogout"><i class="fa fa-door-closed"></i>Logout</button>
 				</form>
 			</div>
 		</nav>
 
-		<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-			aria-hidden="true">
+		<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -107,34 +102,28 @@ include "webphp/session.php";
 							<tbody>
 								<tr>
 									<td>
-										<div class="btn-block btn-group btn-group-justified" role="group"
-											aria-label="Draft #1">
+										<div class="btn-block btn-group btn-group-justified" role="group" aria-label="Draft #1">
 											<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
 												#1</button>
-											<button type="button" class="btn btn-danger"><i class="fa fa-trash"
-													aria-hidden="true"></i></button>
+											<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<div class="btn-block btn-group btn-group-justified" role="group"
-											aria-label="Draft #2">
+										<div class="btn-block btn-group btn-group-justified" role="group" aria-label="Draft #2">
 											<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
 												#2</button>
-											<button type="button" class="btn btn-danger"><i class="fa fa-trash"
-													aria-hidden="true"></i></button>
+											<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<div class="btn-block btn-group btn-group-justified" role="group"
-											aria-label="Draft #3">
+										<div class="btn-block btn-group btn-group-justified" role="group" aria-label="Draft #3">
 											<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
 												#3</button>
-											<button type="button" class="btn btn-danger"><i class="fa fa-trash"
-													aria-hidden="true"></i></button>
+											<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
 										</div>
 									</td>
 								</tr>
@@ -150,11 +139,9 @@ include "webphp/session.php";
 					</div>
 					<div class="col">
 						<div class="input-group">
-							<input type="text" class="form-control" id="search" placeholder="Search"
-								aria-label="Recipient's username" aria-describedby="inputSearch">
+							<input type="text" class="form-control" id="search" placeholder="Search" aria-label="Recipient's username" aria-describedby="inputSearch">
 							<div class="input-group-append">
-								<button class="btn btn-outline-secondary" type="button" id="inputSearch"><i
-										class="fa fa-search" aria-hidden="true"></i></button>
+								<button class="btn btn-outline-secondary" type="button" id="inputSearch"><i class="fa fa-search" aria-hidden="true"></i></button>
 							</div>
 						</div>
 					</div>
@@ -176,8 +163,7 @@ include "webphp/session.php";
 								</tr>
 							</tbody>
 						</table>
-						<button type="button" name="inputViewMore" id="inputViewMore"
-							class="btn btn-primary btn-lg btn-block">View More</button>
+						<button type="button" name="inputViewMore" id="inputViewMore" class="btn btn-primary btn-lg btn-block">View More</button>
 					</div>
 				</div>
 			</div>
@@ -185,17 +171,11 @@ include "webphp/session.php";
 	</main>
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/index.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/index.js"></script>
 
 </body>
 

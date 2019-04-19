@@ -23,7 +23,7 @@ $CentralFinance = new CentralFinance($db);
 $data = json_decode(file_get_contents("php://input")); //not sure how this works :s
 
 if (isset($_SESSION['user'])) {
-	$rs = $CentralFinance->getBudgetcodeOwner($data);
+	$rs = $CentralFinance->getBudgetCodeOwner($data);
 
 	http_response_code(200);
 	echo json_encode($rs);

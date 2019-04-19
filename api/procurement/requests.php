@@ -14,17 +14,17 @@ $db = new Database();
 $procurement = new Procurement($db);
 
 if (isset($_SESSION['user'])) {
-    $rs = $procurement->readAll();
+	$rs = $procurement->readAll();
 
-    http_response_code(200);
+	http_response_code(200);
 
-    echo json_encode($rs);
+	echo json_encode($rs);
 } else {
-    // set response code
-    http_response_code(401);
+	// set response code
+	http_response_code(401);
 
-    // show error message
-    echo json_encode(array(
-        "message" => "Access denied."
-    ));
+	// show error message
+	echo json_encode(array(
+		"message" => "Access denied."
+	));
 }

@@ -1,6 +1,5 @@
 <?php
-class Procurement
-{
+class Procurement {
 
 	//database connection
 	private $db;
@@ -9,13 +8,11 @@ class Procurement
 	 * Procurement constructor.
 	 * @param $db
 	 */
-	public function __construct($db)
-	{
+	public function __construct($db) {
 		$this->db = $db;
 	}
 
-	public function readAll()
-	{
+	public function readAll() {
 		$this->db->query("SELECT * FROM Procurement WHERE requesterId = :requesterId");
 		$this->db->bind(":requesterId", $_SESSION['user']);
 		$rs = $this->db->resultSet();
@@ -25,8 +22,7 @@ class Procurement
 	/**
 	 * Returns all information about a procurement request with a given id.
 	 */
-	public function readOne($procurementId)
-	{
+	public function readOne($procurementId) {
 		/*$query = "SELECT * FROM " . $this->tableName . " WHERE requesterId = :id";
 		$this->conn->query($query);
 		$this->conn->bind(":id", $procurementId, PDO::PARAM_INT);
@@ -35,8 +31,7 @@ class Procurement
 
 	}
 
-	public function insert($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId)
-	{
+	public function insert($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId) {
 		$this->conn->query("INSERT INTO Procurement (budgetCode, requesterId, date, status, declineReason, recurring, supplierId) VALUES (:budgetCode, :requesterId, :date, :status, :declineReason, :recurring, :supplierId)");
 		$this->conn->bind(':budgetCode', $budgetCode);
 		$this->conn->bind(':requesterId', $requesterId);
@@ -49,8 +44,7 @@ class Procurement
 		$this->conn->execute();
 	}
 
-	public function edit($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId, $procurementId)
-	{
+	public function edit($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId, $procurementId) {
 		$this->conn->query("UPDATE Procurement SET budgetCode=:budgetCode, requesterId=:requesterId, date=:date, status=:status, declineReason=:declineReason, recurring=:recurring, supplierId=:supplierId) WHERE procurementId=:procurementId");
 		$this->conn->bind(':budgetCode', $budgetCode);
 		$this->conn->bind(':requesterId', $requesterId);
@@ -63,24 +57,19 @@ class Procurement
 		$this->conn->execute();
 	}
 
-	public function delete($procurementId)
-	{
+	public function delete($procurementId) {
 
 	}
 
-	public function approve($procurementId)
-	{
+	public function approve($procurementId) {
 
 	}
 
-	public function decline($procurementId)
-	{
+	public function decline($procurementId) {
 
 	}
 
-	public function resubmit($procurementId)
-	{
+	public function resubmit($procurementId) {
 
 	}
 }
-?>

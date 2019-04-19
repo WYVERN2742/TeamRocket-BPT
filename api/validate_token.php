@@ -15,10 +15,10 @@ use \Firebase\JWT\JWT;
 
 $data = json_decode(file_get_contents("php://input"));
 
-$jwt=isset($data->jwt) ? $data->jwt : "";
+$jwt = isset($data->jwt) ? $data->jwt : "";
 
 // if jwt is not empty
-if($jwt){
+if ($jwt) {
 
 	// if decode succeed, show user details
 	try {
@@ -33,7 +33,6 @@ if($jwt){
 			"message" => "Access granted.",
 			"data" => $decoded->data
 		));
-
 	} catch (Exception $e) {
 
 		// set response code

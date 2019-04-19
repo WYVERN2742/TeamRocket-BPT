@@ -33,17 +33,16 @@ if (isset($_SESSION['user'])) {
 	} catch (PDOException $e) {
 		http_response_code(500);
 		echo json_encode(array(
-				"message" => "Failed to update database",
-				"error message" => $e->getMessage()
+			"message" => "Failed to update database",
+			"error message" => $e->getMessage()
 		));
 	}
-
 } else {
 	// set response code
 	http_response_code(401);
 
 	// show error message
 	echo json_encode(array(
-			"message" => "Access denied."
+		"message" => "Access denied."
 	));
 }

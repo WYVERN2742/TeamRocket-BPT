@@ -13,5 +13,5 @@ $iat = 1356999524;
 $nbf = 1357000000;
 
 /*for ($i = 1; $i <= 1000; $i++) {
-    print(password_hash("password" . $i, PASSWORD_DEFAULT) . "<br>");
+	print(password_hash("password" . $i, PASSWORD_DEFAULT) . "<br>");
 }*/

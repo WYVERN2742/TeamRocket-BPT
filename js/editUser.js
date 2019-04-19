@@ -121,7 +121,7 @@ $.ajax({
 		const dt = dynamicTable.config('requests_table',
 			['userId', 'firstName', 'lastName', 'role', 'roomNo', 'telephoneNo', 'email'], null, 'No users');
 
-			for (var i = 0; i < 5; i++) {
+		for (var i = 0; i < 5; i++) {
 			dt.load([rows[count++]], true);
 		}
 

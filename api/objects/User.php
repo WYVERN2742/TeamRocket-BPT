@@ -33,7 +33,7 @@ class User {
 	}
 
 	public function emailExists() {
-		$this->conn->query("SELECT userId, firstName, lastName, password, role FROM User WHERE email = :email LIMIT 0,1");
+		$this->conn->query("SELECT userId, firstName, lastName, password, role FROM User WHERE email = :email LIMIT 0, 1");
 
 		$this->email = htmlspecialchars(strip_tags($this->email));
 		$this->conn->bind(':email', $this->email);

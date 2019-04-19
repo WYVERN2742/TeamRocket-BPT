@@ -11,16 +11,16 @@ if (isset($_SESSION['user'])) {
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<title>Procurement | Login</title>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+	<title>Procurement | Login</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/login.css">
-	</head>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/login.css">
+</head>
 
 <body class="">
 	<form class="form-signin" id="login_form">
@@ -47,8 +47,8 @@ if (isset($_SESSION['user'])) {
 		<p class="mt-5 mb-3 text-muted text-center">Bangor University &copy;2019</p>
 	</form>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/login.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/login.js"></script>
 
 </body>
 

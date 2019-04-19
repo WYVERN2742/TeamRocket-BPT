@@ -5,7 +5,7 @@ var dynamicTable = (function () {
 		_defaultText;
 
 	/** Builds the row with columns from the specified names.
-	 *  If the item parameter is specified, the memebers of the names array will be used as property names of the item; otherwise they will be directly parsed as text.
+	 *  If the item parameter is specified, the members of the names array will be used as property names of the item; otherwise they will be directly parsed as text.
 	 */
 	function _buildRowColumns(names, item) {
 		var row = '<tr>';
@@ -137,7 +137,7 @@ $.ajax({
 		const dt = dynamicTable.config('requests_table',
 			['procurementId', 'budgetCode', 'requesterId', 'status'], null, 'No requests');
 
-			for (var i = 0; i < 5; i++) {
+		for (var i = 0; i < 5; i++) {
 			dt.load([rows[count++]], true);
 		}
 

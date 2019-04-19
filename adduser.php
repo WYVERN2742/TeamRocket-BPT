@@ -19,10 +19,8 @@ include "webphp/session.php";
 	<!-- Site Header -->
 	<header>
 		<nav class="navbar navbar-static-top navbar-default navbar-expand-md shadow navbar-dark bg-dark">
-			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University",
-					height="50em"></a>
-			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar"
-				aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<a href="index.php"><img src="img/bangor_logo_c2_flush.svg" alt="Bangor University" , height="50em"></a>
+			<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation"></button>
 			<div class="collapse navbar-collapse" id="navBar">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active">
@@ -32,8 +30,7 @@ include "webphp/session.php";
 						<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench" aria-hidden="true"></i>Admin</a>
+						<a class="nav-link dropdown-toggle" href="#" id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-wrench" aria-hidden="true"></i>Admin</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownAdmin">
 							<a class="dropdown-item" href="editUsers.php"><i class="fa fa-user" aria-hidden="true"></i> Edit Users</a>
 							<a class="dropdown-item" href="editBudgetCodes.php"><i class="fa fa-wrench" aria-hidden="true"></i> Edit Budget Codes</a>
@@ -42,14 +39,12 @@ include "webphp/session.php";
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<!-- Trigger logout modal -->
-					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" ,
-						data-target="#modelLogout"><i class="fa fa-door-closed"></i>Logout</button>
+					<button class="btn btn-outline-danger my-2 my-sm-0" type="button" , data-toggle="modal" , data-target="#modelLogout"><i class="fa fa-door-closed"></i>Logout</button>
 				</form>
 			</div>
 		</nav>
 
-		<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-			aria-hidden="true">
+		<div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -75,7 +70,7 @@ include "webphp/session.php";
 
 	<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 container">
 		<h1 class="display-1">
-				New User
+			New User
 		</h1>
 		<div class="card">
 			<div class="card-body">
@@ -152,7 +147,7 @@ include "webphp/session.php";
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/addUser.js"></script>
+	<script src="js/addUser.js"></script>
 </body>
 
 </html>

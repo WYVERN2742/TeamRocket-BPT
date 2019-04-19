@@ -119,6 +119,7 @@ Changelog
 ---------
 
 #### 5.0.0 / 2017-06-26
+
 - Support RS384 and RS512.
   See [#117](https://github.com/firebase/php-jwt/pull/117). Thanks [@joostfaassen](https://github.com/joostfaassen)!
 - Add an example for RS256 openssl.
@@ -140,6 +141,7 @@ Changelog
   [@chinedufn](https://github.com/chinedufn), and [@bshaffer](https://github.com/bshaffer)!
 
 #### 4.0.0 / 2016-07-17
+
 - Add support for late static binding. See [#88](https://github.com/firebase/php-jwt/pull/88) for details. Thanks to [@chappy84](https://github.com/chappy84)!
 - Use static `$timestamp` instead of `time()` to improve unit testing. See [#93](https://github.com/firebase/php-jwt/pull/93) for details. Thanks to [@josephmcdermott](https://github.com/josephmcdermott)!
 - Fixes to exceptions classes. See [#81](https://github.com/firebase/php-jwt/pull/81) for details. Thanks to [@Maks3w](https://github.com/Maks3w)!

@@ -7,7 +7,7 @@
 </li>
 
 <!-- Users Modal -->
-<div class="modal fade" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="usersModalLabel" aria-hidden="true">
+<div class="modal fade fullscreen" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="usersModalLabel" aria-hidden="true">
 	<div class="modal-xl modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -58,8 +58,8 @@
 </div>
 
 <!-- Budget Codes Modal -->
-<div class="modal fade" id="budgetCodesModal" tabindex="-1" role="dialog" aria-labelledby="budgetCodesModalLabel" aria-hidden="true">
-	<div class="modal-xl modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+<div class="modal fade fullscreen" id="budgetCodesModal" tabindex="-1" role="dialog" aria-labelledby="budgetCodesModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="budgetCodesModalLabel">Configure Budget Codes</h5>

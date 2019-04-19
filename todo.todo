@@ -54,10 +54,10 @@ Testing:
 
 Pages:
 	☐ Create FavIcon from logo
-	☐ Split up js into separate scripts
+	✔ Split up js into separate scripts @done(19-04-19 22:16)
 	Admin dropdown:
 		Users:
-			☐ List
+			✔ List @done(19-04-19 22:16)
 			☐ Edit
 			☐ Delete
 		Budget Codes:

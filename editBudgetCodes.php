@@ -106,6 +106,6 @@ include "pageSections/header.php";
 	</div>
 </main>
 
-<?php include "pageSections/scripts.html"?>
+<?php include "pageSections/scripts.php"?>
 <script src="js/editBudgetCodes.js"></script>
 <?php include "pageSections/footer.php"?>

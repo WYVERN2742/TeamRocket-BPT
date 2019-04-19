@@ -76,16 +76,16 @@ include "pageSections/header.php";
 				</div>
 				<div class="col">
 					<div class="input-group">
-						<input type="text" class="form-control" id="search" placeholder="Search" aria-label="Recipient's username" aria-describedby="inputSearch">
+						<input type="text" class="form-control" id="searchTableRequests" placeholder="Search">
 						<div class="input-group-append">
-							<button class="btn btn-outline-secondary" type="button" id="inputSearch"><i class="fa fa-search" aria-hidden="true"></i></button>
+							<button class="btn btn-outline-secondary" type="button" id="searchTableRequests"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<table class="table table-bordered table-hover table-responsive-md text-center" id="requests_table">
+					<table class="table table-bordered table-hover table-responsive-md text-center" id="tableRequests">
 						<thead class="thead-dark">
 							<tr>
 								<th>ID</th>
@@ -100,13 +100,13 @@ include "pageSections/header.php";
 							</tr>
 						</tbody>
 					</table>
-					<button type="button" name="inputViewMore" id="inputViewMore" class="btn btn-primary btn-lg btn-block">View More</button>
+					<button type="button" name="viewInput" id="viewInput" class="btn btn-primary btn-lg btn-block">View More </button>
 				</div>
 			</div>
 		</div>
 	</div>
 </main>
 
-<?php include "pageSections/scripts.html"?>
-<script src="js/index.js"></script>;
+<?php include "pageSections/scripts.php"?>
+<script src="js/page/index.js"></script>
 <?php include "pageSections/footer.php"?>

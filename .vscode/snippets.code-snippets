@@ -72,7 +72,7 @@
 		"prefix": "footer",
 		"description": "Standard Footer for all pages",
 		"body": [
-			"<?php include \"pageSections/scripts.html\"?>",
+			"<?php include \"pageSections/scripts.php\"?>",
 			"${1:<script src=\"js/$TM_FILENAME_BASE.js\"></script>}",
 			"<?php include \"pageSections/footer.php\"?>",
 			"$0"
@@ -97,7 +97,7 @@
 			"\t$0",
 			"</main>",
 			"",
-			"<?php include \"pageSections/scripts.html\"?>",
+			"<?php include \"pageSections/scripts.php\"?>",
 			"<script src=\"js/$TM_FILENAME_BASE.js\"></script>",
 			"<?php include \"pageSections/footer.php\"?>",
 		]

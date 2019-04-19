@@ -82,6 +82,6 @@ include "pageSections/header.php";
 </main>
 
 
-<?php include "pageSections/scripts.html" ?>
+<?php include "pageSections/scripts.php" ?>
 <script src="js/addUser.js"></script>
 <?php include "pageSections/footer.php" ?>

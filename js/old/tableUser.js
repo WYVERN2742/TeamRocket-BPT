@@ -85,29 +85,6 @@ var dynamicTable = (function () {
 	};
 }());
 
-function search() {
-	var value = $("#search").val();
-
-	$("table#requests_table tbody tr").each(function (index) {
-		$row = $(this);
-		let showRow = false;
-
-		$row.find('td').each(function () {
-			var id = $(this).text();
-
-			if (id.indexOf(value) == 0) {
-				showRow = true;
-			}
-		});
-
-		if (showRow) {
-			$row.show();
-		} else {
-			$row.hide();
-		}
-	});
-}
-
 $.ajax({
 	type: "GET",
 	url: "api/user_management/users.php",
@@ -118,17 +95,17 @@ $.ajax({
 		$('#pending_requests').html(numRows);
 
 		var count = 0;
-		const dt = dynamicTable.config('requests_table',
-			['userId', 'firstName', 'lastName', 'role', 'roomNo', 'telephoneNo', 'email'], null, 'No users');
+		const dt = dynamicTable.config('users_table',
+			['userId', 'firstName', 'lastName', 'role', 'email'], null, 'No users');
 
-		for (var i = 0; i < 5; i++) {
+		for (var i = 0; i < 10; i++) {
 			dt.load([rows[count++]], true);
 		}
 
 		const viewMore = $('#inputViewMore');
 
 		viewMore.click(function () {
-			for (var i = 0; i < 5; i++) {
+			for (var i = 0; i < 10; i++) {
 				if (count < numRows) {
 					dt.load([rows[count++]], true);
 				}
@@ -147,20 +124,3 @@ $.ajax({
 		console.log(text);
 	}
 });
-
-$("#search").on("keyup", function () {
-	search();
-});
-
-/*$(document).on('submit', '#do_logout', function () {
-	console.log("logout");
-	$.ajax({
-		type: "GET",
-		url: "api/logout.php",
-		success: function() {
-			location.href='login.php';
-		}
-	});
-
-	return false;
-});*/

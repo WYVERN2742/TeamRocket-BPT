@@ -49,5 +49,57 @@
 		"\t</td>",
 		"</tr>",
 		]
+	},
+	"pageHeader": {
+		"scope": "html",
+		"prefix": "header",
+		"description": "Standard Header for all pages",
+		"body": [
+			"<?php",
+			"include \"webphp/session.php\";",
+			"",
+			"\\$title = \"${1:Page Name} | Procurement\";",
+			"\\$page = \"${PageID}\";",
+			"",
+			"include \"pageSections/head.php\";",
+			"include \"pageSections/header.php\";",
+			"?>",
+			"$0"
+		]
+	},
+	"pageFooter": {
+		"scope": "html",
+		"prefix": "footer",
+		"description": "Standard Footer for all pages",
+		"body": [
+			"<?php include \"pageSections/scripts.html\"?>",
+			"${1:<script src=\"js/$TM_FILENAME_BASE.js\"></script>}",
+			"<?php include \"pageSections/footer.php\"?>",
+			"$0"
+		]
+	},
+	"pageBase":{
+		"scope": "html",
+		"prefix": "page",
+		"description": "Standard Page Layout",
+		"body": [
+			"<?php",
+			"include \"webphp/session.php\";",
+			"",
+			"\\$title = \"${1:Page Name} | Procurement\";",
+			"\\$page = \"${PageID}\";",
+			"",
+			"include \"pageSections/head.php\";",
+			"include \"pageSections/header.php\";",
+			"?>",
+			"",
+			"<main role=\"main\" class=\"col-md-12 ml-sm-auto col-lg-12 px-4 container-fluid\">",
+			"\t$0",
+			"</main>",
+			"",
+			"<?php include \"pageSections/scripts.html\"?>",
+			"<script src=\"js/$TM_FILENAME_BASE.js\"></script>",
+			"<?php include \"pageSections/footer.php\"?>",
+		]
 	}
 }

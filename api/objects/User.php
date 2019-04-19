@@ -6,7 +6,8 @@
  * Time: 18:12
  */
 
-class User {
+class User
+{
 
 	private $conn;
 
@@ -15,7 +16,8 @@ class User {
 	public $password;
 	public $role;
 
-	public function __construct(Database $conn) {
+	public function __construct(Database $conn)
+	{
 		$this->conn = $conn;
 	}
 
@@ -51,5 +53,12 @@ class User {
 		}
 
 		return false;
+	}
+
+	public function isAdmin() {
+		if ($this->role == null) {
+			return false;
+		}
+		return $this->role == 1;
 	}
 }

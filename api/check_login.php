@@ -11,6 +11,16 @@ include_once 'config/Database.php';
 include_once 'objects/User.php';
 
 $db = new Database();
+if ($db->getCreationError() != null) {
+	echo json_encode(
+		array(
+			"message" => $db->getCreationError(),
+		)
+	);
+	http_response_code(500);
+	die();
+}
+
 $user = new User($db);
 
 $data = json_decode(file_get_contents("php://input"));
@@ -19,6 +29,8 @@ $user->email = $data->email;
 $email_exists = $user->emailExists();
 
 if ($email_exists && password_verify($data->password, $user->password)) {
+	$_SESSION['user'] = $user->userId;
+	$_SESSION['userRole'] = $user->role;
 	echo json_encode(
 		array(
 			"message" => "Successful login.",
@@ -26,7 +38,6 @@ if ($email_exists && password_verify($data->password, $user->password)) {
 	);
 
 	http_response_code(200);
-	$_SESSION['user'] = $user->userId;
 } else {
 	http_response_code(401);
 }

@@ -33,10 +33,13 @@ $(document).on('submit', '#login_form', function () {
 		},
 		error: function (xhr, resp, text) {
 			// on error, tell the user login has failed & empty the input boxes
-			console.log(xhr);
-			console.log(resp);
-			console.log(text);
-			$('#response').html("<div class='alert alert-danger'>Login failed. Email or password is incorrect.</div>");
+
+			if (text = "Internal Server Error") {
+				$('#response').html("<div class='alert alert-danger'>Internal Server Error<br> Contact System Administrators.</div>");
+			} else {
+				$('#response').html("<div class='alert alert-danger'>Login failed. Email or password is incorrect.</div>");
+			}
+
 			login_form.find('input').val('');
 		}
 	});

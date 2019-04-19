@@ -22,8 +22,17 @@ class Database {
 			$this->conn->exec("set names utf8");
 		} catch (PDOException $e) {
 			print_r("failed to connect");
+			error_log("Error with database: " . $e->getMessage());
 			$this->error = $e->getMessage();
 		}
+	}
+
+	/**
+	 * Returns the error message encountered while trying to instantiate the Database class.
+	 * @return string Error Message, null if not set.
+	 */
+	public function getCreationError() {
+		return $this->error;
 	}
 
 	/**

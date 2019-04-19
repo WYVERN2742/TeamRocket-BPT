@@ -1,0 +1,78 @@
+VSCode todo+ extension recommended:
+	Name: Todo+
+	Description: Manage todo lists with ease. Powerful, easy to use and customizable.
+	VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-todo-plus
+
+	After extension is installed, use alt+D to mark items as completed
+	and alt+enter to create new todo items
+
+Database:
+	☐ Remove BUDGET_CODE_OWNER role
+	☐ Fix spelling of REQUSITION_OFFICER role
+
+PHP:
+	☐ Change all php files and references to camelCase
+	☐ Split up php scripts and objects
+	☐ Make names more distinguished
+		We have (user.php, users.php, User.php)
+	Document php files:
+		☐ CentralFinance.php
+		☐ Procurement.php
+		☐ User.php
+		☐ requests.php
+		☐ delete_user.php
+		☐ insert_user.php
+		☐ user.php
+		☐ users.php
+		☐ budget_code.php
+		☐ budget_codes.php
+		☐ check_login.php
+		☐ logout.php
+		☐ readTest.php
+		☐ supplier.php
+		☐ suppliers.php
+		☐ validate_token.php
+
+Testing:
+	PHP Unit Tests:
+		☐ CentralFinance.php
+		☐ Procurement.php
+		☐ User.php
+		☐ requests.php
+		☐ delete_user.php
+		☐ insert_user.php
+		☐ user.php
+		☐ users.php
+		☐ budget_code.php
+		☐ budget_codes.php
+		☐ check_login.php
+		☐ logout.php
+		☐ readTest.php
+		☐ supplier.php
+		☐ suppliers.php
+		☐ validate_token.php
+
+Pages:
+	☐ Create FavIcon from logo
+	☐ Split up js into separate scripts
+	Admin dropdown:
+		Users:
+			☐ List
+			☐ Edit
+			☐ Delete
+		Budget Codes:
+			☐ List
+			☐ Edit
+			☐ Delete
+	Make Request:
+		☐ Create new rows after all filled
+		☐ Update total
+		☐ Validation on budget code
+		☐ Create Request
+	Home page:
+		Drafts:
+			☐ Show saved drafts
+			☐ Edit Drafts
+			☐ Delete Drafts
+		☐ Allow confirmation of procurement requests
+		☐ Allow refusal of procurement requests

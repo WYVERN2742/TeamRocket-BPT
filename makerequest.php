@@ -15,24 +15,27 @@ include "pageSections/header.php";
 				<div class="col">
 					<div class="form-label-group">
 						<input type="text" id="inputBudgetCode" class="form-control" name="inputBudgetCode">
-						<label for="inputBudgetCode">Budget Code</label>
+						<label for="inputBudgetCode">
+							<div id="budgetCodeIDSpinner" class="spinner-border spinner-border-sm"></div> Budget Code
+						</label>
 						<div class="valid-feedback" id="budget_code_response"></div>
 					</div>
 				</div>
 				<div class="col">
 					<div class="form-label-group">
 						<input type="text" id="inputSupplier" class="form-control" name="inputSupplier">
-						<label for="inputSupplier">Supplier</label>
+						<label for="inputSupplier">
+							<div id="supplierIDSpinner" class="spinner-border spinner-border-sm"></div> Supplier
+						</label>
 						<div class="valid-feedback" id="supplier_response"></div>
 					</div>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="card">
 						<div class="card-header">
-							Budget Code Owner
+							Budget Code Owner <div id="budgetCodeSpinner"></div>
 						</div>
 						<div class="card-body">
 							<div class="card-text">
@@ -51,37 +54,35 @@ include "pageSections/header.php";
 				<div class="col-sm-6">
 					<div class="card">
 						<div class="card-header">
-							Supplier
+							Supplier <div id="supplierSpinner"></div>
 						</div>
 						<div class="card-body">
 							<div class="form-group">
 								<div class="form-label-group">
 									<input type="text" id="inputSupplierName" class="form-control">
-									<label for="inputAddress1">Name</label>
+									<label for="inputSupplierName">Name</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputSupplierAddress1" class="form-control">
-									<label for="inputAddress1">Address Line 1</label>
+									<label for="inputSupplierAddress1">Address Line 1</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputSupplierAddress2" class="form-control">
-									<label for="inputAddress2">Address Line 2</label>
+									<label for="inputSupplierAddress2">Address Line 2</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputSupplierAddressPostcode" class="form-control">
-									<label for="inputAddressPostcode">Postcode</label>
+									<label for="inputSupplierAddressPostcode">Postcode</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputSupplierAddressCity" class="form-control">
-									<label for="inputAddressCity">City / Town</label>
+									<label for="inputSupplierAddressCity">City / Town</label>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
 			<div class="row">
 				<div class="col">
 					<div class="card">
@@ -185,6 +186,6 @@ include "pageSections/header.php";
 	</div>
 </main>
 
-<?php include "pageSections/scripts.php"?>
-<script src="js/makerequest.js"></script>;
-<?php include "pageSections/footer.php"?>
+<?php include "pageSections/scripts.php" ?>
+<script src="js/page/makeRequest.js"></script>;
+<?php include "pageSections/footer.php" ?>

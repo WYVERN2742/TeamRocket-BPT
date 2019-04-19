@@ -41,7 +41,9 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="8"><div class="spinner-border" role="status"></div></td>
+										<td colspan="8">
+											<div class="spinner-border" role="status"></div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -50,8 +52,8 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times "></i> Cancel</button>
+				<button type="button" class="btn btn-success">Save changes</button>
 			</div>
 		</div>
 	</div>
@@ -70,10 +72,12 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="input-group">
-							<input type="text" class="form-control" id="adminSearchBudgetCodes" placeholder="Search">
-							<div class="input-group-append">
-								<button class="btn btn-outline-secondary" type="button" id="adminSearchBudgetCodesButton"><i class="fa fa-search"></i></button>
+						<div class="col">
+							<div class="input-group">
+								<input type="text" class="form-control" id="adminSearchBudgetCodes" placeholder="Search">
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button" id="adminSearchBudgetCodesButton"><i class="fa fa-search"></i></button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -90,7 +94,9 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td colspan="8"><div class="spinner-border" role="status"></div></td>
+										<td colspan="8">
+											<div class="spinner-border" role="status"></div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -99,7 +105,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times "></i> Cancel</button>
 				<button type="button" class="btn btn-success">Save changes</button>
 			</div>
 		</div>

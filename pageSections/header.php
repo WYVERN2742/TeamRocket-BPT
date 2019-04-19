@@ -9,7 +9,7 @@
 					<a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Homepage</a>
 				</li>
 				<li class="nav-item <?=($page=="makeRequest") ? "active" : ""?>">
-					<a class="nav-link" href="makerequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
+					<a class="nav-link" href="makeRequest.php"><i class="fa fa-pen-fancy" aria-hidden="true"></i> Make Request</a>
 				</li>
 				<?php
 				// Include admin dropdown if user is admin

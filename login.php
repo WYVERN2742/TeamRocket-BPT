@@ -20,6 +20,7 @@ if (isset($_SESSION['user'])) {
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/login.css">
+	<link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body class="">

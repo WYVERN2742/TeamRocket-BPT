@@ -72,7 +72,7 @@ Pages:
 	Make Request:
 		☐ Create new rows after all filled
 		☐ Update total
-		☐ Validation on budget code
+		✔ Validation on budget code @done(19-04-20 00:32)
 		☐ Create Request
 	Home page:
 		Drafts:

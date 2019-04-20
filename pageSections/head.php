@@ -13,6 +13,9 @@
 
 	<!-- FontAwesome CSS (icons) -->
 	<link rel="stylesheet" href="css/fontawesome.min.css">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>

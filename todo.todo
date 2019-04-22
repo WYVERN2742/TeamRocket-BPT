@@ -19,6 +19,10 @@ PHP:
 	Functionality:
 		☐ Get all budget codes
 			Budget Code, Owner Name, Procurement Officer Name
+		☐ Submit Request
+			Make Request page is done, take a look at the form output.
+		☐ Change Request state
+			Used for main menu to accept requests
 
 	Document php files:
 		☐ CentralFinance.php
@@ -70,10 +74,11 @@ Pages:
 			☐ Edit
 			☐ Delete
 	Make Request:
-		☐ Create new rows after all filled
-		☐ Update total
+		✔ Create new rows after all filled @done(19-04-22 13:43)
+		✔ Update total @done(19-04-22 13:43)
 		✔ Validation on budget code @done(19-04-20 00:32)
 		☐ Create Request
+			Waiting for php api
 	Home page:
 		Drafts:
 			☐ Show saved drafts

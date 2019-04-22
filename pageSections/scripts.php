@@ -7,7 +7,9 @@
 <script src="js/lib.js"></script>
 <?php
 	// Add Admin script if user is admin
-	if ($_SESSION['userRole'] = "CENTRAL_FINANCE") {
+	echo "<!-- userRole= ". $_SESSION['userRole'] ." -->";
+	echo "<!-- user= ". $_SESSION['user'] ." -->";
+	if ($_SESSION['userRole'] == "CENTRAL_FINANCE") {
 		echo "<script src=\"js/page/admin.js\"></script>";
 	}
 ?>

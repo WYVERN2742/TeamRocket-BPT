@@ -1,3 +1,29 @@
+function adminLoadUsers() {
+	$.ajax({
+		// Populate admin users table
+		type: "GET",
+		url: "api/user_management/users.php",
+		contentType: "application/json",
+
+		success: function (rows) {
+			const numRows = rows.length;
+
+			let count = 0;
+			const dt = dynamicTable().config("adminTableUsers",
+				["userId", "firstName", "lastName", "role", "email"], null, "No users");
+
+			for (let i = 0; i < numRows; i++) {
+				// Add all rows to table
+				dt.load([rows[count++]], true);
+			}
+		},
+
+		error: function (xhr, resp, text) {
+			window.console.log(text);
+		}
+	});
+}
+
 // Postpone javascript execution until window is loaded
 addLoadEvent(function () {
 	window.console.log("onload");
@@ -7,7 +33,6 @@ addLoadEvent(function () {
 		search("adminTableUsers", $("#adminSearchUser").val());
 	});
 	window.console.log("onload");
-
 
 	// Fix unreported bootstrap text color issue on modals
 	window.document.getElementById("adminLinkUserNew").onclick = function () {
@@ -59,28 +84,29 @@ addLoadEvent(function () {
 	// document.getElementById(adminLinkBudgetCodeEdit) = function(){ }
 	// document.getElementById(adminLinkBudgetCodeDelete) = function(){ }
 
+	adminLoadUsers();
 
-	$.ajax({
-		// Populate admin users table
-		type: "GET",
-		url: "api/user_management/users.php",
-		contentType: "application/json",
+	$("#adminFormUserNew").submit(function () {
+		$.ajax({
+			type: "POST",
+			url: "api/user_management/insert_user.php", //php to post to
+			data: $(this).serializeObject() //serializes all the form data to be sent as a post
+		})
+			.done(function (data) { //successful function
+				if (data === true) {
+					$("#adminResponse").html("User Created Successfully");
+					$("#adminResponse").removeClass("alert-danger");
+					$("#adminResponse").addClass("alert-success");
+				}
+				$("#adminResponse").html("Successful?: " + data);
 
-		success: function (rows) {
-			const numRows = rows.length;
+				adminLoadUsers();
+			})
+			.fail(function (data) { //failure function
+				$("#adminResponse").html("fail: " + data);
+			});
 
-			let count = 0;
-			const dt = dynamicTable().config("adminTableUsers",
-				["userId", "firstName", "lastName", "role", "email"], null, "No users");
-
-			for (let i = 0; i < numRows; i++) {
-				// Add all rows to table
-				dt.load([rows[count++]], true);
-			}
-		},
-
-		error: function (xhr, resp, text) {
-			window.console.log(text);
-		}
+		// to prevent refreshing the whole page page
+		return false;
 	});
 });

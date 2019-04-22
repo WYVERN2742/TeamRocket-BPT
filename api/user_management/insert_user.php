@@ -16,9 +16,23 @@ $CentralFinance = new CentralFinance($db);
 $data = json_decode(file_get_contents("php://input"));
 // using post instead because it's easier
 
+
+// Ensure roles are of a set type
+$role = "REQUESTER";
+switch ($_POST['role']) {
+	case "CENTRAL_FINANCE":
+		$role = "CENTRAL_FINANCE";
+		break;
+	case "REQUISITION_OFFICER":
+		// Yes, 'REQUSITION' is misspelt
+		// Blame the db team...
+		$role = "REQUSITION_OFFICER";
+		break;
+}
+
 if (isset($_SESSION['user'])) {
 	try {
-		$rs = $CentralFinance->addUser("asdasdasdsadads", $_POST['firstName'], $_POST['lastName'], $_POST['role'], $_POST['roomNumber'], $_POST['telephone'], $_POST['email']);
+		$rs = $CentralFinance->addUser(password_hash($_POST['password'],PASSWORD_BCRYPT), $_POST['firstName'], $_POST['lastName'], $role, $_POST['roomNumber'], $_POST['telephone'], $_POST['email']);
 
 		// Respond with 200 if $rs is true
 		if ($rs) {

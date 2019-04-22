@@ -33,7 +33,7 @@ if ($email_exists && password_verify($data->password, $user->password)) {
 	$_SESSION['userRole'] = $user->role;
 	echo json_encode(
 		array(
-			"message" => "Successful login.",
+			"message" => $user->role,
 		)
 	);
 

@@ -15,11 +15,13 @@ $(window.document).on("submit", "#login_form", function () {
 		contentType: "application/json",
 		data: form_data,
 
-		success: function () {
+		success: function (response) {
 			// Log in successful
 
 			// ? Do we need to show the successful login message since we"re redirecting?
 			$("#response").html("<div class=\"alert alert-success\">Successful login.</div>");
+			$("#response").html("<div class=\"alert alert-success\">"+response.message + "</div>");
+			window.console.log(response);
 			window.document.location.href = "index.php";
 		},
 

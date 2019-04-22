@@ -57,6 +57,11 @@
 			<div class="modal-footer">
 				<div class="col">
 					<div class="row">
+						<div class="alert alert-danger" role="alert" id="adminResponse">
+							adminResponse
+						</div>
+					</div>
+					<div class="row">
 						<div class="col">
 							<nav>
 								<ul class="nav nav-tabs" role="tablist">
@@ -67,7 +72,7 @@
 							</nav>
 							<div class="tab-content">
 								<div id="adminUserNew" role="tabpanel" class="tab-pane fade show active">
-									<form id="userForm" method="post">
+									<form id="adminFormUserNew" method="post">
 										<div class="row">
 											<div class="col">
 												<div class="form-label-group">
@@ -106,9 +111,9 @@
 											<div class="col-3">
 												<div class="form-label-group">
 													<select class="form-control" name="role" id="role">
-														<option value="1">Requester</option>
-														<option value="2">Requisition Officer</option>
-														<option value="3">Central Finance</option>
+														<option value="REQUESTER">Requester</option>
+														<option value="REQUISITION_OFFICER">Requisition Officer</option>
+														<option value="CENTRAL_FINANCE">Central Finance</option>
 													</select>
 												</div>
 											</div>
@@ -195,56 +200,58 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
 
-		<!-- Budget Codes Modal -->
-		<div class="modal fade fullscreen" id="budgetCodesModal" tabindex="-1" role="dialog" aria-labelledby="budgetCodesModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="budgetCodesModalLabel">Configure Budget Codes</h5>
-						<div class="input-group">
-							<input type="text" class="form-control" id="adminSearchBudgetCodes" placeholder="Search">
-							<div class="input-group-append">
-								<button class="btn btn-outline-secondary" type="button" id="adminSearchBudgetCodesButton"><i class="fa fa-search"></i></button>
-							</div>
-						</div>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+<!-- Budget Codes Modal -->
+<div class="modal fade fullscreen" id="budgetCodesModal" tabindex="-1" role="dialog" aria-labelledby="budgetCodesModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="budgetCodesModalLabel">Configure Budget Codes</h5>
+				<div class="input-group">
+					<input type="text" class="form-control" id="adminSearchBudgetCodes" placeholder="Search">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" id="adminSearchBudgetCodesButton"><i class="fa fa-search"></i></button>
 					</div>
-					<div class="modal-body">
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col">
-									<table class="table table-bordered table-hover table-responsive-md text-center" id="adminTableBudgetCodes">
-										<thead class="thead-dark">
-											<tr>
-												<th>Budget Code</th>
-												<th>Owner</th>
-												<th>Procurement Officer</th>
-												<th>Options</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td colspan="8">
-													<div class="spinner-border" role="status"></div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times "></i> Cancel</button>
-						<button type="button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Save changes</button>
+					<div class="row">
+						<div class="col">
+							<table class="table table-bordered table-hover table-responsive-md text-center" id="adminTableBudgetCodes">
+								<thead class="thead-dark">
+									<tr>
+										<th>Budget Code</th>
+										<th>Owner</th>
+										<th>Procurement Officer</th>
+										<th>Options</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="8">
+											<div class="spinner-border" role="status"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times "></i> Cancel</button>
+				<button type="button" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Save changes</button>
+			</div>
 		</div>
+	</div>
+</div>

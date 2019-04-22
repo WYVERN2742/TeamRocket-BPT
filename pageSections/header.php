@@ -16,7 +16,7 @@
 				</li>
 				<?php
 				// Include admin dropdown if user is admin
-					if ($_SESSION['userRole'] = "CENTRAL_FINANCE") {
+					if ($_SESSION['userRole'] == "CENTRAL_FINANCE") {
 						include "pageSections/admin.php";
 					}
 				?>

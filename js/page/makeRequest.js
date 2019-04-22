@@ -51,7 +51,7 @@ function verifyNumericEvent() {
 		return
 	}
 
-	if ($(this).val()=="") {
+	if ($(this).val() == "") {
 		// If value is empty, don't mark as invalid
 		$(this).removeClass("is-invalid");
 		return;
@@ -71,7 +71,7 @@ function verifyNumericEvent() {
  * The table is then extended with elements that contain the `lastRow` class
  * and then the event is reapplied to the `lastRow` class.
  */
-function extendItemTable(){
+function extendItemTable() {
 	// Remove event listener
 	$(".lastRow").off('input', extendItemTable);
 
@@ -82,13 +82,13 @@ function extendItemTable(){
 	let nid = $("#tableItems").find("tr").length;
 
 	$("#tableItems tr:last").after('<tr><td scope="row">' + nid +
-	'</td><td><input type="text" class="form-control" name="inputItem' + nid +
-	'Description" id="inputItem' + nid +
-	'Description"></td><td><input type="number" class="form-control quantity" name="inputItem' + nid +
-	'Quantity" id="inputItem' + nid + 'Quantity"></td><td><div class="input-group">' +
-	'<div class="input-group-prepend"><span class="input-group-text">£</span></div>' +
-	'<input type="text" class="form-control cost" name="inputItem' + nid +
-	'Cost" id="inputItem' + nid + 'Cost"></div></td></tr>')
+		'</td><td><input type="text" class="form-control" name="inputItem' + nid +
+		'Description" id="inputItem' + nid +
+		'Description"></td><td><input type="number" class="form-control quantity" name="inputItem' + nid +
+		'Quantity" id="inputItem' + nid + 'Quantity"></td><td><div class="input-group">' +
+		'<div class="input-group-prepend"><span class="input-group-text">£</span></div>' +
+		'<input type="text" class="form-control cost" name="inputItem' + nid +
+		'Cost" id="inputItem' + nid + 'Cost"></div></td></tr>')
 
 	// Add class
 	$("#tableItems tr:last").addClass("lastRow")
@@ -97,64 +97,19 @@ function extendItemTable(){
 	$(".lastRow").on('input', extendItemTable);
 
 	// Add misc events
-	$(".cost").on('input',updateTotal);
-	$(".cost").on('input',verifyNumericEvent);
-	$(".quantity").on('input',updateTotal);
-	$(".quantity").on('input',verifyNumericEvent);
+	$(".cost").on('input', updateTotal);
+	$(".cost").on('input', verifyNumericEvent);
+	$(".quantity").on('input', updateTotal);
+	$(".quantity").on('input', verifyNumericEvent);
 
 }
 
-$.ajax({
-	type: "GET",
-	url: "api/suppliers.php",
-	contentType: 'application/json',
-
-	success: function (names) {
-		suppliers = names;
-		// Remove supplier spinner
-		$("#supplierIDSpinner").remove();
-
-		// Populate suppliers option list
-		let list = $("#listSuppliers")
-		names.forEach(element => {
-			let option = document.createElement('option');
-			option.value = element;
-			list.append(option);
-		});
-	},
-
-	error: function (xhr, resp, text) {
-	}
-});
-
-$.ajax({
-	type: "GET",
-	url: "api/budget_codes.php",
-	contentType: 'application/json',
-
-	success: function (ids) {
-		budgetCodes = ids;
-		$("#budgetCodeIDSpinner").remove();
-
-		// Populate budget code option list
-		let list = $("#listBudgetCodes")
-		ids.forEach(element => {
-			let option = document.createElement('option');
-			option.value = element;
-			list.append(option);
-		});
-	},
-
-	error: function (xhr, resp, text) {
-	}
-});
-
-inputBC.on('input',(function () {
+inputBC.on('input', (function () {
 
 	const response = $('#budget_code_response');
 
 	// Convert all names to lowercase
-	let lids = budgetCodes.map(function (elem) { return elem.toLowerCase()});
+	let lids = budgetCodes.map(function (elem) { return elem.toLowerCase() });
 
 	if ((lids.includes(inputBC.val().toLowerCase()))) {
 		inputBC.val(budgetCodes[lids.indexOf(inputBC.val().toLowerCase())].toUpperCase())
@@ -205,11 +160,11 @@ inputBC.on('input',(function () {
 	}
 }));
 
-inputS.on('input',(function () {
+inputS.on('input', (function () {
 	response = $("#supplier_response")
 
 	// Convert all names to lowercase for comparison
-	let lsups = suppliers.map(function (elem) { return elem.toLowerCase()});
+	let lsups = suppliers.map(function (elem) { return elem.toLowerCase() });
 
 	if ((lsups.includes(inputS.val().toLowerCase()))) {
 		inputS.val(suppliers[lsups.indexOf(inputS.val().toLowerCase())]);
@@ -257,11 +212,56 @@ inputS.on('input',(function () {
 	}
 }));
 
-$(".cost").on('input',updateTotal);
-$(".cost").on('input',verifyNumericEvent);
+$(".cost").on('input', updateTotal);
+$(".cost").on('input', verifyNumericEvent);
 
-$(".quantity").on('input',updateTotal);
-$(".quantity").on('input',verifyNumericEvent);
+$(".quantity").on('input', updateTotal);
+$(".quantity").on('input', verifyNumericEvent);
 
 extendItemTable()
 updateTotal();
+
+$.ajax({
+	type: "GET",
+	url: "api/suppliers.php",
+	contentType: 'application/json',
+
+	success: function (names) {
+		suppliers = names;
+		// Remove supplier spinner
+		$("#supplierIDSpinner").remove();
+
+		// Populate suppliers option list
+		let list = $("#listSuppliers")
+		names.forEach(element => {
+			let option = document.createElement('option');
+			option.value = element;
+			list.append(option);
+		});
+	},
+
+	error: function (xhr, resp, text) {
+	}
+});
+
+$.ajax({
+	type: "GET",
+	url: "api/budget_codes.php",
+	contentType: 'application/json',
+
+	success: function (ids) {
+		budgetCodes = ids;
+		$("#budgetCodeIDSpinner").remove();
+
+		// Populate budget code option list
+		let list = $("#listBudgetCodes")
+		ids.forEach(element => {
+			let option = document.createElement('option');
+			option.value = element;
+			list.append(option);
+		});
+	},
+
+	error: function (xhr, resp, text) {
+	}
+});

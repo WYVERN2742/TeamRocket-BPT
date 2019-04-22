@@ -1,3 +1,6 @@
+
+$("#searchTableRequests").on("keyup", function () { search("tableRequests", $("#searchTableRequests").val()) });
+
 $.ajax({
 	type: "GET",
 	url: "api/procurement/requests.php",
@@ -36,5 +39,3 @@ $.ajax({
 		console.log(text);
 	}
 });
-
-$("#searchTableRequests").on("keyup", function () { search("tableRequests", $("#searchTableRequests").val()) });

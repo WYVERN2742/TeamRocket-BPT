@@ -156,5 +156,5 @@ include "pageSections/header.php";
 </main>
 
 <?php include "pageSections/scripts.php" ?>
-<script src="js/page/makeRequest.js"></script>;
+<script src="js/page/makeRequest.js"></script>
 <?php include "pageSections/footer.php" ?>

@@ -1,5 +1,5 @@
 // Postpone javascript execution until window is loaded
-window.onload = function () {
+addLoadEvent(function () {
 
 	// Link Search box to search function
 	$("#searchTableRequests").on("keyup", function () { search("tableRequests", $("#searchTableRequests").val()); });
@@ -44,4 +44,4 @@ window.onload = function () {
 		}
 	});
 
-};
+});

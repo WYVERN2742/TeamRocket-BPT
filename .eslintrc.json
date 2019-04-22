@@ -9,7 +9,8 @@
 		"Atomics": "readonly",
 		"SharedArrayBuffer": "readonly",
 		"search": "readonly",
-		"dynamicTable": "readonly"
+		"dynamicTable": "readonly",
+		"addLoadEvent": "readonly"
 	},
 	"parserOptions": {
 		"ecmaVersion": 2018

@@ -95,7 +95,7 @@ function extendItemTable() {
 }
 
 // Postpone javascript execution until window is loaded
-window.onload = function () {
+addLoadEvent(function () {
 
 	const inputBC = $("#inputBudgetCode");
 	const inputS = $("#inputSupplier");
@@ -258,4 +258,4 @@ window.onload = function () {
 			});
 		},
 	});
-};
+});

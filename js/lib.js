@@ -1,8 +1,11 @@
+/* exported dynamicTable */
+/* exported search */
+/* exported addLoadEvent */
+
 /**
  * Creates a dynamic table that can be populated in real time
  * @returns Dynamic table
  */
-// eslint-disable-next-line no-unused-vars
 function dynamicTable() {
 	let _table;
 	// eslint-disable-next-line no-unused-vars
@@ -150,7 +153,6 @@ $.fn.serializeObject = function () {
  * @example $("#search").on("keyup", function (){search("requests_table")});
  * @param {string} tableID Table ID
  */
-// eslint-disable-next-line no-unused-vars
 function search(tableID, value) {
 	$("table#" + tableID + " tbody tr").each(function () {
 		// Loop each row in table
@@ -172,4 +174,25 @@ function search(tableID, value) {
 			row.hide();
 		}
 	});
+}
+
+/**
+ * Calls the provided function after the window has finished loading.
+ * This function stacks callers, so multiple functions will be called
+ * after the window has finished loading, rather than overwriting the previous
+ * calling function.
+ * @param {function} func Function to call after window loads
+ */
+function addLoadEvent(func) {
+	var oldOnLoad = window.onload;
+	if (typeof window.onload !== "function") {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldOnLoad) {
+				oldOnLoad();
+			}
+			func();
+		};
+	}
 }

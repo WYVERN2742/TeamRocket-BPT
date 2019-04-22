@@ -1,11 +1,12 @@
-
 // Postpone javascript execution until window is loaded
-window.onload = function () {
+addLoadEvent(function () {
+	window.console.log("onload");
 
 	// Link search to admin table
 	$("#adminSearchUser").on("keyup", function () {
 		search("adminTableUsers", $("#adminSearchUser").val());
 	});
+	window.console.log("onload");
 
 
 	// Fix unreported bootstrap text color issue on modals
@@ -82,4 +83,4 @@ window.onload = function () {
 			window.console.log(text);
 		}
 	});
-};
+});

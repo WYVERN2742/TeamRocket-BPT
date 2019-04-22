@@ -9,6 +9,9 @@ if (isset($_SESSION['user'])) {
 $title = "Login | Procurement";
 $page = "login";
 ?>
+<!doctype html>
+<html lang="en">
+
 <head>
 	<title><?=$title?></title>
 	<!-- Required meta tags -->

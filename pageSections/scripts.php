@@ -4,9 +4,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!-- Page js -->
-<script src="js/dynamicTable.js"></script>
-<script src="js/jQueryExtensions.js"></script>
-<script src="js/search.js"></script>
+<script src="js/lib.js"></script>
 <?php
 	// Add Admin script if user is admin
 	if ($_SESSION['userRole'] = "CENTRAL_FINANCE") {

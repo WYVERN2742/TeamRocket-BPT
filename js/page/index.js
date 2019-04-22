@@ -1,41 +1,47 @@
+// Postpone javascript execution until window is loaded
+window.onload = function () {
 
-$("#searchTableRequests").on("keyup", function () { search("tableRequests", $("#searchTableRequests").val()) });
+	// Link Search box to search function
+	$("#searchTableRequests").on("keyup", function () { search("tableRequests", $("#searchTableRequests").val()); });
 
-$.ajax({
-	type: "GET",
-	url: "api/procurement/requests.php",
-	contentType: 'application/json',
+	// Load Budget Code Information
+	$.ajax({
+		type: "GET",
+		url: "api/procurement/requests.php",
+		contentType: "application/json",
 
-	success: function (rows) {
-		const numRows = rows.length;
+		success: function (rows) {
+			const numRows = rows.length;
 
-		const viewMore = $("#viewInput");
-		let count = 0;
-		const dt = dynamicTable().config('tableRequests',
-			['procurementId', 'budgetCode', 'requesterId', 'status'], null, 'No requests');
+			const viewMore = $("#viewInput");
+			let count = 0;
+			const dt = dynamicTable().config("tableRequests",
+				["procurementId", "budgetCode", "requesterId", "status"], null, "No requests");
 
-		for (let i = 0; i < 5; i++) {
-			dt.load([rows[count++]], true);
-		}
-
-		viewMore.click(function () {
 			for (let i = 0; i < 5; i++) {
-				if (count < numRows) {
-					dt.load([rows[count++]], true);
-					viewMore.html("View More (" + count + "/" + numRows + ")");
-				} else {
-					viewMore.remove();
-					break;
-				}
+				dt.load([rows[count++]], true);
 			}
 
-			search("tableRequests");
-		});
+			viewMore.click(function () {
+				for (let i = 0; i < 5; i++) {
+					if (count < numRows) {
+						dt.load([rows[count++]], true);
+						viewMore.html("View More (" + count + "/" + numRows + ")");
+					} else {
+						viewMore.remove();
+						break;
+					}
+				}
 
-		viewMore.html("View More (" + count + "/" + numRows + ")");
-	},
+				search("tableRequests");
+			});
 
-	error: function (xhr, resp, text) {
-		console.log(text);
-	}
-});
+			viewMore.html("View More (" + count + "/" + numRows + ")");
+		},
+
+		error: function (xhr, resp, text) {
+			window.console.log(text);
+		}
+	});
+
+};

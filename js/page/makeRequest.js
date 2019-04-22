@@ -1,40 +1,29 @@
-const inputBC = $('#inputBudgetCode');
-const inputS = $('#inputSupplier');
-
-let suppliers = []
-let budgetCodes = []
-
-/**
- * Creates event listeners for all table items
- */
-function setupTableEvents() {
-
-}
-
 /**
  * Update the total cost of the request
  * Will break of there are an unbalanced amount of `cost` and `quantity`
  * classes within the document.
  */
 function updateTotal() {
-	let costs = document.getElementsByClassName("cost");
-	let quantities = document.getElementsByClassName("quantity");
+	let costs = window.document.getElementsByClassName("cost");
+	let quantities = window.document.getElementsByClassName("quantity");
 
 	// Ensure balanced costs and quantity
-	if (costs.length != quantities.length) {
-		console.log("Unbalanced cost and quantity values")
+	if (costs.length !== quantities.length) {
+		window.console.log("Unbalanced cost and quantity values");
 		return;
 	}
 
-	let total = 0
+	let total = 0;
 
 	for (let index = 0; index < costs.length; index++) {
-		var cost = costs[index].value;
-		var quantity = quantities[index].value;
-		var add = (cost * quantity);
+		let cost = costs[index].value;
+		let quantity = quantities[index].value;
+		let add = (cost * quantity);
+
 		if (isNaN(add)) {
 			return;
 		}
+
 		total += add;
 	}
 
@@ -46,21 +35,22 @@ function updateTotal() {
  * if not, adds the is-Invalid class.
  */
 function verifyNumericEvent() {
-	if ($(this) === undefined) {
-		console.log("verifyNumericEvent Not called from jquery event")
-		return
-	}
-
-	if ($(this).val() == "") {
-		// If value is empty, don't mark as invalid
-		$(this).removeClass("is-invalid");
+	let elm = $(this);
+	if (elm === undefined) {
+		window.document.console.log("verifyNumericEvent Not called from jquery event");
 		return;
 	}
 
-	if ((parseFloat($(this).val()) > 0)) {
-		$(this).removeClass("is-invalid");
+	if (elm.val() === undefined) {
+		// If value is empty, don"t mark as invalid
+		elm.removeClass("is-invalid");
+		return;
+	}
+
+	if ((parseFloat(elm.val()) > 0)) {
+		elm.removeClass("is-invalid");
 	} else {
-		$(this).addClass("is-invalid");
+		elm.addClass("is-invalid");
 	}
 }
 
@@ -73,7 +63,7 @@ function verifyNumericEvent() {
  */
 function extendItemTable() {
 	// Remove event listener
-	$(".lastRow").off('input', extendItemTable);
+	$(".lastRow").off("input", extendItemTable);
 
 	// Remove class
 	$(".lastRow").removeClass("lastRow");
@@ -81,187 +71,191 @@ function extendItemTable() {
 	// Add row to table
 	let nid = $("#tableItems").find("tr").length;
 
-	$("#tableItems tr:last").after('<tr><td scope="row">' + nid +
-		'</td><td><input type="text" class="form-control" name="inputItem' + nid +
-		'Description" id="inputItem' + nid +
-		'Description"></td><td><input type="number" class="form-control quantity" name="inputItem' + nid +
-		'Quantity" id="inputItem' + nid + 'Quantity"></td><td><div class="input-group">' +
-		'<div class="input-group-prepend"><span class="input-group-text">£</span></div>' +
-		'<input type="text" class="form-control cost" name="inputItem' + nid +
-		'Cost" id="inputItem' + nid + 'Cost"></div></td></tr>')
+	$("#tableItems tr:last").after("<tr><td scope=\"row\">" + nid +
+		"</td><td><input type=\"text\" class=\"form-control\" name=\"inputItem" + nid +
+		"Description\" id=\"inputItem" + nid +
+		"Description\"></td><td><input type=\"number\" class=\"form-control quantity\" name=\"inputItem" + nid +
+		"Quantity\" id=\"inputItem" + nid + "Quantity\"></td><td><div class=\"input-group\">" +
+		"<div class=\"input-group-prepend\"><span class=\"input-group-text\">£</span></div>" +
+		"<input type=\"text\" class=\"form-control cost\" name=\"inputItem" + nid +
+		"Cost\" id=\"inputItem" + nid + "Cost\"></div></td></tr>");
 
 	// Add class
-	$("#tableItems tr:last").addClass("lastRow")
+	$("#tableItems tr:last").addClass("lastRow");
 
 	// Add event listeners
-	$(".lastRow").on('input', extendItemTable);
+	$(".lastRow").on("input", extendItemTable);
 
 	// Add misc events
-	$(".cost").on('input', updateTotal);
-	$(".cost").on('input', verifyNumericEvent);
-	$(".quantity").on('input', updateTotal);
-	$(".quantity").on('input', verifyNumericEvent);
+	$(".cost").on("input", updateTotal);
+	$(".cost").on("input", verifyNumericEvent);
+	$(".quantity").on("input", updateTotal);
+	$(".quantity").on("input", verifyNumericEvent);
 
 }
 
-inputBC.on('input', (function () {
+// Postpone javascript execution until window is loaded
+window.onload = function () {
 
-	const response = $('#budget_code_response');
+	const inputBC = $("#inputBudgetCode");
+	const inputS = $("#inputSupplier");
 
-	// Convert all names to lowercase
-	let lids = budgetCodes.map(function (elem) { return elem.toLowerCase() });
+	let suppliers = [];
+	let budgetCodes = [];
 
-	if ((lids.includes(inputBC.val().toLowerCase()))) {
-		inputBC.val(budgetCodes[lids.indexOf(inputBC.val().toLowerCase())].toUpperCase())
-		response.text("Found");
-		inputBC.removeClass("form-control is-invalid");
-		inputBC.addClass("form-control is-valid");
-		response.removeClass("invalid-feedback");
-		response.addClass("valid-feedback");
+	inputBC.on("input", (function () {
 
-		$("#budgetCodeSpinner").addClass("spinner-border")
-		$("#budgetCodeSpinner").addClass("spinner-border-sm")
+		const response = $("#budget_code_response");
 
-		$.ajax({
-			type: "POST",
-			url: "api/budget_code.php",
-			contentType: 'application/json',
-			data: JSON.stringify(inputBC.val()),
+		// Convert all names to lowercase
+		let lids = budgetCodes.map(function (elem) { return elem.toLowerCase(); });
 
-			success: function (row) {
+		if ((lids.includes(inputBC.val().toLowerCase()))) {
+			inputBC.val(budgetCodes[lids.indexOf(inputBC.val().toLowerCase())].toUpperCase());
+			response.text("Found");
+			inputBC.removeClass("form-control is-invalid");
+			inputBC.addClass("form-control is-valid");
+			response.removeClass("invalid-feedback");
+			response.addClass("valid-feedback");
 
-				$("#budgetCodeSpinner").removeClass("spinner-border")
-				$("#budgetCodeSpinner").removeClass("spinner-border-sm")
+			$("#budgetCodeSpinner").addClass("spinner-border");
+			$("#budgetCodeSpinner").addClass("spinner-border-sm");
 
-				$('#budgetCodeName').text(row.firstName + " " + row.lastName);
-				$('#budgetCodeRoom').text(row.roomNo);
-				$('#budgetCodeNum').text(row.telephoneNo);
-				$('#budgetCodeEmail').text(row.email);
-			},
+			$.ajax({
+				type: "POST",
+				url: "api/budget_code.php",
+				contentType: "application/json",
+				data: JSON.stringify(inputBC.val()),
 
-			error: function (xhr, resp, text) {
-				console.log(text);
-				$("#budgetCodeSpinner").removeClass("spinner-border")
-				$("#budgetCodeSpinner").removeClass("spinner-border-sm")
-			}
-		});
+				success: function (row) {
 
-	} else {
-		response.text("Not Found! - Valid Budget Code Required");
-		inputBC.removeClass("form-control is-valid");
-		inputBC.addClass("form-control is-invalid");
-		response.removeClass("valid-feedback");
-		response.addClass("invalid-feedback");
+					$("#budgetCodeSpinner").removeClass("spinner-border");
+					$("#budgetCodeSpinner").removeClass("spinner-border-sm");
 
-		$('#budgetCodeName').val("<br>");
-		$('#budgetCodeRoom').val("<br>");
-		$('#budgetCodeNum').val("<br>");
-		$('#budgetCodeEmail').val("<br>");
-	}
-}));
+					$("#budgetCodeName").text(row.firstName + " " + row.lastName);
+					$("#budgetCodeRoom").text(row.roomNo);
+					$("#budgetCodeNum").text(row.telephoneNo);
+					$("#budgetCodeEmail").text(row.email);
+				},
 
-inputS.on('input', (function () {
-	response = $("#supplier_response")
+				error: function (xhr, resp, text) {
+					window.console.log(text);
+					$("#budgetCodeSpinner").removeClass("spinner-border");
+					$("#budgetCodeSpinner").removeClass("spinner-border-sm");
+				}
+			});
 
-	// Convert all names to lowercase for comparison
-	let lsups = suppliers.map(function (elem) { return elem.toLowerCase() });
+		} else {
+			response.text("Not Found! - Valid Budget Code Required");
+			inputBC.removeClass("form-control is-valid");
+			inputBC.addClass("form-control is-invalid");
+			response.removeClass("valid-feedback");
+			response.addClass("invalid-feedback");
 
-	if ((lsups.includes(inputS.val().toLowerCase()))) {
-		inputS.val(suppliers[lsups.indexOf(inputS.val().toLowerCase())]);
-		response.text("Found");
-		inputS.removeClass("form-control is-invalid");
-		inputS.addClass("form-control is-valid");
-		response.removeClass("invalid-feedback");
-		response.addClass("valid-feedback");
+			$("#budgetCodeName").val("<br>");
+			$("#budgetCodeRoom").val("<br>");
+			$("#budgetCodeNum").val("<br>");
+			$("#budgetCodeEmail").val("<br>");
+		}
+	}));
 
-		$("#supplierSpinner").addClass("spinner-border")
-		$("#supplierSpinner").addClass("spinner-border-sm")
+	inputS.on("input", (function () {
+		let response = $("#supplier_response");
 
-		$.ajax({
-			type: "POST",
-			url: "api/supplier.php",
-			contentType: 'application/json',
-			data: JSON.stringify(inputS.val()),
+		// Convert all names to lowercase for comparison
+		let lsups = suppliers.map(function (elem) { return elem.toLowerCase();});
 
-			success: function (row) {
-				$("#supplierSpinner").removeClass("spinner-border")
-				$("#supplierSpinner").removeClass("spinner-border-sm")
+		if ((lsups.includes(inputS.val().toLowerCase()))) {
+			inputS.val(suppliers[lsups.indexOf(inputS.val().toLowerCase())]);
+			response.text("Found");
+			inputS.removeClass("form-control is-invalid");
+			inputS.addClass("form-control is-valid");
+			response.removeClass("invalid-feedback");
+			response.addClass("valid-feedback");
 
-				$('#inputSupplierName').val(row.name);
-				$('#inputSupplierAddress1').val(row.addressLine1);
-				$('#inputSupplierAddress2').val(row.addressLine2);
-				$('#inputSupplierAddressPostcode').val(row.postcode);
-				$('#inputSupplierAddressCity').val(row.city);
-			},
+			$("#supplierSpinner").addClass("spinner-border");
+			$("#supplierSpinner").addClass("spinner-border-sm");
 
-			error: function (xhr, resp, text) {
-				$("#supplierSpinner").removeClass("spinner-border")
-				$("#supplierSpinner").removeClass("spinner-border-sm")
+			$.ajax({
+				type: "POST",
+				url: "api/supplier.php",
+				contentType: "application/json",
+				data: JSON.stringify(inputS.val()),
 
-				console.log(text);
-			}
-		});
-	} else {
-		response.text("Not Found! - Cannot Autofill Entries");
-		inputS.removeClass("form-control is-valid");
-		inputS.addClass("form-control is-invalid");
-		response.removeClass("valid-feedback");
-		response.addClass("invalid-feedback");
+				success: function (row) {
+					$("#supplierSpinner").removeClass("spinner-border");
+					$("#supplierSpinner").removeClass("spinner-border-sm");
 
-		// ! Don't clear text boxes, otherwise you cannot create a custom supplier
-	}
-}));
+					$("#inputSupplierName").val(row.name);
+					$("#inputSupplierAddress1").val(row.addressLine1);
+					$("#inputSupplierAddress2").val(row.addressLine2);
+					$("#inputSupplierAddressPostcode").val(row.postcode);
+					$("#inputSupplierAddressCity").val(row.city);
+				},
 
-$(".cost").on('input', updateTotal);
-$(".cost").on('input', verifyNumericEvent);
+				error: function (xhr, resp, text) {
+					$("#supplierSpinner").removeClass("spinner-border");
+					$("#supplierSpinner").removeClass("spinner-border-sm");
 
-$(".quantity").on('input', updateTotal);
-$(".quantity").on('input', verifyNumericEvent);
+					window.console.log(text);
+				}
+			});
+		} else {
+			response.text("Not Found! - Cannot Autofill Entries");
+			inputS.removeClass("form-control is-valid");
+			inputS.addClass("form-control is-invalid");
+			response.removeClass("valid-feedback");
+			response.addClass("invalid-feedback");
 
-extendItemTable()
-updateTotal();
+			// ! Don"t clear text boxes, otherwise you cannot create a custom supplier
+		}
+	}));
 
-$.ajax({
-	type: "GET",
-	url: "api/suppliers.php",
-	contentType: 'application/json',
+	$(".cost").on("input", updateTotal);
+	$(".cost").on("input", verifyNumericEvent);
 
-	success: function (names) {
-		suppliers = names;
-		// Remove supplier spinner
-		$("#supplierIDSpinner").remove();
+	$(".quantity").on("input", updateTotal);
+	$(".quantity").on("input", verifyNumericEvent);
 
-		// Populate suppliers option list
-		let list = $("#listSuppliers")
-		names.forEach(element => {
-			let option = document.createElement('option');
-			option.value = element;
-			list.append(option);
-		});
-	},
+	extendItemTable();
+	updateTotal();
 
-	error: function (xhr, resp, text) {
-	}
-});
+	$.ajax({
+		type: "GET",
+		url: "api/suppliers.php",
+		contentType: "application/json",
 
-$.ajax({
-	type: "GET",
-	url: "api/budget_codes.php",
-	contentType: 'application/json',
+		success: function (names) {
+			suppliers = names;
+			// Remove supplier spinner
+			$("#supplierIDSpinner").remove();
 
-	success: function (ids) {
-		budgetCodes = ids;
-		$("#budgetCodeIDSpinner").remove();
+			// Populate suppliers option list
+			let list = $("#listSuppliers");
+			names.forEach(element => {
+				let option = window.document.createElement("option");
+				option.value = element;
+				list.append(option);
+			});
+		},
+	});
 
-		// Populate budget code option list
-		let list = $("#listBudgetCodes")
-		ids.forEach(element => {
-			let option = document.createElement('option');
-			option.value = element;
-			list.append(option);
-		});
-	},
+	$.ajax({
+		type: "GET",
+		url: "api/budget_codes.php",
+		contentType: "application/json",
 
-	error: function (xhr, resp, text) {
-	}
-});
+		success: function (ids) {
+			budgetCodes = ids;
+			$("#budgetCodeIDSpinner").remove();
+
+			// Populate budget code option list
+			let list = $("#listBudgetCodes");
+			ids.forEach(element => {
+				let option = window.document.createElement("option");
+				option.value = element;
+				list.append(option);
+			});
+		},
+	});
+};

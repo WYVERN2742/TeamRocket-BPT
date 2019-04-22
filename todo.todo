@@ -1,11 +1,3 @@
-VSCode todo+ extension recommended:
-	Name: Todo+
-	Description: Manage todo lists with ease. Powerful, easy to use and customizable.
-	VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-todo-plus
-
-	After extension is installed, use alt+D to mark items as completed
-	and alt+enter to create new todo items
-
 Database:
 	☐ Remove BUDGET_CODE_OWNER role
 	☐ Fix spelling of REQUSITION_OFFICER role
@@ -68,10 +60,12 @@ Pages:
 		Users:
 			✔ List @done(19-04-19 22:16)
 			☐ Edit
+			☐ Add
 			☐ Delete
 		Budget Codes:
 			☐ List
 			☐ Edit
+			☐ Add
 			☐ Delete
 	Make Request:
 		✔ Create new rows after all filled @done(19-04-22 13:43)

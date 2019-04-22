@@ -56,9 +56,9 @@
 			</div>
 			<div class="modal-footer">
 				<div class="col">
-					<div class="row">
-						<div class="alert alert-danger" role="alert" id="adminResponse">
-							adminResponse
+					<div class="row" >
+						<div class="col" id="adminUserAlerts">
+
 						</div>
 					</div>
 					<div class="row">
@@ -91,7 +91,7 @@
 											<div class="col-2">
 												<div class="form-label-group">
 													<input type="number" name="roomNumber" id="roomNumber" class="form-control" placeholder required>
-													<label for="roomNumber">Room Number</label>
+													<label for="roomNumber">Room #</label>
 												</div>
 											</div>
 											<div class="col-5">
@@ -132,7 +132,7 @@
 									</form>
 								</div>
 								<div id="adminUserEdit" role="tabpanel" class="tab-pane fade">
-									<form id="userForm" method="post">
+									<form id="adminUserForm" method="post">
 										<div class="row">
 											<div class="col">
 												<div class="form-label-group">
@@ -193,6 +193,9 @@
 									</form>
 								</div>
 								<div id="adminUserDelete" role="tabpanel" class="tab-pane fade">
+									<div class="display-1">
+										DELETE USER!‽‽‽‽?‽?
+									</div>
 								</div>
 							</div>
 						</div>

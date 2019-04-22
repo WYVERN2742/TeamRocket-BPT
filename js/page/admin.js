@@ -87,26 +87,34 @@ addLoadEvent(function () {
 	adminLoadUsers();
 
 	$("#adminFormUserNew").submit(function () {
+
 		$.ajax({
 			type: "POST",
 			url: "api/user_management/insert_user.php", //php to post to
 			data: $(this).serializeObject() //serializes all the form data to be sent as a post
 		})
-			.done(function (data) { //successful function
-				if (data === true) {
-					$("#adminResponse").html("User Created Successfully");
-					$("#adminResponse").removeClass("alert-danger");
-					$("#adminResponse").addClass("alert-success");
+			.done(function (response) { //successful function
+				window.console.log(response);
+				if (response === true) {
+					$("#adminUserAlerts").append("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">" +
+						"<strong>User Created!</strong> You've managed to create the new user successfully." +
+						"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+						"<span aria-hidden=\"true\">&times;</span></button></div>");
+					window.document.getElementById("adminFormUserNew").reset();
+					adminLoadUsers();
+				} else {
+					$("#adminUserAlerts ").append("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">" +
+						"<strong>Error Creating User!</strong> Not able to create the user." +
+						"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+						"<span aria-hidden=\"true\">&times;</span></button></div>");
 				}
-				$("#adminResponse").html("Successful?: " + data);
-
-				adminLoadUsers();
 			})
-			.fail(function (data) { //failure function
-				$("#adminResponse").html("fail: " + data);
+			.fail(function (response) { //failure function
+				window.console.log(response);
 			});
 
 		// to prevent refreshing the whole page page
 		return false;
+
 	});
 });

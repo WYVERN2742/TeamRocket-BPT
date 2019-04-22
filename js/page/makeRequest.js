@@ -11,7 +11,16 @@ $.ajax({
 
 	success: function (names) {
 		suppliers = names;
+		// Remove supplier spinner
 		$("#supplierIDSpinner").remove();
+
+		// Populate suppliers option list
+		let list = $("#listSuppliers")
+		names.forEach(element => {
+			let option = document.createElement('option');
+			option.value = element;
+			list.append(option);
+		});
 	},
 
 	error: function (xhr, resp, text) {
@@ -26,13 +35,21 @@ $.ajax({
 	success: function (ids) {
 		budgetCodes = ids;
 		$("#budgetCodeIDSpinner").remove();
+
+		// Populate budget code option list
+		let list = $("#listBudgetCodes")
+		ids.forEach(element => {
+			let option = document.createElement('option');
+			option.value = element;
+			list.append(option);
+		});
 	},
 
 	error: function (xhr, resp, text) {
 	}
 });
 
-inputBC.keyup(function () {
+inputBC.on('input',(function () {
 
 	const response = $('#budget_code_response');
 
@@ -75,20 +92,20 @@ inputBC.keyup(function () {
 		});
 
 	} else {
-		response.text("Not Found!");
+		response.text("Not Found! - Valid Budget Code Required");
 		inputBC.removeClass("form-control is-valid");
 		inputBC.addClass("form-control is-invalid");
 		response.removeClass("valid-feedback");
 		response.addClass("invalid-feedback");
 
-		$('#budgetCodeName').text("Unknown");
-		$('#budgetCodeRoom').text("Unknown");
-		$('#budgetCodeNum').text("Unknown");
-		$('#budgetCodeEmail').text("Unknown");
+		$('#budgetCodeName').val("<br>");
+		$('#budgetCodeRoom').val("<br>");
+		$('#budgetCodeNum').val("<br>");
+		$('#budgetCodeEmail').val("<br>");
 	}
-});
+}));
 
-inputS.keyup(function () {
+inputS.on('input',(function () {
 	response = $("#supplier_response")
 
 	// Convert all names to lowercase for comparison
@@ -130,7 +147,7 @@ inputS.keyup(function () {
 			}
 		});
 	} else {
-		response.text("Not Found!");
+		response.text("Not Found! - Cannot Autofill Entries");
 		inputS.removeClass("form-control is-valid");
 		inputS.addClass("form-control is-invalid");
 		response.removeClass("valid-feedback");
@@ -138,4 +155,4 @@ inputS.keyup(function () {
 
 		// ! Don't clear text boxes, otherwise you cannot create a custom supplier
 	}
-});
+}));

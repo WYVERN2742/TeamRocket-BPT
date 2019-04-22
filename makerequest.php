@@ -8,13 +8,16 @@ include "pageSections/head.php";
 include "pageSections/header.php";
 ?>
 
+<datalist id="listSuppliers"></datalist>
+<datalist id="listBudgetCodes"></datalist>
+
 <main role="main" class="col-md-12 ml-sm-auto px-4 container-fluid">
 	<div class="row">
 		<div class="col-md-4">
 			<div class="row">
 				<div class="col">
 					<div class="form-label-group">
-						<input type="text" id="inputBudgetCode" class="form-control" name="inputBudgetCode">
+						<input type="text" id="inputBudgetCode" class="form-control" name="inputBudgetCode" list="listBudgetCodes">
 						<label for="inputBudgetCode">
 							<div id="budgetCodeIDSpinner" class="spinner-border spinner-border-sm"></div> Budget Code
 						</label>
@@ -23,7 +26,7 @@ include "pageSections/header.php";
 				</div>
 				<div class="col">
 					<div class="form-label-group">
-						<input type="text" id="inputSupplier" class="form-control" name="inputSupplier">
+						<input type="text" id="inputSupplier" class="form-control" name="inputSupplier" list="listSuppliers">
 						<label for="inputSupplier">
 							<div id="supplierIDSpinner" class="spinner-border spinner-border-sm"></div> Supplier
 						</label>
@@ -40,13 +43,13 @@ include "pageSections/header.php";
 						<div class="card-body">
 							<div class="card-text">
 								<strong>Name </strong>
-								<div id="budgetCodeName">I.A.Jones</div>
+								<div id="budgetCodeName"><br> </div>
 								<strong>Room No. </strong>
-								<div id="budgetCodeRoom">115</div>
+								<div id="budgetCodeRoom"><br> </div>
 								<strong>Telephone Number</strong>
-								<div id="budgetCodeNum">2727</div>
+								<div id="budgetCodeNum"><br> </div>
 								<strong>Email</strong>
-								<div id="budgetCodeEmail">ijones@bangor.ac.uk</div>
+								<div id="budgetCodeEmail"><br> </div>
 							</div>
 						</div>
 					</div>
@@ -114,13 +117,13 @@ include "pageSections/header.php";
 		</div>
 		<div class="col-md-8">
 			<table class="table table-bordered table-hover table-responsive-md text-center">
-				<caption>Table of Items - For more rows, fill in current entries.</caption>
+				<caption>For more rows, fill in current entries.</caption>
 				<thead class="thead-dark">
 					<tr>
-						<th>Item</th>
+						<th width="75">Item</th>
 						<th>Description</th>
-						<th>Quantity</th>
-						<th>Cost (Each)</th>
+						<th width="150">Quantity</th>
+						<th width="150">Cost (Each)</th>
 					</tr>
 				</thead>
 				<tbody>

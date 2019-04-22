@@ -1,8 +1,108 @@
 const inputBC = $('#inputBudgetCode');
 const inputS = $('#inputSupplier');
 
-var suppliers = []
-var budgetCodes = []
+let suppliers = []
+let budgetCodes = []
+
+/**
+ * Creates event listeners for all table items
+ */
+function setupTableEvents() {
+
+}
+
+/**
+ * Update the total cost of the request
+ * Will break of there are an unbalanced amount of `cost` and `quantity`
+ * classes within the document.
+ */
+function updateTotal() {
+	let costs = document.getElementsByClassName("cost");
+	let quantities = document.getElementsByClassName("quantity");
+
+	// Ensure balanced costs and quantity
+	if (costs.length != quantities.length) {
+		console.log("Unbalanced cost and quantity values")
+		return;
+	}
+
+	let total = 0
+
+	for (let index = 0; index < costs.length; index++) {
+		var cost = costs[index].value;
+		var quantity = quantities[index].value;
+		var add = (cost * quantity);
+		if (isNaN(add)) {
+			return;
+		}
+		total += add;
+	}
+
+	$("#labelCost").text(total.toFixed(2));
+}
+
+/**
+ * Ensures the caller has a valid number greater than 0.
+ * if not, adds the is-Invalid class.
+ */
+function verifyNumericEvent() {
+	if ($(this) === undefined) {
+		console.log("verifyNumericEvent Not called from jquery event")
+		return
+	}
+
+	if ($(this).val()=="") {
+		// If value is empty, don't mark as invalid
+		$(this).removeClass("is-invalid");
+		return;
+	}
+
+	if ((parseFloat($(this).val()) > 0)) {
+		$(this).removeClass("is-invalid");
+	} else {
+		$(this).addClass("is-invalid");
+	}
+}
+
+/**
+ * Extends the `tableItems` table by one row.
+ * This is done by removing the `input` event from the `lastRow` class,
+ * then removing the class from the elements in the last row of the table.
+ * The table is then extended with elements that contain the `lastRow` class
+ * and then the event is reapplied to the `lastRow` class.
+ */
+function extendItemTable(){
+	// Remove event listener
+	$(".lastRow").off('input', extendItemTable);
+
+	// Remove class
+	$(".lastRow").removeClass("lastRow");
+
+	// Add row to table
+	let nid = $("#tableItems").find("tr").length;
+
+	$("#tableItems tr:last").after('<tr><td scope="row">' + nid +
+	'</td><td><input type="text" class="form-control" name="inputItem' + nid +
+	'Description" id="inputItem' + nid +
+	'Description"></td><td><input type="number" class="form-control quantity" name="inputItem' + nid +
+	'Quantity" id="inputItem' + nid + 'Quantity"></td><td><div class="input-group">' +
+	'<div class="input-group-prepend"><span class="input-group-text">£</span></div>' +
+	'<input type="text" class="form-control cost" name="inputItem' + nid +
+	'Cost" id="inputItem' + nid + 'Cost"></div></td></tr>')
+
+	// Add class
+	$("#tableItems tr:last").addClass("lastRow")
+
+	// Add event listeners
+	$(".lastRow").on('input', extendItemTable);
+
+	// Add misc events
+	$(".cost").on('input',updateTotal);
+	$(".cost").on('input',verifyNumericEvent);
+	$(".quantity").on('input',updateTotal);
+	$(".quantity").on('input',verifyNumericEvent);
+
+}
 
 $.ajax({
 	type: "GET",
@@ -156,3 +256,12 @@ inputS.on('input',(function () {
 		// ! Don't clear text boxes, otherwise you cannot create a custom supplier
 	}
 }));
+
+$(".cost").on('input',updateTotal);
+$(".cost").on('input',verifyNumericEvent);
+
+$(".quantity").on('input',updateTotal);
+$(".quantity").on('input',verifyNumericEvent);
+
+extendItemTable()
+updateTotal();

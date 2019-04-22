@@ -58,7 +58,7 @@ Testing:
 		☐ validate_token.php
 
 Pages:
-	☐ Create FavIcon from logo
+	✔ Create FavIcon from logo @done(19-04-22 11:56)
 	✔ Split up js into separate scripts @done(19-04-19 22:16)
 	Admin dropdown:
 		Users:

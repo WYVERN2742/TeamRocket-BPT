@@ -1,6 +1,9 @@
 Database:
-	☐ Remove BUDGET_CODE_OWNER role
-	☐ Fix spelling of REQUSITION_OFFICER role
+	☐ Remove `BUDGET_CODE_OWNER` role
+	☐ Fix spelling of `REQUSITION_OFFICER` role
+	☐ Remove users, create proper accounts
+	☐ Create legitimate requests using request maker
+	☐ Add Last Updated to Requests
 
 PHP:
 	☐ Change all php files and references to camelCase

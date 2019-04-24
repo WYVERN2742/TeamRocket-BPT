@@ -123,7 +123,7 @@ addLoadEvent(function () {
 
 			$.ajax({
 				type: "POST",
-				url: "api/budgetCode/getBudgetCodeList.php",
+				url: "api/budgetCode/getBudgetCodeOwner.php",
 				contentType: "application/json",
 				data: JSON.stringify(inputBC.val()),
 
@@ -178,7 +178,7 @@ addLoadEvent(function () {
 
 			$.ajax({
 				type: "POST",
-				url: "api/supplier/getSupplierList.php",
+				url: "api/supplier/getSupplier.php",
 				contentType: "application/json",
 				data: JSON.stringify(inputS.val()),
 
@@ -242,7 +242,7 @@ addLoadEvent(function () {
 
 	$.ajax({
 		type: "GET",
-		url: "api/budgetCode/getBudgetCodeOwner.php",
+		url: "api/budgetCode/getBudgetCodeList.php",
 		contentType: "application/json",
 
 		success: function (ids) {

@@ -1,3 +1,7 @@
+/**
+ * Populate the admin user table.
+ * Also creates and binds events the rows.
+ */
 function adminLoadUsers() {
 	$.ajax({
 		// Populate admin users table
@@ -16,6 +20,18 @@ function adminLoadUsers() {
 				// Add all rows to table
 				dt.load([rows[count++]], true);
 			}
+
+			$("#adminTableUsers tbody tr").on("click",(function() {
+				let row = $(this);
+				let cols = row.children("td");
+				// Switch colours
+				row.addClass("bg-info").siblings().removeClass("bg-info");
+				window.console.log("ID: "+cols[0].textContent);
+				window.console.log("First Name:" + cols[1].textContent);
+				window.console.log("Last Name:" + cols[2].textContent);
+				window.console.log("Role:" + cols[3].textContent);
+				window.console.log("Email:" + cols[4].textContent);
+			}));
 		},
 
 		error: function (xhr, resp, text) {
@@ -24,15 +40,26 @@ function adminLoadUsers() {
 	});
 }
 
+/**
+ * Enable the user editing form.
+ */
+function adminDisableEdit(){
+	$("")
+}
+
+/**
+ * Disable the user editing form.
+ */
+function adminEnableEdit(){
+
+}
+
 // Postpone javascript execution until window is loaded
 addLoadEvent(function () {
-	window.console.log("onload");
-
 	// Link search to admin table
 	$("#adminSearchUser").on("keyup", function () {
 		search("adminTableUsers", $("#adminSearchUser").val());
 	});
-	window.console.log("onload");
 
 	// Fix unreported bootstrap text color issue on modals
 	window.document.getElementById("adminLinkUserNew").onclick = function () {

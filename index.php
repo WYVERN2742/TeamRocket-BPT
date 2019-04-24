@@ -18,7 +18,7 @@ include "pageSections/header.php";
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
-									<h4 class="display-4">Pending</br> Requests</h4>
+									<h4 class="display-4">Pending<br> Requests</h4>
 								</div>
 								<div class="col-5">
 									<p class="display-1" id="pending_requests">0</p>
@@ -85,11 +85,11 @@ include "pageSections/header.php";
 			</div>
 			<div class="row">
 				<div class="col">
-					<table class="table table-bordered table-hover table-responsive-md text-center" id="tableRequests">
+					 <table class="table table-sm table-bordered table-hover table-responsive-md text-center" id="tableRequests">
 						<thead class="thead-dark">
 							<tr>
-								<th>ID</th>
-								<th>Budget Code</th>
+								<th width=100>ID</th>
+								<th width=150>Budget Code</th>
 								<th>Requester</th>
 								<th>Status</th>
 							</tr>

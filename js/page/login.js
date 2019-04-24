@@ -11,7 +11,7 @@ $(window.document).on("submit", "#login_form", function () {
 	$.ajax({
 		// Create post request with login data
 		type: "POST",
-		url: "api/check_login.php",
+		url: "api/login.php",
 		contentType: "application/json",
 		data: form_data,
 

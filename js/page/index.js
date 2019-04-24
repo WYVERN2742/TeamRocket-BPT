@@ -7,7 +7,7 @@ addLoadEvent(function () {
 	// Load Budget Code Information
 	$.ajax({
 		type: "GET",
-		url: "api/procurement/requests.php",
+		url: "api/request/getUserRequests.php",
 		contentType: "application/json",
 
 		success: function (rows) {

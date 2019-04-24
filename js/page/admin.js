@@ -6,7 +6,7 @@ function adminLoadUsers() {
 	$.ajax({
 		// Populate admin users table
 		type: "GET",
-		url: "api/user_management/users.php",
+		url: "api/user/getAllUsers.php",
 		contentType: "application/json",
 
 		success: function (rows) {
@@ -117,7 +117,7 @@ addLoadEvent(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "api/user_management/insert_user.php", //php to post to
+			url: "api/user/newUser.php", //php to post to
 			data: $(this).serializeObject() //serializes all the form data to be sent as a post
 		})
 			.done(function (response) { //successful function

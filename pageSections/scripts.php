@@ -6,7 +6,9 @@
 <!-- Page js -->
 <script src="js/lib.js"></script>
 <?php
+if (array_key_exists('userRole', $_SESSION)) {
 	if ($_SESSION['userRole'] == "CENTRAL_FINANCE") {
 		echo "<script src=\"js/page/admin.js\"></script>";
 	}
+}
 ?>

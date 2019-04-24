@@ -1,7 +1,7 @@
 <?php
 //used the and modified code from tutorial
 class Database {
-	private $host = "90.201.211.212";
+	private $host = "2.120.112.205";
 	private $db_name = "TRPT";
 	private $username = "teamrocketuser";
 	private $password = "teamrocket";

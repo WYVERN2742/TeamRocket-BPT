@@ -6,6 +6,13 @@ main {
 	padding-top: 20px
 }
 
+div.modal-footer {
+	padding-top: 0;
+}
+div.modal-footer .col {
+	padding-top: 10px;
+}
+
 /* Floating Text Labels */
 
 .form-label-group {
@@ -17,6 +24,7 @@ main {
 	height: 3.125rem;
 	padding: .75rem;
 }
+
 
 .form-label-group>label {
 	position: absolute;

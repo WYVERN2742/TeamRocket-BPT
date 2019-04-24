@@ -13,9 +13,11 @@ session_start();
 $db = new Database();
 $Admin = new Admin($db);
 
+$data = json_decode(file_get_contents("php://input"));
+
 if (isset($_SESSION['user'])) {
 	try {
-		$rs = $Admin->removeUser($_POST['userId']);
+		$rs = $Admin->removeUser($data);
 
 		// Respond with 200 if $rs is true
 		if ($rs) {

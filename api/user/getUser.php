@@ -13,11 +13,10 @@ session_start();
 $db = new Database();
 $central = new Admin($db);
 
-//$data = json_decode(file_get_contents("php://input"));
-//just using post instead because it's easier
+$data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
-	$rs = $central->getUser($data->userId);
+	$rs = $central->getUser($data);
 
 	http_response_code(200);
 

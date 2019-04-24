@@ -24,9 +24,7 @@ switch ($_POST['role']) {
 		$role = "CENTRAL_FINANCE";
 		break;
 	case "REQUISITION_OFFICER":
-		// Yes, 'REQUSITION' is misspelt
-		// Blame the db team...
-		$role = "REQUSITION_OFFICER";
+		$role = "REQUISITION_OFFICER";
 		break;
 }
 

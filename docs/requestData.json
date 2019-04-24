@@ -1,0 +1,15 @@
+{
+	"userID":"User ID",
+	"budgetCode":"Budget Code",
+	"supplier": {
+		"name":"name",
+		"address1":"Address Line 1",
+		"address2":"Address Line 2",
+		"postcode":"Postcode",
+		"town":"City / Town"
+	},
+	"items":[
+		{"Name":"Name / Description","Quantity":"Quantity","Cost":"Cost"},
+		{"Name":"Name / Description","Quantity":"Quantity","Cost":"Cost"}
+	]
+}

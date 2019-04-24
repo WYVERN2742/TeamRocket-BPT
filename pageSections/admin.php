@@ -64,7 +64,7 @@
 							<nav>
 								<ul class="nav nav-tabs" role="tablist">
 									<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#adminUserNew" id="adminLinkUserNew">New User</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#adminUserEdit" id="adminLinkUserEdit">Edit User</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#adminUserEdit" id="adminLinkUserEdit"> Edit User</a></li>
 									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#adminUserDelete" id="adminLinkUserDelete">Delete User</a></li>
 								</ul>
 							</nav>
@@ -132,16 +132,19 @@
 										<form id="adminFormUserEdit" method="post">
 											<div class="row">
 												<div class="col col-3">
-												<div class="input-group">
-														<div class="input-group-prepend"><span class="input-group-text">ID</span></div>
-														<input type="text" name="ID" id="ID" class="form-control" placeholder="Select From Table" disabled required>
+													<div class="input-group">
+														<div class="input-group-prepend"><span class="input-group-text">ID </span></div>
+														<input type="text" name="ID" id="adminUserEditID" class="form-control" placeholder="Select From Table" disabled required>
+														<div class="input-group-append"><span class="input-group-text">
+																<div id="adminUserEditSpinner"></div>
+															</span></div>
 													</div>
 												</div>
 												<div class="col">
 													<div class="input-group">
 														<div class="input-group-prepend"><span class="input-group-text">Name</span></div>
-														<input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name" disabled required>
-														<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name" disabled required>
+														<input type="text" name="firstName" id="adminUserEditFirstName" class="form-control" placeholder="First Name" disabled required>
+														<input type="text" name="lastName" id="adminUserEditLastName" class="form-control" placeholder="Last Name" disabled required>
 													</div>
 												</div>
 											</div>
@@ -149,19 +152,19 @@
 												<div class="col col-3">
 													<div class="input-group">
 														<div class="input-group-prepend"><span class="input-group-text">Room #</span></div>
-														<input type="number" name="roomNumber" id="roomNumber" class="form-control" placeholder="404" disabled required>
+														<input type="number" name="roomNumber" id="adminUserEditRoomNumber" class="form-control" placeholder="404" disabled required>
 													</div>
 												</div>
 												<div class="col">
 													<div class="input-group">
 														<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
-														<input type="email" name="email" id="email" class="form-control" placeholder="user@bangor.ac.uk" disabled required>
+														<input type="email" name="email" id="adminUserEditEmail" class="form-control" placeholder="user@bangor.ac.uk" disabled required>
 													</div>
 												</div>
 												<div class="col">
 													<div class="input-group">
 														<div class="input-group-prepend"><span class="input-group-text">Telephone</span></div>
-														<input type="text" name="telephone" id="telephone" class="form-control" placeholder="01234 567890" disabled required>
+														<input type="text" name="telephone" id="adminUserEditTelephone" class="form-control" placeholder="01234 567890" disabled required>
 													</div>
 												</div>
 											</div>
@@ -169,7 +172,7 @@
 												<div class="col">
 													<div class="input-group">
 														<div class="input-group-prepend"><span class="input-group-text">Role</span></div>
-														<select class="form-control" name="role" id="role" disabled>
+														<select class="form-control" name="role" id="adminUserEditRole" disabled>
 															<option value="REQUESTER">Requester</option>
 															<option value="REQUISITION_OFFICER">Requisition Officer</option>
 															<option value="CENTRAL_FINANCE">Central Finance</option>
@@ -179,14 +182,14 @@
 												<div class="col">
 													<div class="input-group">
 														<div class="input-group-prepend"><span class="input-group-text">Password</span></div>
-														<input type="password" name="password" id="password" class="form-control" placeholder disabled required>
+														<input type="password" name="password" id="adminUserEditPassword" class="form-control" placeholder disabled>
 													</div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col">
-													<button type="submit" class="btn btn-success col-sm-4" disabled>Update User</button>
-													<button type="reset" class="btn btn-outline-danger col-sm-4" disabled>Clear</button>
+													<button type="submit" class="btn btn-success col-sm-4" id="adminUserEditSubmit" disabled>Update User</button>
+													<button type="reset" class="btn btn-outline-danger col-sm-4" id="adminUserEditClear" disabled>Clear</button>
 												</div>
 											</div>
 										</form>
@@ -194,8 +197,23 @@
 								</div>
 								<!-- Delete User -->
 								<div id="adminUserDelete" role="tabpanel" class="tab-pane fade">
-									<div class="display-1">
-										Delete User
+									<div class="col">
+										<div class="alert alert-info" id="adminUserDeleteAlertInfo" role="alert">
+											Please select a user from the table above
+										</div>
+										<div class="alert alert-danger" role="alert">
+											<h4 class="alert-heading">Danger!</h4>
+											<p>You are about to delete a user, deleting a user cannot be reversed! The deleted user will lose ownership of all budget codes, and procurement requests. Please ensure the user you have selected is correct.</p>
+											<hr>
+											<form id="adminUserDeleteForm">
+												<div class="form-check form-check-inline">
+													<label class="form-check-label">
+														<input class="form-check-input" type="checkbox" name="adminUserDeleteCheckbox" id="adminUserDeleteCheckbox" value="1" disabled required> I Understand the Risks
+													</label>
+												</div>
+												<button type="button" class="btn btn-primary" id="adminUserDeleteButton" disabled>Delete User</button>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -203,7 +221,7 @@
 					</div>
 				</div>
 			</div>
-        </div>
+		</div>
 	</div>
 </div>
 

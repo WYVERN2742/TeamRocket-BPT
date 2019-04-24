@@ -16,6 +16,11 @@ $Admin = new Admin($db);
 $data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
+	if ($data == $_SESSION['user']) {
+		echo json_encode(array("message" => "Cannot delete current account"));
+		http_response_code(400);
+		return;
+	}
 	try {
 		$rs = $Admin->removeUser($data);
 

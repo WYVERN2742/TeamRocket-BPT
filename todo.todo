@@ -12,11 +12,11 @@ PHP:
 		We have (user.php, users.php, User.php)
 
 	Functionality:
-		☐ Get all budget codes
+		✔ Get all budget codes @done(19-04-24 17:37)
 			Budget Code, Owner Name, Procurement Officer Name
 		☐ Submit Request
 			Make Request page is done, take a look at the form output.
-		☐ Change Request state
+		✔ Change Request state @done(19-04-24 18:06)
 			Used for main menu to accept requests
 
 	Document php files:

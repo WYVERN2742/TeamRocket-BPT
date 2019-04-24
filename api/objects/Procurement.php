@@ -41,7 +41,7 @@ class Procurement {
 		$this->conn->bind(':recurring', $recurring);
 		$this->conn->bind(':supplierId', $supplierId);
 
-		$this->conn->execute();
+		return $this->conn->execute();
 	}
 
 	public function edit($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId, $procurementId) {
@@ -54,7 +54,15 @@ class Procurement {
 		$this->conn->bind(':recurring', $recurring);
 		$this->conn->bind(':supplierId', $supplierId);
 
-		$this->conn->execute();
+		return $this->conn->execute();
+	}
+
+	public function changeState($procurementId, $state) {
+		$this->db->query("UPDATE Procurement SET status=:state WHERE procurementId=:procurementId");
+		$this->db->bind(":state", $state);
+		$this->db->bind(":procurementId", $procurementId);
+
+		return $this->db->execute();
 	}
 
 	public function delete($procurementId) {

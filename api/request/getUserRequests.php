@@ -5,27 +5,19 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once 'config/Database.php';
-include_once 'objects/CentralFinance.php';
-
-
-/**
- * Returns the details of a specific budget code owner.
- * @param $data refers the the budget code being checked
- * $data is passed to the Central finance object which returns the owner.
- */
+include_once '../config/Database.php';
+include_once '../objects/Procurement.php';
 
 session_start();
 
 $db = new Database();
-$CentralFinance = new CentralFinance($db);
-
-$data = json_decode(file_get_contents("php://input")); //not sure how this works :s
+$procurement = new Procurement($db);
 
 if (isset($_SESSION['user'])) {
-	$rs = $CentralFinance->getBudgetCodeOwner($data);
+	$rs = $procurement->getAllProcurements($_SESSION['user']);
 
 	http_response_code(200);
+
 	echo json_encode($rs);
 } else {
 	// set response code

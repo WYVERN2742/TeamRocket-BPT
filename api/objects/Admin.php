@@ -6,7 +6,11 @@
  * Time: 21:47
  */
 
-class CentralFinance {
+ /**
+  * Provides database functions related specifically to administration of
+  * users and data.
+  */
+class Admin {
 
 	//database connection
 	private $db;
@@ -17,6 +21,33 @@ class CentralFinance {
 	*/
 	public function __construct($db) {
 		$this->db = $db;
+	}
+
+
+	/**
+	 * List of all users and info in the database
+	 *
+	 * @return resultSet set of users
+	 */
+	public function getAllUsers() {
+		$this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User");
+		//all users in the database.
+		$rs = $this->db->resultSet();
+		return $rs;
+	}
+
+	/**
+	 * Info of one user.
+	 *
+	 * @param String $userId
+	 * @return mixed info of single user
+	 */
+	public function getUser($userId) {
+		$this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User WHERE userId=:userId");
+		// all users in the database.
+		$this->db->bind(":userId", $userId);
+		$rs = $this->db->single();
+		return $rs;
 	}
 
 	public function addUser($password, $firstName, $lastName, $role, $roomNo, $telephoneNo, $email) {
@@ -30,10 +61,6 @@ class CentralFinance {
 		$this->db->bind(":telephoneNo", $telephoneNo);
 		$this->db->bind(":email", $email);
 		return $this->db->execute();
-	}
-
-	public function getError() {
-		return $this->db->getError();
 	}
 
 	public function removeUser($userId) {
@@ -57,37 +84,7 @@ class CentralFinance {
 		return $this->db->execute();
 	}
 
-	public function createBudgetCode($budgetCode, $ownerId, $procurementOfficer) {
-		$this->db->query("INSERT INTO BudgetCode(budgetCode, ownerId, procurementOfficer) VALUES (:budgetCode, :ownerId, :procurementOfficer)");
-		$this->db->bind(":budgetCode", $budgetCode);
-		$this->db->bind(":ownerId", $ownerId);
-		$this->db->bind(":procurementOfficer", $procurementOfficer);
-
-		return $this->db->execute();
-	}
-
-	public function updateBudgetCode($ownerId, $procurementOfficer) {
-		$this->db->query("UPDATE BudgetCode SET ownerId=:ownerId, procurementOfficer=:procurementOfficer WHERE budgetCode=:budgetCode");
-		$this->db->bind(":ownerId", $ownerId);
-		$this->db->bind(":procurementOfficer", $procurementOfficer);
-
-		return $this->db->execute();
-	}
-
-	public function viewUsers() {
-		$this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User"); //all users in the database.
-		$rs = $this->db->resultSet();
-		return $rs;
-	}
-
-	public function viewUser($userId) {
-		$this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User WHERE userId=:userId"); //all users in the database.
-		$this->db->bind(":userId", $userId);
-		$rs = $this->db->single();
-		return $rs;
-	}
-
-	public function viewBudgetCodes() {
+	public function viewAllBudgetCodes() {
 		$this->db->query("SELECT budgetCode, ownerId, procurementOfficer FROM BudgetCode");
 		$rs = $this->db->resultSet();
 		return $rs;
@@ -100,10 +97,31 @@ class CentralFinance {
 		return $rs;
 	}
 
+	public function createBudgetCode($budgetCode, $ownerId, $procurementOfficer) {
+		$this->db->query("INSERT INTO BudgetCode(budgetCode, ownerId, procurementOfficer) VALUES (:budgetCode, :ownerId, :procurementOfficer)");
+		$this->db->bind(":budgetCode", $budgetCode);
+		$this->db->bind(":ownerId", $ownerId);
+		$this->db->bind(":procurementOfficer", $procurementOfficer);
+
+		return $this->db->execute();
+	}
+
+	public function editBudgetCode($ownerId, $procurementOfficer) {
+		$this->db->query("UPDATE BudgetCode SET ownerId=:ownerId, procurementOfficer=:procurementOfficer WHERE budgetCode=:budgetCode");
+		$this->db->bind(":ownerId", $ownerId);
+		$this->db->bind(":procurementOfficer", $procurementOfficer);
+
+		return $this->db->execute();
+	}
+
 	public function getBudgetCodeOwner($budgetCode) {
 		$this->db->query("SELECT firstName, lastName, roomNo, telephoneNo, email FROM User WHERE userId = (SELECT ownerId FROM BudgetCode WHERE budgetCode = :budgetCode) LIMIT 0, 1");
 		$this->db->bind("budgetCode", $budgetCode);
 		$rs = $this->db->single();
 		return $rs;
+	}
+
+	public function getError() {
+		return $this->db->getError();
 	}
 }

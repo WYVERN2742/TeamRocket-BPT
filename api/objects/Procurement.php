@@ -1,4 +1,7 @@
 <?php
+/**
+ * Provides database functions related to procurements.
+ */
 class Procurement {
 
 	//database connection
@@ -12,9 +15,15 @@ class Procurement {
 		$this->db = $db;
 	}
 
-	public function readAll() {
+	/**
+	 * Returns all procurement requests where the requestor is the provided user ID
+	 *
+	 * @param String $userID
+	 * @return resultSet list of requests
+	 */
+	public function getAllProcurements($userID) {
 		$this->db->query("SELECT * FROM Procurement WHERE requesterId = :requesterId");
-		$this->db->bind(":requesterId", $_SESSION['user']);
+		$this->db->bind(":requesterId", $userID);
 		$rs = $this->db->resultSet();
 		return $rs;
 	}
@@ -24,37 +33,37 @@ class Procurement {
 	 */
 	public function readOne($procurementId) {
 		/*$query = "SELECT * FROM " . $this->tableName . " WHERE requesterId = :id";
-		$this->conn->query($query);
-		$this->conn->bind(":id", $procurementId, PDO::PARAM_INT);
+		$this->db->query($query);
+		$this->db->bind(":id", $procurementId, PDO::PARAM_INT);
 
-		return $this->conn->single();*/
+		return $this->db->single();*/
 
 	}
 
 	public function insert($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId) {
-		$this->conn->query("INSERT INTO Procurement (budgetCode, requesterId, date, status, declineReason, recurring, supplierId) VALUES (:budgetCode, :requesterId, :date, :status, :declineReason, :recurring, :supplierId)");
-		$this->conn->bind(':budgetCode', $budgetCode);
-		$this->conn->bind(':requesterId', $requesterId);
-		$this->conn->bind(':date', $date);
-		$this->conn->bind(':status', $status);
-		$this->conn->bind(':declineReason', $declineReason);
-		$this->conn->bind(':recurring', $recurring);
-		$this->conn->bind(':supplierId', $supplierId);
+		$this->db->query("INSERT INTO Procurement (budgetCode, requesterId, date, status, declineReason, recurring, supplierId) VALUES (:budgetCode, :requesterId, :date, :status, :declineReason, :recurring, :supplierId)");
+		$this->db->bind(':budgetCode', $budgetCode);
+		$this->db->bind(':requesterId', $requesterId);
+		$this->db->bind(':date', $date);
+		$this->db->bind(':status', $status);
+		$this->db->bind(':declineReason', $declineReason);
+		$this->db->bind(':recurring', $recurring);
+		$this->db->bind(':supplierId', $supplierId);
 
-		return $this->conn->execute();
+		return $this->db->execute();
 	}
 
 	public function edit($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId, $procurementId) {
-		$this->conn->query("UPDATE Procurement SET budgetCode=:budgetCode, requesterId=:requesterId, date=:date, status=:status, declineReason=:declineReason, recurring=:recurring, supplierId=:supplierId) WHERE procurementId=:procurementId");
-		$this->conn->bind(':budgetCode', $budgetCode);
-		$this->conn->bind(':requesterId', $requesterId);
-		$this->conn->bind(':date', $date);
-		$this->conn->bind(':status', $status);
-		$this->conn->bind(':declineReason', $declineReason);
-		$this->conn->bind(':recurring', $recurring);
-		$this->conn->bind(':supplierId', $supplierId);
+		$this->db->query("UPDATE Procurement SET budgetCode=:budgetCode, requesterId=:requesterId, date=:date, status=:status, declineReason=:declineReason, recurring=:recurring, supplierId=:supplierId) WHERE procurementId=:procurementId");
+		$this->db->bind(':budgetCode', $budgetCode);
+		$this->db->bind(':requesterId', $requesterId);
+		$this->db->bind(':date', $date);
+		$this->db->bind(':status', $status);
+		$this->db->bind(':declineReason', $declineReason);
+		$this->db->bind(':recurring', $recurring);
+		$this->db->bind(':supplierId', $supplierId);
 
-		return $this->conn->execute();
+		return $this->db->execute();
 	}
 
 	public function changeState($procurementId, $state) {
@@ -69,15 +78,4 @@ class Procurement {
 
 	}
 
-	public function approve($procurementId) {
-
-	}
-
-	public function decline($procurementId) {
-
-	}
-
-	public function resubmit($procurementId) {
-
-	}
 }

@@ -6,15 +6,18 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once '../config/Database.php';
-include_once '../objects/Procurement.php';
+include_once '../objects/Admin.php';
 
 session_start();
 
 $db = new Database();
-$procurement = new Procurement($db);
+$central = new Admin($db);
+
+//$data = json_decode(file_get_contents("php://input"));
+//just using post instead because it's easier
 
 if (isset($_SESSION['user'])) {
-	$rs = $procurement->readAll();
+	$rs = $central->getUser($data->userId);
 
 	http_response_code(200);
 
@@ -25,6 +28,6 @@ if (isset($_SESSION['user'])) {
 
 	// show error message
 	echo json_encode(array(
-		"message" => "Access denied."
+		"message" => "Access denied.",
 	));
 }

@@ -5,22 +5,35 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once 'config/Database.php';
-include_once 'objects/CentralFinance.php';
+include_once '../config/Database.php';
+include_once '../objects/Admin.php';
 
 session_start();
 
 $db = new Database();
-$centralFinance = new CentralFinance($db);
+$Admin = new Admin($db);
 
 if (isset($_SESSION['user'])) {
-    try{
-        
-    }
-    catch(PDOException $e){
+	try {
+		$rs = $Admin->removeUser($_POST['userId']);
 
-    }
+		// Respond with 200 if $rs is true
+		if ($rs) {
+			http_response_code(200);
+		} else {
 
+			echo json_encode($Admin->getError());
+			http_response_code(500);
+		}
+
+		echo json_encode($rs);
+	} catch (PDOException $e) {
+		http_response_code(500);
+		echo json_encode(array(
+			"message" => "Failed to update database",
+			"error message" => $e->getMessage()
+		));
+	}
 } else {
 	// set response code
 	http_response_code(401);

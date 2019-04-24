@@ -6,9 +6,11 @@
  * Time: 18:12
  */
 
+ /**
+  * Class that represent a user, with attributes relating to the user
+  */
 class User
 {
-
 	private $conn;
 
 	public $userId;
@@ -19,19 +21,6 @@ class User
 	public function __construct(Database $conn)
 	{
 		$this->conn = $conn;
-	}
-
-	/**
-	 * @param $email
-	 * @param $password
-	 * @return int|null
-	 */
-	public function login($email, $password) {
-		if ($email == "test@test.com" && $password == "test") {
-			return 1;
-		}
-
-		return null;
 	}
 
 	public function emailExists() {
@@ -53,12 +42,5 @@ class User
 		}
 
 		return false;
-	}
-
-	public function isAdmin() {
-		if ($this->role == null) {
-			return false;
-		}
-		return $this->role == 1;
 	}
 }

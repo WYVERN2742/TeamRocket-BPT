@@ -6,18 +6,15 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once '../config/Database.php';
-include_once '../objects/CentralFinance.php';
+include_once '../objects/Admin.php';
 
 session_start();
 
 $db = new Database();
-$central = new CentralFinance($db);
-
-//$data = json_decode(file_get_contents("php://input"));
-//just using post instead because it's easier
+$Admin = new Admin($db);
 
 if (isset($_SESSION['user'])) {
-	$rs = $central->viewUser($data->userId);
+	$rs = $Admin->getAllUsers();
 
 	http_response_code(200);
 
@@ -28,6 +25,6 @@ if (isset($_SESSION['user'])) {
 
 	// show error message
 	echo json_encode(array(
-		"message" => "Access denied.",
+		"message" => "Access denied."
 	));
 }

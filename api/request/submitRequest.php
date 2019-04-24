@@ -6,18 +6,15 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once 'config/Database.php';
-include_once 'objects/CentralFinance.php';
+include_once 'objects/Admin.php';
 
 session_start();
 
 $db = new Database();
-$centralFinance = new CentralFinance($db);
+$centralFinance = new Admin($db);
 
 if (isset($_SESSION['user'])) {
-	$rs = $centralFinance->viewBudgetCodes();
-
-	http_response_code(200);
-	echo json_encode($rs);
+	try { } catch (PDOException $e) { }
 } else {
 	// set response code
 	http_response_code(401);

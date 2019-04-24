@@ -5,19 +5,18 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once '../config/Database.php';
-include_once '../objects/CentralFinance.php';
+include_once 'config/Database.php';
+include_once 'objects/Admin.php';
 
 session_start();
 
 $db = new Database();
-$CentralFinance = new CentralFinance($db);
+$centralFinance = new Admin($db);
 
 if (isset($_SESSION['user'])) {
-	$rs = $CentralFinance->viewUsers();
+	$rs = $centralFinance->viewAllBudgetCodes();
 
 	http_response_code(200);
-
 	echo json_encode($rs);
 } else {
 	// set response code

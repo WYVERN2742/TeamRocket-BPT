@@ -1,15 +1,19 @@
 Database:
+	☐ Add Last Updated to Requests
+
 	☐ Remove `BUDGET_CODE_OWNER` role
 	☐ Fix spelling of `REQUSITION_OFFICER` role
 	☐ Remove users, create proper accounts
 	☐ Create legitimate requests using request maker
-	☐ Add Last Updated to Requests
 
 PHP:
 	☐ Change all php files and references to camelCase
 	☐ Split up php scripts and objects
 	☐ Make names more distinguished
 		We have (user.php, users.php, User.php)
+
+	☐ Refactor objects/User.php
+	☐ Update supplier.php to use a Supplier object rather than storing sql
 
 	Functionality:
 		✔ Get all budget codes @done(19-04-24 17:37)
@@ -20,41 +24,74 @@ PHP:
 			Used for main menu to accept requests
 
 	Document php files:
-		☐ CentralFinance.php
-		☐ Procurement.php
-		☐ User.php
-		☐ requests.php
-		☐ delete_user.php
-		☐ insert_user.php
-		☐ user.php
-		☐ users.php
-		☐ budget_code.php
-		☐ budget_codes.php
-		☐ check_login.php
-		☐ logout.php
-		☐ readTest.php
-		☐ supplier.php
-		☐ suppliers.php
-		☐ validate_token.php
+		config:
+			☐ core
+			☐ Database
+		objects:
+			☐ Admin
+			☐ Procurement
+			☐ User
+			☐ Supplier
+		request:
+			☐ submitRequest
+			☐ getRequestInfo
+			☐ changeRequestState
+			☐ getUserRequests
+			✘ editRequest @cancelled(19-04-24 19:24)
+		user:
+			☐ newUser
+			☐ deleteUser
+			☐ editUser
+			☐ getUser
+			☐ getAllUsers
+		supplier:
+			☐ getSupplier
+			☐ getSupplierList
+		budgetCode:
+			☐ getBudgetCodeList
+			☐ getBudgetCodeOwner
+			☐ getAllBudgetCodesInfo
+			☐ getBudgetCodeInfo
+
+	Create php files:
+		config:
+			✔ core @done(19-04-24 19:28)
+			✔ Database @done(19-04-24 19:28)
+		objects:
+			✔ Admin @done(19-04-24 19:29)
+			✔ Procurement @done(19-04-24 19:29)
+			✔ User @done(19-04-24 19:29)
+			☐ Supplier
+		request:
+			☐ submitRequest
+			☐ getRequestInfo
+			✔ changeRequestState @done(19-04-24 19:29)
+			✔ getUserRequests @done(19-04-24 19:29)
+			✘ editRequest @cancelled(19-04-24 19:24)
+		user:
+			✔ newUser @done(19-04-24 19:29)
+			✔ deleteUser @done(19-04-24 19:29)
+			☐ editUser
+			✔ getUser @done(19-04-24 19:29)
+			✔ getAllUsers @done(19-04-24 19:29)
+		supplier:
+			✔ getSupplier @done(19-04-24 19:29)
+			✔ getSupplierList @done(19-04-24 19:29)
+		budgetCode:
+			✔ getBudgetCodeList @done(19-04-24 19:30)
+			✔ getBudgetCodeOwner @done(19-04-24 19:32)
+			✔ getAllBudgetCodesInfo @done(19-04-24 19:32)
+			☐ getBudgetCodeInfo
 
 Testing:
 	PHP Unit Tests:
-		☐ CentralFinance.php
-		☐ Procurement.php
-		☐ User.php
-		☐ requests.php
-		☐ delete_user.php
-		☐ insert_user.php
-		☐ user.php
-		☐ users.php
-		☐ budget_code.php
-		☐ budget_codes.php
-		☐ check_login.php
-		☐ logout.php
-		☐ readTest.php
-		☐ supplier.php
-		☐ suppliers.php
-		☐ validate_token.php
+		config:
+			☐ Database
+		objects:
+			☐ Admin
+			☐ Procurement
+			☐ User
+			☐ Supplier
 
 Pages:
 	✔ Create FavIcon from logo @done(19-04-22 11:56)

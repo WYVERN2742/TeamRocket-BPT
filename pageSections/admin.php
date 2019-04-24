@@ -56,10 +56,8 @@
 			</div>
 			<div class="modal-footer">
 				<div class="col">
-					<div class="row" >
-						<div class="col" id="adminUserAlerts">
-
-						</div>
+					<div class="row">
+						<div class="col" id="adminUserAlerts"></div>
 					</div>
 					<div class="row">
 						<div class="col">
@@ -71,6 +69,7 @@
 								</ul>
 							</nav>
 							<div class="tab-content">
+								<!-- New User -->
 								<div id="adminUserNew" role="tabpanel" class="tab-pane fade show active">
 									<form id="adminFormUserNew" method="post">
 										<div class="row">
@@ -131,70 +130,16 @@
 										</div>
 									</form>
 								</div>
+								<!-- Edit User -->
 								<div id="adminUserEdit" role="tabpanel" class="tab-pane fade">
-									<form id="adminUserForm" method="post">
-										<div class="row">
-											<div class="col">
-												<div class="form-label-group">
-													<input type="text" name="firstName" id="firstName" class="form-control" placeholder required>
-													<label for="firstName">First Name</label>
-												</div>
-											</div>
-											<div class="col">
-												<div class="form-label-group">
-													<input type="text" name="lastName" id="lastName" class="form-control" placeholder required>
-													<label for="lastName">Last Name</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-2">
-												<div class="form-label-group">
-													<input type="number" name="roomNumber" id="roomNumber" class="form-control" placeholder required>
-													<label for="roomNumber">Room Number</label>
-												</div>
-											</div>
-											<div class="col-5">
-												<div class="form-label-group">
-													<input type="email" name="email" id="email" class="form-control" placeholder required>
-													<label for="email">Email</label>
-												</div>
-											</div>
-											<div class="col-5">
-												<div class="form-label-group">
-													<input type="text" name="telephone" id="telephone" class="form-control" placeholder required>
-													<label for="telephone">Telephone Number</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-3">
-												<div class="form-label-group">
-													<select class="form-control" name="role" id="role">
-														<option value="1">Requester</option>
-														<option value="2">Requisition Officer</option>
-														<option value="3">Central Finance</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-9">
-												<div class="form-label-group">
-													<input type="password" name="password" id="password" class="form-control" placeholder required autofocus>
-													<label for="password">Password</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col">
-												<button type="submit" class="btn btn-success col-sm-4">Create New User</button>
-												<button type="reset" class="btn btn-outline-danger col-sm-2">Cancel</button>
-											</div>
-										</div>
-									</form>
+									<div class="display-1">
+										Edit User
+									</div>
 								</div>
+								<!-- Delete User -->
 								<div id="adminUserDelete" role="tabpanel" class="tab-pane fade">
 									<div class="display-1">
-										DELETE USER!‽‽‽‽?‽?
+										Delete User
 									</div>
 								</div>
 							</div>

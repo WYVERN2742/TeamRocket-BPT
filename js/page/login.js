@@ -17,10 +17,9 @@ $(window.document).on("submit", "#login_form", function () {
 
 		success: function (response) {
 			// Log in successful
-
 			// ? Do we need to show the successful login message since we"re redirecting?
+
 			$("#response").html("<div class=\"alert alert-success\">Successful login.</div>");
-			$("#response").html("<div class=\"alert alert-success\">"+response.message + "</div>");
 			window.console.log(response);
 			window.document.location.href = "index.php";
 		},
@@ -34,8 +33,9 @@ $(window.document).on("submit", "#login_form", function () {
 				$("#response").html("<div class=\"alert alert-danger\">Login failed. Email or password is incorrect.</div>");
 			}
 
-			// Clear email and password boxes
-			login_form.find("input").val("");
+			// Clear password box
+			// ? Should we clear both boxes or just the password?
+			login_form.find("inputPassword").val("");
 		}
 	});
 

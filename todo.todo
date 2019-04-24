@@ -1,8 +1,8 @@
 Database:
-	☐ Add Last Updated to Requests
+	✔ Add Last Updated to Requests @done(19-04-24 21:00)
 
-	☐ Remove `BUDGET_CODE_OWNER` role
-	☐ Fix spelling of `REQUSITION_OFFICER` role
+	✔ Remove `BUDGET_CODE_OWNER` role @done(19-04-24 20:50)
+	✔ Fix spelling of `REQUSITION_OFFICER` role @done(19-04-24 20:50)
 	☐ Remove users, create proper accounts
 	☐ Create legitimate requests using request maker
 

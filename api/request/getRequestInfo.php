@@ -19,13 +19,13 @@ $procurement = new Procurement($db);
 
 if (isset($_SESSION['user'])) {
 
-    $procurementData = $procurement->getRequestInfo($data->procurementId);
-    $itemsData = $procurement->getRequestItems($data->procurementId);
-    $supplierData = $procurement->getSupplierInfo($data->procurementId);
+	$procurementData = $procurement->getRequestInfo($data->procurementId);
+	$itemsData = $procurement->getRequestItems($data->procurementId);
+	$supplierData = $procurement->getSupplierInfo($data->procurementId);
 
-    $procurementInfo["procurementInfo"] = $procurementData;
-    $procurementInfo["items"] = $itemsData;
-    $procurementInfo["supplier"] = $supplierData;
+	$procurementInfo["procurementInfo"] = $procurementData;
+	$procurementInfo["items"] = $itemsData;
+	$procurementInfo["supplier"] = $supplierData;
 
 	http_response_code(200);
 

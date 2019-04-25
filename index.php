@@ -38,31 +38,7 @@ include "pageSections/header.php";
 						</thead>
 						<tbody>
 							<tr>
-								<td>
-									<div class="btn-block btn-group btn-group-justified" role="group" aria-label="Draft #1">
-										<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
-											#1</button>
-										<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="btn-block btn-group btn-group-justified" role="group" aria-label="Draft #2">
-										<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
-											#2</button>
-										<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="btn-block btn-group btn-group-justified" role="group" aria-label="Draft #3">
-										<button type="button" class="btn btn-outline-primary btn-lg btn-block">Draft
-											#3</button>
-										<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-									</div>
-								</td>
+								<td><div class="spinner-border" role="status" id="draftSpinner"></div></td>
 							</tr>
 						</tbody>
 					</table>
@@ -90,13 +66,14 @@ include "pageSections/header.php";
 							<tr>
 								<th width=100>ID</th>
 								<th width=150>Budget Code</th>
+								<th width=150>Date</th>
 								<th>Requester</th>
 								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td colspan="4"><div class="spinner-border" role="status"></div></td>
+								<td colspan="5"><div class="spinner-border" role="status"></div></td>
 							</tr>
 						</tbody>
 					</table>

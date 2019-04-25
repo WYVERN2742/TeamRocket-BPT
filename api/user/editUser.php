@@ -5,8 +5,8 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once 'api/config/Database.php';
-include_once 'api/objects/Admin.php';
+include_once '../config/Database.php';
+include_once '../objects/Admin.php';
 
 session_start();
 
@@ -14,8 +14,9 @@ $db = new Database();
 $Admin = new Admin($db);
 
 $data = json_decode(file_get_contents("php://input"));
-// using post instead because it's easier
 
+error_log(file_get_contents("php://input"));
+error_log($data);
 
 // Ensure roles are of a set type
 $role = "REQUESTER";
@@ -31,14 +32,14 @@ switch ($data->role) {
 if (isset($_SESSION['user'])) {
 	try {
 
-        $rs = $Admin->editUser($data->userId, $data->firstName, $data->lastName, $role, $data->roomNumber, $data->telephone, $data->email);
+		$rs = $Admin->editUser($data->userId, $data->firstName, $data->lastName, $role, $data->roomNumber, $data->telephone, $data->email);
 
-        if($data->password != ""){
-            $prs = $Admin->changePassword(password_hash($data->password, PASSWORD_BCRYPT));
-        }
+		if ($data->password != "") {
+			$prs = $Admin->changePassword($data->userId, password_hash($data->password, PASSWORD_BCRYPT));
+		}
 
-		
-		if ($rs && $prs) {
+
+		if ($rs) {
 			http_response_code(200);
 		} else {
 

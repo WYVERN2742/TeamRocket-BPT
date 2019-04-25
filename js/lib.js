@@ -131,6 +131,7 @@ function dynamicTable() {
 /**
  * Converts the object into a JSON string.
  * JQuery Extension.
+ * ! 25-April-2019 Turns out this doesn't actually work
  */
 $.fn.serializeObject = function () {
 	let o = {};

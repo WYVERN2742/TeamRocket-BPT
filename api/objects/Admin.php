@@ -51,6 +51,17 @@ class Admin {
 	}
 
 	/**
+	 * Get all emails of procurement officers
+	 *
+	 * @return resultSet List of officer emails
+	 */
+	public function getProcurementOfficerEmails(){
+		$this->db->query("SELECT email, role FROM User WHERE role = \"REQUISITION_OFFICER\"");
+		$rs = $this->db->resultSet();
+		return $rs;
+	}
+
+	/**
 	 * List of all emails.
 	 *
 	 * @return resultSet set of all user emails

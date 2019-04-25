@@ -17,7 +17,7 @@ addLoadEvent(function () {
 			const viewMore = $("#viewInput");
 			let count = 0;
 			const dt = dynamicTable().config("tableRequests",
-				["procurementId", "budgetCode", "requesterId", "status"], null, "No requests");
+				["procurementId", "budgetCode", "date", "requesterEmail", "status"], null, "No requests");
 
 			if (numRows < showAmount) {
 				showAmount = numRows;
@@ -28,19 +28,22 @@ addLoadEvent(function () {
 			}
 
 			viewMore.click(function () {
-				for (let i = 0; i < 5; i++) {
+				for (let i = 0; i < showAmount; i++) {
 					if (count < numRows) {
 						dt.load([rows[count++]], true);
 						viewMore.html("View More (" + count + "/" + numRows + ")");
+						search("tableRequests", $("#searchTableRequests").val());
 					} else {
 						viewMore.remove();
+						search("tableRequests", $("#searchTableRequests").val());
 						break;
 					}
 				}
 
 				search("tableRequests");
 			});
-
+			$("#draftSpinner").removeClass("spinner-border");
+			$("#draftSpinner").text("No Saved Drafts");
 			viewMore.html("View More (" + count + "/" + numRows + ")");
 		},
 

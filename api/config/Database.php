@@ -111,6 +111,9 @@ class Database {
 		return $this->stmt->errorInfo();
 	}
 
+	/**
+	 * Returns the SQLSTATE 
+	 */
 	public function getErrorCode() {
 		return $this->stmt->errorCode();
 	}

@@ -70,39 +70,43 @@ class Database {
 	}
 
 	/**
-	 * Executes the prepared statement and .
+	 * Executes the prepared statement
 	 * @return mixed
 	 */
 	public function execute() {
 		return $this->stmt->execute();
 	}
 
+	/**
+	 * Executes prepared statement and return the result set.
+	 * @return array 
+	 */
 	public function resultSet() {
 		$this->execute();
 		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Executes a prepared statement and returns the single result
+	 * @return array returns an array, contains a single row from the results
+	 */
 	public function single() {
 		$this->execute();
 		return $this->stmt->fetch(PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Returns the number of rows affected by the last SQL statement
+	 * @return int
+	 */
 	public function rowCount() {
 		return $this->stmt->rowCount();
 	}
 
-	public function beginTransaction() {
-		return $this->conn->beginTransaction();
-	}
-
-	public function endTransaction() {
-		return $this->conn->commit();
-	}
-
-	public function cancelTransaction() {
-		return $this->conn->rollBack();
-	}
-
+	/**
+	 * Returns the extended error message for the last operation
+	 * @return string 
+	 */
 	public function getError() {
 		return $this->stmt->errorInfo();
 	}

@@ -22,7 +22,8 @@ PHP:
 			Make Request page is done, take a look at the form output.
 		✔ Change Request state @done(19-04-24 18:06)
 			Used for main menu to accept requests
-		☐ viewAllBudgetCodesEmail needs implementing
+		✔ viewAllBudgetCodesEmail needs implementing @done(19-04-25 17:12)
+			this is getBudgetcodeEmails in Admin.php
 		✔ Get all user emails @done(19-04-25 16:34)
 
 	Document php files:
@@ -66,7 +67,7 @@ PHP:
 			☐ Supplier
 		request:
 			✔ submitRequest @done(19-04-25 16:49)
-			☐ getRequestInfo
+			✔ getRequestInfo @done(19-04-25 17:56)
 			✔ changeRequestState @done(19-04-24 19:29)
 			✔ getUserRequests @done(19-04-24 19:29)
 			✘ editRequest @cancelled(19-04-24 19:24)
@@ -105,7 +106,7 @@ Pages:
 			✔ Add @done(19-04-22 19:47)
 			✔ Delete @done(19-04-25 16:34)
 		Budget Codes:
-			☐ List
+			✔ List @done(19-04-25 17:57)
 			☐ Edit
 			☐ Add
 			☐ Delete

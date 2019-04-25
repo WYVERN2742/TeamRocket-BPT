@@ -87,6 +87,24 @@ class Procurement {
 		return $this->db->execute();
 	}
 
+	public function getRequestInfo($procurementId){
+		$this->db->query("SELECT * FROM Procurement WHERE procurementId = :procurementId");
+		$this->db->bind(":procurementId", $procurementId);
+		return $this->db->resultSet();
+	}
+
+	public function getRequestItems($procurementId){
+		$this->db->query("SELECT * FROM Item WHERE procurementId = :procurementId");
+		$this->db->bind(":procurementId", $procurementId);
+		return $this->db->resultSet();
+	}
+
+	public function getSupplierInfo($procurementId){
+		$this->db->query("SELECT * FROM Supplier s WHERE s.supplierId = (SELECT p.supplierId FROM Procurement p WHERE procurementId = :procurementId)");
+		$this->db->bind(":procurementId", $procurementId);
+		return $this->db->resultSet();
+	}
+
 	public function delete($procurementId) {
 
 	}

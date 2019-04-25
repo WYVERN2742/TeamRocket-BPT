@@ -107,7 +107,7 @@ Pages:
 	Admin dropdown:
 		Users:
 			✔ List @done(19-04-19 22:16)
-			☐ Edit
+			✔ Edit @done(19-04-25 21:07)
 			✔ Add @done(19-04-22 19:47)
 			✔ Delete @done(19-04-25 16:34)
 		Budget Codes:
@@ -126,5 +126,7 @@ Pages:
 			✘ Show saved drafts @cancelled(19-04-25 14:45)
 			✘ Edit Drafts @cancelled(19-04-25 14:45)
 			✘ Delete Drafts @cancelled(19-04-25 14:45)
-		☐ Allow confirmation of procurement requests
-		☐ Allow refusal of procurement requests
+		Procurement Request:
+			☐ Show Procurement Request on click
+			☐ Allow confirmation of procurement requests
+			☐ Allow refusal of procurement requests

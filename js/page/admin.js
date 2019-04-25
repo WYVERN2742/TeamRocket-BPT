@@ -208,70 +208,11 @@ function adminBudgetCodeAlert(message, type) {
 		"<span aria-hidden=\"true\">&times;</span></button></div>");
 }
 
-// Postpone javascript execution until window is loaded
-addLoadEvent(function () {
-	// Link search to admin table
-	$("#adminSearchUser").on("keyup", function () {
-		search("adminTableUsers", $("#adminSearchUser").val());
-	});
-
-	$("#adminUserEditClear").on("click", function () {
-		// Reset edit window
-		window.document.getElementById("adminFormUserEdit").reset();
-		adminDisableEdit();
-		$("#adminTableUsers tbody tr").removeClass("bg-info");
-
-		// Reset delete window
-		$("#adminUserDeleteAlertInfo").html("Please select a user from the table above");
-
-		resetDeleteState();
-		window.document.getElementById("adminUserDeleteCheckbox").disabled = true;
-	});
-
-	$("#adminUserDeleteCheckbox").on("click", function () {
-		window.document.getElementById("adminUserDeleteButton").disabled = !window.document.getElementById("adminUserDeleteCheckbox").checked;
-	});
-
-	$("#adminUserDeleteButton").on("click", function () {
-		resetDeleteState();
-		if (adminSelectedUserRow === undefined) {
-			// Somehow a row isn't selected?
-			adminDisableEdit();
-			adminUserAlert("<strong>Broken state</strong> No User selected for deletion");
-			return;
-		}
-
-		$.ajax({
-			type: "POST",
-			url: "api/user/deleteUser.php", //php to post to
-			data: adminSelectedUserRow.children("td")[0].textContent
-		})
-			.done(function (response) { //successful function
-				window.console.log(response);
-				if (response === true) {
-					adminUserAlert("<strong>User Deleted!</strong> Deleted user successfully", "success");
-					adminLoadUsers();
-					window.document.getElementById("adminUserDeleteForm").reset();
-					adminDisableEdit();
-				} else {
-					adminUserAlert("<strong>Failed to delete user!</strong> An error was encountered while trying to delete the user", "danger");
-				}
-			})
-			.fail(function (response) {
-				window.console.log(response);
-				try {
-					adminUserAlert("<strong>Failed to delete user!</strong> " + response.responseJSON.message, "danger");
-				} catch (TypeError) {
-					adminUserAlert("<strong>Failed to delete user!</strong> Unable to send request to server.<br> Response: <strong>" + response.status + "</strong>: '" + response.statusText + "'", "danger");
-				}
-			});
-
-		// to prevent refreshing the whole page page
-		return false;
-
-	});
-
-	// Fix unreported bootstrap text color issue on modals
+/**
+ * Fix issue with bootstrap tab text colors
+ * on modals.
+ */
+function bindLinkFix() {
 	window.document.getElementById("adminLinkUserNew").onclick = function () {
 		$("#adminLinkUserNew").addClass("text-secondary");
 		$("#adminLinkUserNew").removeClass("text-primary");
@@ -362,6 +303,119 @@ addLoadEvent(function () {
 
 	$("#adminLinkBudgetCodeDelete").removeClass("text-secondary");
 	$("#adminLinkBudgetCodeDelete").addClass("text-primary");
+}
+
+// Postpone javascript execution until window is loaded
+addLoadEvent(function () {
+	// Link search to admin table
+	$("#adminSearchUser").on("keyup", function () {
+		search("adminTableUsers", $("#adminSearchUser").val());
+	});
+
+	$("#adminUserEditClear").on("click", function () {
+		// Reset edit window
+		window.document.getElementById("adminFormUserEdit").reset();
+		adminDisableEdit();
+		$("#adminTableUsers tbody tr").removeClass("bg-info");
+
+		// Reset delete window
+		$("#adminUserDeleteAlertInfo").html("Please select a user from the table above");
+
+		resetDeleteState();
+		window.document.getElementById("adminUserDeleteCheckbox").disabled = true;
+	});
+
+	$("#adminFormUserEdit").submit(function () {
+
+		let form = document.forms.namedItem("adminFormUserEdit");
+
+		let data = JSON.stringify({
+			userId:form.elements["userId"].value,
+			firstName:form.elements["firstName"].value,
+			lastName:form.elements["lastName"].value,
+			password:form.elements["password"].value,
+			roomNumber:form.elements["roomNumber"].value,
+			telephone:form.elements["telephone"].value,
+			email:form.elements["email"].value,
+			role:form.elements["role"].value
+		});
+
+		$.ajax({
+			type: "POST",
+			url: "api/user/editUser.php",
+			contentType: "application/json",
+			data: data
+		})
+			.done(function (response) {
+				window.console.log(response);
+				if (response === true) {
+					adminUserAlert("<strong>User Updated!</strong> User was updated successfully", "success");
+					adminLoadUsers();
+
+					// Clear the edit box
+					$("#adminUserEditClear").click();
+				} else {
+					adminUserAlert("<strong>Failed to update user!</strong> An error was encountered while trying to update the user", "danger");
+				}
+			})
+			.fail(function (response) {
+				window.console.log(response);
+				try {
+					adminUserAlert("<strong>Failed to update user!</strong> " + response.responseJSON.message, "danger");
+				} catch (TypeError) {
+					adminUserAlert("<strong>Failed to update user!</strong> Unable to send request to server.<br> Response: <strong>" + response.status + "</strong>: '" + response.statusText + "'", "danger");
+				}
+			});
+
+		// to prevent refreshing the whole page page
+		return false;
+	});
+
+	$("#adminUserDeleteCheckbox").on("click", function () {
+		window.document.getElementById("adminUserDeleteButton").disabled = !window.document.getElementById("adminUserDeleteCheckbox").checked;
+	});
+
+	$("#adminUserDeleteButton").on("click", function () {
+		resetDeleteState();
+		if (adminSelectedUserRow === undefined) {
+			// Somehow a row isn't selected?
+			adminDisableEdit();
+			adminUserAlert("<strong>Broken state</strong> No User selected for deletion");
+			return;
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "api/user/deleteUser.php", //php to post to
+			data: adminSelectedUserRow.children("td")[0].textContent
+		})
+			.done(function (response) { //successful function
+				window.console.log(response);
+				if (response === true) {
+					adminUserAlert("<strong>User Deleted!</strong> Deleted user successfully", "success");
+					adminLoadUsers();
+					window.document.getElementById("adminUserDeleteForm").reset();
+					adminDisableEdit();
+				} else {
+					adminUserAlert("<strong>Failed to delete user!</strong> An error was encountered while trying to delete the user", "danger");
+				}
+			})
+			.fail(function (response) {
+				window.console.log(response);
+				try {
+					adminUserAlert("<strong>Failed to delete user!</strong> " + response.responseJSON.message, "danger");
+				} catch (TypeError) {
+					adminUserAlert("<strong>Failed to delete user!</strong> Unable to send request to server.<br> Response: <strong>" + response.status + "</strong>: '" + response.statusText + "'", "danger");
+				}
+			});
+
+		// to prevent refreshing the whole page page
+		return false;
+
+	});
+
+	// Fix unreported bootstrap text color issue on modals
+	bindLinkFix();
 
 	$("#adminFormUserNew").submit(function () {
 
@@ -395,7 +449,7 @@ addLoadEvent(function () {
 
 	});
 
-	$("#adminFormBudgetCodeNew").submit(function() {
+	$("#adminFormBudgetCodeNew").submit(function () {
 		// Validation
 		if (!$("#adminBudgetCodeNewOwnerEmail").hasClass("is-valid")) {
 			return false;

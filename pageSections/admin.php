@@ -136,7 +136,7 @@
 											<div class="col col-3">
 												<div class="input-group">
 													<div class="input-group-prepend"><span class="input-group-text">ID </span></div>
-													<input type="text" name="ID" id="adminUserEditID" class="form-control" placeholder="Select From Table" disabled required>
+													<input type="text" name="userId" id="adminUserEditID" class="form-control" placeholder="Select From Table" disabled required>
 													<div class="input-group-append"><span class="input-group-text">
 															<div id="adminUserEditSpinner"></div>
 														</span></div>

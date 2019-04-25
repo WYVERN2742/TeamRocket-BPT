@@ -40,13 +40,11 @@ class Procurement {
 
 	}
 
-	public function insert($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId) {
-		$this->db->query("INSERT INTO Procurement (budgetCode, requesterId, date, status, declineReason, recurring, supplierId) VALUES (:budgetCode, :requesterId, :date, :status, :declineReason, :recurring, :supplierId)");
+	public function insert($budgetCode, $requesterId, $status, $recurring, $supplierId) {
+		$this->db->query("INSERT INTO Procurement (budgetCode, requesterId, status, recurring, supplierId) VALUES (:budgetCode, :requesterId, :status, :recurring, :supplierId)");
 		$this->db->bind(':budgetCode', $budgetCode);
 		$this->db->bind(':requesterId', $requesterId);
-		$this->db->bind(':date', $date);
 		$this->db->bind(':status', $status);
-		$this->db->bind(':declineReason', $declineReason);
 		$this->db->bind(':recurring', $recurring);
 		$this->db->bind(':supplierId', $supplierId);
 
@@ -54,10 +52,9 @@ class Procurement {
 	}
 
 	public function edit($budgetCode, $requesterId, $date, $status, $declineReason, $recurring, $supplierId, $procurementId) {
-		$this->db->query("UPDATE Procurement SET budgetCode=:budgetCode, requesterId=:requesterId, date=:date, status=:status, declineReason=:declineReason, recurring=:recurring, supplierId=:supplierId) WHERE procurementId=:procurementId");
+		$this->db->query("UPDATE Procurement SET budgetCode=:budgetCode, requesterId=:requesterId, status=:status, declineReason=:declineReason, recurring=:recurring, supplierId=:supplierId) WHERE procurementId=:procurementId");
 		$this->db->bind(':budgetCode', $budgetCode);
 		$this->db->bind(':requesterId', $requesterId);
-		$this->db->bind(':date', $date);
 		$this->db->bind(':status', $status);
 		$this->db->bind(':declineReason', $declineReason);
 		$this->db->bind(':recurring', $recurring);
@@ -70,6 +67,22 @@ class Procurement {
 		$this->db->query("UPDATE Procurement SET status=:state WHERE procurementId=:procurementId");
 		$this->db->bind(":state", $state);
 		$this->db->bind(":procurementId", $procurementId);
+
+		return $this->db->execute();
+	}
+
+	public function insertedProcurementId(){
+		$this->db->query("SELECT LAST_INSERT_ID() AS procurementId");
+		return $this->db->single();
+	}
+
+	public function insertItem($itemNumber, $procurementId, $name, $price, $quantity){
+		$this->db->query("INSERT INTO Item (itemNumber, procurementId, name, price, quantity) VALUES (:itemNumber, :procurementId, :name, :price, :quantity)");
+		$this->db->bind(":itemNumber", $itemNumber);
+		$this->db->bind(":procurementId", $procurementId);
+		$this->db->bind(":name", $name);
+		$this->db->bind(":price", $price);
+		$this->db->bind(":quantity", $quantity);
 
 		return $this->db->execute();
 	}

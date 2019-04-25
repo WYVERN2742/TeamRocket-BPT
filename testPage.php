@@ -8,68 +8,102 @@ include "pageSections/head.php";
 include "pageSections/header.php";
 ?>
 
-<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4 container-fluid">
-	<div class="col">
-		<div id="adminUserEdit" role="tabpanel" class="tab-pane fade show active">
-			<form id="adminFormUserNew" method="post">
+<!-- Request Modal -->
+<div class="modal fade fullscreen" id="requestModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="requestHeader">Request #</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
 				<div class="row">
-					<div class="col">
-						<div class="input-group">
-							<div class="input-group-prepend"><span class="input-group-text">Name</span></div>
-							<input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name" required>
-							<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required>
+					<div class="col col-4">
+						<div class="card">
+							<div class="card-header">
+								Budget Code Owner <div id="budgetCodeSpinner"></div>
+							</div>
+							<div class="card-body">
+								<div class="card-text">
+									<div id="budgetCode"><br></div>
+									<div id="budgetCodeName"><br></div>
+									<div id="budgetCodeRoom"><br></div>
+									<div id="budgetCodeNum"><br></div>
+									<div id="budgetCodeEmail"><br></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col col-4">
+						<div class="card">
+							<div class="card-header">
+								Supplier <div id="supplierSpinner"></div>
+							</div>
+							<div class="card-body">
+								<div class="card-text">
+									<div id="supplierName"><br> </div>
+									<div id="supplierAddress1"><br> </div>
+									<div id="supplierAddress2"><br> </div>
+									<div id="supplierAddressPostcode"><br> </div>
+									<div id="supplierAddressCity"><br> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col col-4">
+						<div class="card">
+							<div class="card-header">
+								Overview
+							</div>
+							<div class="card-body text-center">
+								<h1 class="card-title" id="labelCost">£8.53</h1>
+								<small id="labelAmount">(3 items)</small>
+							</div>
+							<div class="card-footer">
+								<div class="form-check">
+									<label class="form-check-label">
+										<input type="checkbox" class="form-check-input" name="inputRecurring" id="inputRecurring" disabled  >
+										Recurring Order
+									</label>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col col-3">
-						<div class="input-group">
-							<div class="input-group-prepend"><span class="input-group-text">Room #</span></div>
-							<input type="number" name="roomNumber" id="roomNumber" class="form-control" placeholder="404" required>
-						</div>
-					</div>
 					<div class="col">
-						<div class="input-group">
-							<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
-							<input type="email" name="email" id="email" class="form-control" placeholder="user@bangor.ac.uk" required>
-						</div>
-					</div>
-					<div class="col">
-						<div class="input-group">
-							<div class="input-group-prepend"><span class="input-group-text">Telephone</span></div>
-							<input type="text" name="telephone" id="telephone" class="form-control" placeholder="01234 567890" required>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<div class="input-group">
-							<div class="input-group-prepend"><span class="input-group-text">Role</span></div>
-							<select class="form-control" name="role" id="role">
-								<option value="REQUESTER">Requester</option>
-								<option value="REQUISITION_OFFICER">Requisition Officer</option>
-								<option value="CENTRAL_FINANCE">Central Finance</option>
-							</select>
-						</div>
-					</div>
-					<div class="col">
-						<div class="input-group">
-							<div class="input-group-prepend"><span class="input-group-text">Password</span></div>
-							<input type="password" name="password" id="password" class="form-control" placeholder required autofocus>
+						<div class="modal-body">
+							<div class="container-fluid">
+								<table class="table table-bordered table-hover table-responsive-md text-center" id="requestModalTable">
+									<thead class="thead-dark">
+										<tr>
+											<th>ID</th>
+											<th>Description</th>
+											<th>Quantity</th>
+											<th>Price</th>
+											<th>(Total)</th>
+										<tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col">
-						<button type="submit" class="btn btn-success col-sm-4">Update User</button>
-						<button type="reset" class="btn btn-outline-danger col-sm-4">Clear</button>
-					</div>
+			</div>
+			<div class="modal-footer">
+				<div class="col">
+					<button type="button" class="btn btn-outline-success" data-dismiss="modal">Accept Request</button>
+					<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Deny Request</button>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
-</main>
+</div>
 
 <?php include "pageSections/scripts.php" ?>
-<script src="js/testPage.js"></script>
+<script src="js/page/testPage.js"></script>
 <?php include "pageSections/footer.php" ?>

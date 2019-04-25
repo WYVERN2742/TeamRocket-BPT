@@ -19,9 +19,9 @@ $procurement = new Procurement($db);
 
 if (isset($_SESSION['user'])) {
 
-	$procurementData = $procurement->getRequestInfo($data->procurementId);
-	$itemsData = $procurement->getRequestItems($data->procurementId);
-	$supplierData = $procurement->getSupplierInfo($data->procurementId);
+	$procurementData = $procurement->getRequestInfo($data);
+	$itemsData = $procurement->getRequestItems($data);
+	$supplierData = $procurement->getSupplierInfo($data);
 
 	$procurementInfo["procurementInfo"] = $procurementData;
 	$procurementInfo["items"] = $itemsData;

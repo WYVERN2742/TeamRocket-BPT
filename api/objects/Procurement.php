@@ -90,7 +90,7 @@ class Procurement {
 	public function getRequestInfo($procurementId){
 		$this->db->query("SELECT * FROM Procurement WHERE procurementId = :procurementId");
 		$this->db->bind(":procurementId", $procurementId);
-		return $this->db->resultSet();
+		return $this->db->single();
 	}
 
 	public function getRequestItems($procurementId){
@@ -102,7 +102,7 @@ class Procurement {
 	public function getSupplierInfo($procurementId){
 		$this->db->query("SELECT * FROM Supplier s WHERE s.supplierId = (SELECT p.supplierId FROM Procurement p WHERE procurementId = :procurementId)");
 		$this->db->bind(":procurementId", $procurementId);
-		return $this->db->resultSet();
+		return $this->db->single();
 	}
 
 	public function delete($procurementId) {

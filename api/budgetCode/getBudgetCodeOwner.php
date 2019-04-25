@@ -20,11 +20,11 @@ session_start();
 $db = new Database();
 $Admin = new Admin($db);
 
-$data = json_decode(file_get_contents("php://input")); //not sure how this works :s
+$data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
 	$rs = $Admin->getBudgetCodeOwner($data);
-
+	error_log($data);
 	http_response_code(200);
 	echo json_encode($rs);
 } else {

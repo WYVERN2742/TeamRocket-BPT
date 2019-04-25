@@ -330,14 +330,14 @@ addLoadEvent(function () {
 		let form = document.forms.namedItem("adminFormUserEdit");
 
 		let data = JSON.stringify({
-			userId:form.elements["userId"].value,
-			firstName:form.elements["firstName"].value,
-			lastName:form.elements["lastName"].value,
-			password:form.elements["password"].value,
-			roomNumber:form.elements["roomNumber"].value,
-			telephone:form.elements["telephone"].value,
-			email:form.elements["email"].value,
-			role:form.elements["role"].value
+			userId: form.elements["userId"].value,
+			firstName: form.elements["firstName"].value,
+			lastName: form.elements["lastName"].value,
+			password: form.elements["password"].value,
+			roomNumber: form.elements["roomNumber"].value,
+			telephone: form.elements["telephone"].value,
+			email: form.elements["email"].value,
+			role: form.elements["role"].value
 		});
 
 		$.ajax({
@@ -459,10 +459,19 @@ addLoadEvent(function () {
 			return false;
 		}
 
+		let data = {
+			budgetCode: $("#adminBudgetCodeNewID").val(),
+			ownerId: $("#adminBudgetCodeNewOwnerID").html(),
+			procurementOfficer: $("#adminBudgetCodeNewOfficerID").html(),
+		};
+
+		window.console.log(JSON.stringify(data));
+
 		$.ajax({
 			type: "POST",
-			url: "api/budgetCode/newBudgetCode.php", //php to post to
-			data: $(this).serializeObject() //serializes all the form data to be sent as a post
+			url: "api/budgetCode/newBudgetCode.php",
+			contentType: "application/json",
+			data: JSON.stringify(data)  //serializes all the form data to be sent as a post
 		})
 			.done(function (response) { //successful function
 				window.console.log(response);
@@ -501,6 +510,7 @@ addLoadEvent(function () {
 			response.removeClass("invalid-feedback");
 			response.addClass("valid-feedback");
 
+			$("#adminBudgetCodeNewOwnerID").html("");
 			$("#adminBudgetCodeNewOwnerEmailSpinner").addClass("spinner-border");
 			$("#adminBudgetCodeNewOwnerEmailSpinner").addClass("spinner-border-sm");
 
@@ -514,6 +524,8 @@ addLoadEvent(function () {
 					$("#adminBudgetCodeNewOwnerEmailSpinner").removeClass("spinner-border");
 					$("#adminBudgetCodeNewOwnerEmailSpinner").removeClass("spinner-border-sm");
 					response.html("<strong>" + row.firstName + " " + row.lastName + "</strong>\n" + row.email);
+					$("#adminBudgetCodeNewOwnerID").html(row.userId);
+
 				},
 
 				error: function (xhr, resp, text) {
@@ -546,6 +558,7 @@ addLoadEvent(function () {
 			response.removeClass("invalid-feedback");
 			response.addClass("valid-feedback");
 
+			$("#adminBudgetCodeNewOfficerID").html("");
 			$("#adminBudgetCodeNewOfficerEmailSpinner").addClass("spinner-border");
 			$("#adminBudgetCodeNewOfficerEmailSpinner").addClass("spinner-border-sm");
 
@@ -560,6 +573,7 @@ addLoadEvent(function () {
 					$("#adminBudgetCodeNewOfficerEmailSpinner").removeClass("spinner-border-sm");
 					window.console.log(row);
 					response.html("<strong>" + row.firstName + " " + row.lastName + "</strong>\n" + row.email);
+					$("#adminBudgetCodeNewOfficerID").html(row.userId);
 				},
 
 				error: function (xhr, resp, text) {

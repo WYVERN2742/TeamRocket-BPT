@@ -310,9 +310,8 @@
 														<div class="input-group">
 															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
 															<input type="email" list="userEmails" class="form-control" name="email" id="adminBudgetCodeNewOwnerEmail" required>
-															<div class="input-group-append"><span class="input-group-text">
-																	<div id="adminBudgetCodeNewOwnerEmailSpinner"></div>
-																</span></div>
+															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
+															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeNewOwnerID"></div><div id="adminBudgetCodeNewOwnerEmailSpinner"></div></span></div>
 															<div class="valid-feedback is-valid" id="adminBudgetCodeNewOwnerEmailResponse"></div>
 														</div>
 													</div>
@@ -327,9 +326,8 @@
 														<div class="input-group">
 															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
 															<input type="email" list="officerEmails" class="form-control" name="email" id="adminBudgetCodeNewOfficerEmail" required>
-															<div class="input-group-append"><span class="input-group-text">
-																	<div id="adminBudgetCodeNewOfficerEmailSpinner"></div>
-																</span></div>
+															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
+															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeNewOfficerID"></div><div id="adminBudgetCodeNewOfficerEmailSpinner"></div></span></div>
 															<div class="valid-feedback is-valid" id="adminBudgetCodeNewOfficerEmailResponse"></div>
 														</div>
 													</div>

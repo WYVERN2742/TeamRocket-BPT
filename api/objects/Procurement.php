@@ -141,7 +141,7 @@ class Procurement {
 	 * @return array returns an array containing the result rows
 	 */
 	public function getRequestItems($procurementId){
-		$this->db->query("SELECT * FROM Item WHERE procurementId = :procurementId");
+		$this->db->query("SELECT itemNumber, name, price, quantity FROM Item WHERE procurementId = :procurementId");
 		$this->db->bind(":procurementId", $procurementId);
 		return $this->db->resultSet();
 	}

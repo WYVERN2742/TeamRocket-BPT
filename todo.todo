@@ -109,12 +109,8 @@ Pages:
 			✔ Add @done(19-04-22 19:47)
 			✔ Delete @done(19-04-25 16:34)
 		Budget Codes:
-<<<<<<< HEAD
-			✔ List @done(19-04-25 17:57)
-=======
 			☐ List
 				UI Done, waiting on backend to display emails
->>>>>>> 09a64896c9adf700fcf4babc21c3cd3c15c1ea1c
 			☐ Edit
 			☐ Add
 				UI Done, Waiting on backend to create budget codes

@@ -74,7 +74,7 @@ PHP:
 		user:
 			✔ newUser @done(19-04-24 19:29)
 			✔ deleteUser @done(19-04-24 19:29)
-			☐ editUser
+			✔ editUser @done(19-04-25 18:41)
 			✔ getUser @done(19-04-24 19:29)
 			✔ getAllUsers @done(19-04-24 19:29)
 		supplier:
@@ -85,9 +85,9 @@ PHP:
 			✔ getBudgetCodeOwner @done(19-04-24 19:32)
 			✔ getAllBudgetCodesInfo @done(19-04-24 19:32)
 			☐ getBudgetCodeInfo
-			☐ editBudgetCode
-			☐ deleteBudgetCode
-			☐ newBudgetCode
+			✔ editBudgetCode @done(19-04-25 19:06)
+			✔ deleteBudgetCode @done(19-04-25 18:56)
+			✔ newBudgetCode @done(19-04-25 18:11)
 
 Testing:
 	PHP Unit Tests:
@@ -109,7 +109,7 @@ Pages:
 			✔ Add @done(19-04-22 19:47)
 			✔ Delete @done(19-04-25 16:34)
 		Budget Codes:
-			☐ List
+			✔ List @done(19-04-25 18:02)
 				UI Done, waiting on backend to display emails
 			☐ Edit
 			☐ Add

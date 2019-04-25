@@ -106,16 +106,23 @@ class Admin {
 		return $this->db->execute();
 	}
 
-	public function editUser($userId, $password, $firstName, $lastName, $role, $roomNo, $telephoneNo, $email) {
-		$this->db->query("UPDATE User SET password=:password, firstName=:firstName, lastName=:lastName, role=:role, roomNo=:roomNo, telephoneNo=:telephoneNo, email=:email WHERE userId=:userId");
+	public function editUser($userId, $firstName, $lastName, $role, $roomNo, $telephoneNo, $email) {
+		$this->db->query("UPDATE User SET firstName=:firstName, lastName=:lastName, role=:role, roomNo=:roomNo, telephoneNo=:telephoneNo, email=:email WHERE userId=:userId");
 		$this->db->bind(":userId", $userId);
-		$this->db->bind(":password", $password);
 		$this->db->bind(":firstName", $firstName);
 		$this->db->bind(":lastName", $lastName);
 		$this->db->bind(":role", $role);
 		$this->db->bind(":roomNo", $roomNo);
 		$this->db->bind(":telephoneNo", $telephoneNo);
 		$this->db->bind(":email", $email);
+
+		return $this->db->execute();
+	}
+
+	public function changePassword($userId, $password){
+		$this->db->query("UPDATE User SET password = :password WHERE userId = :userId");
+		$this->db->bind(":password", $password);
+		$this->db->bind(":userId", $userId);
 
 		return $this->db->execute();
 	}
@@ -151,10 +158,12 @@ class Admin {
 		return $this->db->execute();
 	}
 
-	public function editBudgetCode($ownerId, $procurementOfficer) {
-		$this->db->query("UPDATE BudgetCode SET ownerId=:ownerId, procurementOfficer=:procurementOfficer WHERE budgetCode=:budgetCode");
+	public function editBudgetCode($budgetCode, $newBudgetCode, $ownerId, $procurementOfficer) {
+		$this->db->query("UPDATE BudgetCode SET budgetCode = :newBudgetCode, ownerId=:ownerId, procurementOfficer=:procurementOfficer WHERE budgetCode=:budgetCode");
 		$this->db->bind(":ownerId", $ownerId);
 		$this->db->bind(":procurementOfficer", $procurementOfficer);
+		$this->db->bind(":budgetCode", $budgetCode);
+		$this->db->bind(":newBudgetCode", $newBudgetCode);
 
 		return $this->db->execute();
 	}
@@ -169,6 +178,13 @@ class Admin {
 	public function getBudgetCodeEmails(){
 		$this->db->query("SELECT budgetCode, (SELECT email FROM User WHERE userId = ownerId) AS ownerEmail, (SELECT email FROM User WHERE userId = procurementOfficer) AS procurementOfficerEmail FROM BudgetCode");
 		return $this->db->resultSet();
+	}
+
+	public function removeBudgetCode($budgetCode){
+		$this->db->query("DELETE FROM BudgetCode WHERE budgetCode = :budgetCode");
+		$this->db->bind(":budgetCode", $budgetCode);
+
+		return $this->db->execute();
 	}
 
 	public function getError() {

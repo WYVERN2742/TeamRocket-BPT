@@ -37,12 +37,28 @@ class Admin {
 	}
 
 	/**
+	 * Get User with the provided email
+	 *
+	 * @param String $email Email of user
+	 * @return mixed info of single user
+	 */
+	public function getUserFromEmail($email){
+		$this->db->query("SELECT userId, firstName, lastName, role, roomNo, telephoneNo, email FROM User WHERE email = :email");
+		$this->db->bind(":email", $email);
+
+		$rs = $this->db->single();
+		return $rs;
+	}
+
+	/**
 	 * List of all emails.
 	 *
 	 * @return resultSet set of all user emails
 	 */
 	public function getAllUserEmails(){
-
+		$this->db->query("SELECT email FROM User");
+		$rs = $this->db->resultSet();
+		return $rs;
 	}
 
 	/**

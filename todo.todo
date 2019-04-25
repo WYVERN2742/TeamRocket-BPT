@@ -84,6 +84,9 @@ PHP:
 			✔ getBudgetCodeOwner @done(19-04-24 19:32)
 			✔ getAllBudgetCodesInfo @done(19-04-24 19:32)
 			☐ getBudgetCodeInfo
+			☐ editBudgetCode
+			☐ deleteBudgetCode
+			☐ newBudgetCode
 
 Testing:
 	PHP Unit Tests:
@@ -106,8 +109,10 @@ Pages:
 			✔ Delete @done(19-04-25 16:34)
 		Budget Codes:
 			☐ List
+				UI Done, waiting on backend to display emails
 			☐ Edit
 			☐ Add
+				UI Done, Waiting on backend to create budget codes
 			☐ Delete
 	Make Request:
 		✔ Create new rows after all filled @done(19-04-22 13:43)
@@ -115,7 +120,7 @@ Pages:
 		✔ Validation on budget code @done(19-04-20 00:32)
 		☐ Create Request
 	Home page:
-		☐ Drafts:
+		Drafts:
 			✘ Show saved drafts @cancelled(19-04-25 14:45)
 			✘ Edit Drafts @cancelled(19-04-25 14:45)
 			✘ Delete Drafts @cancelled(19-04-25 14:45)

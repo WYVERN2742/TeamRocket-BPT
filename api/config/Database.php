@@ -112,7 +112,8 @@ class Database {
 	}
 
 	/**
-	 * Returns the SQLSTATE 
+	 * Returns the SQLSTATE for the last operation
+	 * @return string
 	 */
 	public function getErrorCode() {
 		return $this->stmt->errorCode();

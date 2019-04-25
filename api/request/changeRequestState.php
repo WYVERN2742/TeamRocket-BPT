@@ -1,5 +1,4 @@
 <?php
-//header("Access-Control-Allow-Origin: http://localhost/");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
@@ -10,12 +9,20 @@ include_once '../objects/Procurement.php';
 
 session_start();
 
-$db = new Database();
-$procurement = new Procurement($db);
-
 if (isset($_SESSION['user'])) {
+	/**
+	 * 
+	 */
+
+	$db = new Database();
+	$procurement = new Procurement($db);
+
+	$json = file_get_contents('php://input');
+
+	$data = json_decode($json);
+
 	try {
-		switch ($_POST['state']) {
+		switch ($data->state) { // Makes sure the state being set is one that will be accepted by the database
 			case "DRAFT":
 				$state = "DRAFT";
 				break;
@@ -39,7 +46,7 @@ if (isset($_SESSION['user'])) {
 		}
 
 		if ($state != "INVALID") {
-			$rs = $procurement->changeState($_POST['id'], $state);
+			$rs = $procurement->changeState($data->procurementId, $state);
 			http_response_code(200);
 			echo json_encode($rs);
 		} else {

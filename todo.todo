@@ -29,10 +29,10 @@ PHP:
 	Document php files:
 		config:
 			☐ core
-			☐ Database
+			✔ Database @done(19-04-25 21:33)
 		objects:
-			☐ Admin
-			☐ Procurement
+			✔ Admin @done(19-04-25 22:06)
+			✔ Procurement @done(19-04-25 22:57)
 			☐ User
 			☐ Supplier
 		request:

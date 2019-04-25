@@ -1,3 +1,5 @@
+let supplierID;
+
 /**
  * Update the total cost of the request
  * Will break of there are an unbalanced amount of `cost` and `quantity`
@@ -183,14 +185,16 @@ addLoadEvent(function () {
 				data: JSON.stringify(inputS.val()),
 
 				success: function (row) {
+					window.console.log(row);
 					$("#supplierSpinner").removeClass("spinner-border");
 					$("#supplierSpinner").removeClass("spinner-border-sm");
 
-					$("#inputSupplierName").val(row.name);
-					$("#inputSupplierAddress1").val(row.addressLine1);
-					$("#inputSupplierAddress2").val(row.addressLine2);
-					$("#inputSupplierAddressPostcode").val(row.postcode);
-					$("#inputSupplierAddressCity").val(row.city);
+					$("#inputSupplierName").text(row.name);
+					$("#inputSupplierAddress1").text(row.addressLine1);
+					$("#inputSupplierAddress2").text(row.addressLine2);
+					$("#inputSupplierAddressPostcode").text(row.postcode);
+					$("#inputSupplierAddressCity").text(row.city);
+					supplierID = row.supplierId;
 				},
 
 				error: function (xhr, resp, text) {
@@ -201,7 +205,7 @@ addLoadEvent(function () {
 				}
 			});
 		} else {
-			response.text("Not Found! - Cannot Autofill Entries");
+			response.text("Not Found! - Pre-approved Supplier Required");
 			inputS.removeClass("form-control is-valid");
 			inputS.addClass("form-control is-invalid");
 			response.removeClass("valid-feedback");
@@ -258,4 +262,131 @@ addLoadEvent(function () {
 			});
 		},
 	});
+
+	$("#buttonSubmit").on("click", function() {
+		if ($(".is-invalid").length > 0) {
+			return;
+		}
+
+		if (typeof supplierID === "undefined") {
+			// State should technically be impossible
+			// Invalidate entered supplier incase
+			$("#inputSupplier").addClass("is-invalid");
+			return;
+		}
+
+		let request = {budgetCode:$("#inputBudgetCode").val(),
+			supplier:supplierID,
+			draft:false,
+			recurring:window.document.getElementById("inputRecurring").checked,
+			items:[]
+		};
+
+		let table = window.document.getElementById("tableItems");
+
+		// eslint-disable-next-line no-cond-assign
+
+		for (var i = 1; table.rows[i]; i++) {
+			// We need to check if all the rows in the table contain values
+
+			let id = request.items.length + 1;
+			let description = $("#inputItem"+i+"Description");
+			let cost = $("#inputItem"+i+"Cost");
+			let quantity = $("#inputItem"+i+"Quantity");
+
+			let state = 0;
+
+			if (description.val() === "") {
+				state++;
+			}
+
+			if (cost.val() === "") {
+				state++;
+			}
+
+			if (quantity.val() === "") {
+				state++;
+			}
+
+			if (state === 3) {
+				// Ignore the row as it's empty
+				continue;
+
+			} else if (state !== 0) {
+				// One or more columns are empty
+
+				if (description.val() === "") {
+					description.addClass("is-invalid");
+					description.on("input", function(){
+						$(this).removeClass("is-invalid");
+					});
+				}
+
+				if (cost.val() === "") {
+					cost.addClass("is-invalid");
+					cost.on("input", function(){
+						$(this).removeClass("is-invalid");
+					});
+				}
+
+				if (quantity.val() === "") {
+					quantity.addClass("is-invalid");
+					quantity.on("input", function(){
+						$(this).removeClass("is-invalid");
+					});
+				}
+
+				// Stop creating the response, as we know at least
+				// one row is invalid
+				return;
+			}
+
+			let item = {
+				itemNumber:id,
+				name:description.val(),
+				price:cost.val(),
+				quantity:quantity.val()
+			};
+
+			request.items.push(item);
+		}
+
+		if (request.items.length === 0) {
+			// Mark first row as invalid when table is empty
+			$("#inputItem1Description").addClass("is-invalid");
+			$("#inputItem1Description").on("input", function(){
+				$(this).removeClass("is-invalid");
+			});
+
+			$("#inputItem1Cost").addClass("is-invalid");
+			$("#inputItem1Cost").on("input", function(){
+				$(this).removeClass("is-invalid");
+			});
+
+			$("#inputItem1Quantity").addClass("is-invalid");
+			$("#inputItem1Quantity").on("input", function(){
+				$(this).removeClass("is-invalid");
+			});
+			return;
+		}
+
+		window.console.log(JSON.stringify(request));
+
+		$.ajax({
+			type: "POST",
+			url: "api/request/submitRequest.php",
+			contentType: "application/json",
+			data: JSON.stringify(request),
+
+			success: function () {
+				window.console.log("success");
+				window.location.href = "index.php";
+			},
+			error: function (resp) {
+				window.console.log(resp);
+			}
+		});
+	});
+
+
 });

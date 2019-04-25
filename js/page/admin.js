@@ -88,25 +88,21 @@ function adminLoadUsers() {
 	});
 }
 
-
-
 /**
  * Populate the admin budget codes table.
  * Also creates and binds events to the rows.
  */
 function adminLoadBudgetCodes() {
 	$.ajax({
-		// Populate admin users table
 		type: "GET",
-		url: "api/budgetCode/getAllBudgetCodesInfo.php",
+		url: "api/budgetCode/getBudgetCodeEmails.php",
 		contentType: "application/json",
 
 		success: function (rows) {
 			const numRows = rows.length;
-
 			let count = 0;
 			const dt = dynamicTable().config("adminTableBudgetCodes",
-				["budgetCode", "ownerId", "procurementOfficer"], null, "No budget codes");
+				["budgetCode", "ownerEmail", "procurementOfficerEmail"], null, "No budget codes");
 
 			for (let i = 0; i < numRows; i++) {
 				// Add all rows to table

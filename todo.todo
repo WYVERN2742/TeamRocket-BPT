@@ -23,7 +23,7 @@ PHP:
 		✔ Change Request state @done(19-04-24 18:06)
 			Used for main menu to accept requests
 		✔ viewAllBudgetCodesEmail needs implementing @done(19-04-25 17:12)
-			this is getBudgetcodeEmails in Admin.php
+			this is getBudgetCodeEmails in Admin.php
 		✔ Get all user emails @done(19-04-25 16:34)
 
 	Document php files:
@@ -67,7 +67,8 @@ PHP:
 			☐ Supplier
 		request:
 			✔ submitRequest @done(19-04-25 16:49)
-			✔ getRequestInfo @done(19-04-25 17:56)
+			☐ getRequestInfo
+				Need to include date, and sorted by date
 			✔ changeRequestState @done(19-04-24 19:29)
 			✔ getUserRequests @done(19-04-24 19:29)
 			✘ editRequest @cancelled(19-04-24 19:24)
@@ -110,7 +111,6 @@ Pages:
 			✔ Delete @done(19-04-25 16:34)
 		Budget Codes:
 			✔ List @done(19-04-25 18:02)
-				UI Done, waiting on backend to display emails
 			☐ Edit
 			☐ Add
 				UI Done, Waiting on backend to create budget codes
@@ -119,7 +119,7 @@ Pages:
 		✔ Create new rows after all filled @done(19-04-22 13:43)
 		✔ Update total @done(19-04-22 13:43)
 		✔ Validation on budget code @done(19-04-20 00:32)
-		☐ Create Request
+		✔ Create Request @done(19-04-25 19:37)
 	Home page:
 		Drafts:
 			✘ Show saved drafts @cancelled(19-04-25 14:45)

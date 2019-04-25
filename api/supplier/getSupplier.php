@@ -16,7 +16,7 @@ $user = new User($db);
 $data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
-	$db->query("SELECT name, addressLine1, addressLine2, postcode, city FROM Supplier WHERE name = :name LIMIT 0,1");
+	$db->query("SELECT supplierId, name, addressLine1, addressLine2, postcode, city FROM Supplier WHERE name = :name LIMIT 0,1");
 	$db->bind("name", $data);
 	$row = $db->single();
 

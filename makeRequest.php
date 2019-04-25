@@ -26,11 +26,11 @@ include "pageSections/header.php";
 				</div>
 				<div class="col">
 					<div class="form-label-group">
-						<input type="text" id="inputSupplier" class="form-control" name="inputSupplier" list="listSuppliers">
+						<input type="text" id="inputSupplier" class="form-control is-invalid" name="inputSupplier" list="listSuppliers">
 						<label for="inputSupplier">
 							<div id="supplierIDSpinner" class="spinner-border spinner-border-sm"></div> Supplier
 						</label>
-						<div class="valid-feedback" id="supplier_response"></div>
+						<div class="invalid-feedback" id="supplier_response">Not Found! - Valid Pre-approved Supplier Required</div>
 					</div>
 				</div>
 			</div>
@@ -60,7 +60,19 @@ include "pageSections/header.php";
 							Supplier <div id="supplierSpinner"></div>
 						</div>
 						<div class="card-body">
-							<div class="form-group">
+							<div class="card-text">
+								<strong>Name </strong>
+								<div id="inputSupplierName"><br> </div>
+								<strong>Address Line 1 </strong>
+								<div id="inputSupplierAddress1"><br> </div>
+								<strong>Address Line 2</strong>
+								<div id="inputSupplierAddress2"><br> </div>
+								<strong>Postcode</strong>
+								<div id="inputSupplierAddressPostcode"><br> </div>
+								<strong>City / Town</strong>
+								<div id="inputSupplierAddressCity"><br> </div>
+							</div>
+							<!-- <div class="form-group">
 								<div class="form-label-group">
 									<input type="text" id="inputSupplierName" class="form-control">
 									<label for="inputSupplierName">Name</label>
@@ -81,7 +93,7 @@ include "pageSections/header.php";
 									<input type="text" id="inputSupplierAddressCity" class="form-control">
 									<label for="inputSupplierAddressCity">City / Town</label>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -93,12 +105,12 @@ include "pageSections/header.php";
 							Total Cost
 						</div>
 						<div class="card-body">
-							<h2 class="card-title" id="labelCost">£102.93</h2>
+							<h2 class="card-title" id="labelCost">£0.00</h2>
 						</div>
 						<div class="card-footer">
 							<div class="form-check">
 								<label class="form-check-label">
-									<input type="checkbox" class="form-check-input" name="inputRecurring" id="inputRecurring" checked>
+									<input type="checkbox" class="form-check-input" name="inputRecurring" id="inputRecurring">
 									Recurring Order
 								</label>
 							</div>
@@ -111,7 +123,7 @@ include "pageSections/header.php";
 					<button type="button" name="buttonSubmit" id="buttonSubmit" class="btn btn-success btn-lg btn-block">Submit</button>
 				</div>
 				<div class="col align-self-end">
-					<button type="button" name="buttonDraft" id="buttonDraft" class="btn btn-primary btn-lg btn-block">Save Draft</button>
+					<button type="button" name="buttonDraft" id="buttonDraft" class="btn btn-primary btn-lg btn-block" disabled>Save Draft</button>
 				</div>
 			</div>
 		</div>
@@ -141,7 +153,7 @@ include "pageSections/header.php";
 					<tr>
 						<td scope="row">2</td>
 						<td><input type="text" class="form-control" name="inputItem2Description" id="inputItem2Description"></td>
-						<td><input type="number" class="form-control quantity" name="inputItem2Quantity" id="inputItem2Quantity" ></td>
+						<td><input type="number" class="form-control quantity" name="inputItem2Quantity" id="inputItem2Quantity"></td>
 						<td>
 							<div class="input-group">
 								<div class="input-group-prepend"><span class="input-group-text">£</span></div>

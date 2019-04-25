@@ -37,6 +37,15 @@ class Admin {
 	}
 
 	/**
+	 * List of all emails.
+	 *
+	 * @return resultSet set of all user emails
+	 */
+	public function getAllUserEmails(){
+
+	}
+
+	/**
 	 * Info of one user.
 	 *
 	 * @param String $userId
@@ -88,6 +97,15 @@ class Admin {
 		$this->db->query("SELECT budgetCode, ownerId, procurementOfficer FROM BudgetCode");
 		$rs = $this->db->resultSet();
 		return $rs;
+	}
+
+	/**
+	 * Return a full list of budget codes and the owners as email addresses
+	 *
+	 * @return ResultSet
+	 */
+	public function viewAllBudgetCodesEmail() {
+
 	}
 
 	public function viewBudgetCode($budgetCode) {

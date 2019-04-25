@@ -155,6 +155,11 @@ class Admin {
 		return $rs;
 	}
 
+	public function getBudgetCodeEmails(){
+		$this->db->query("SELECT budgetCode, (SELECT email FROM User WHERE userId = ownerId) AS ownerEmail, (SELECT email FROM User WHERE userId = procurementOfficer) AS procurementOfficerEmail FROM BudgetCode");
+		return $this->db->resultSet();
+	}
+
 	public function getError() {
 		return $this->db->getError();
 	}

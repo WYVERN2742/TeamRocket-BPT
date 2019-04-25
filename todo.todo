@@ -65,7 +65,7 @@ PHP:
 			✔ User @done(19-04-24 19:29)
 			☐ Supplier
 		request:
-			☐ submitRequest
+			✔ submitRequest @done(19-04-25 16:49)
 			☐ getRequestInfo
 			✔ changeRequestState @done(19-04-24 19:29)
 			✔ getUserRequests @done(19-04-24 19:29)

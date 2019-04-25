@@ -12,14 +12,14 @@ addLoadEvent(function () {
 
 		success: function (rows) {
 			const numRows = rows.length;
-			let showAmount = 5;
+			let showAmount = 15;
 
 			const viewMore = $("#viewInput");
 			let count = 0;
 			const dt = dynamicTable().config("tableRequests",
 				["procurementId", "budgetCode", "requesterId", "status"], null, "No requests");
 
-			if (numRows < 5) {
+			if (numRows < showAmount) {
 				showAmount = numRows;
 			}
 

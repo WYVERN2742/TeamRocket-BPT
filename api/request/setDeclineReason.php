@@ -17,6 +17,7 @@ if (isset($_SESSION['user'])) {
 	try {
         $rs = $procurement->setDeclineReason($data->procurementId, $data->declineReason);
         // $rs = $procurement->setDeclineReason(328, "test"); exmaple that works
+        
         http_response_code(200);
         echo json_encode($rs);
 

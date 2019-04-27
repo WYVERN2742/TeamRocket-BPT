@@ -113,8 +113,7 @@ Pages:
 		Budget Codes:
 			✔ List @done(19-04-25 18:02)
 			☐ Edit
-			☐ Add
-				UI Done, Waiting on backend to create budget codes
+			✔ Add @done(19-04-27 22:28)
 			☐ Delete
 	Make Request:
 		✔ Create new rows after all filled @done(19-04-22 13:43)
@@ -127,6 +126,6 @@ Pages:
 			✘ Edit Drafts @cancelled(19-04-25 14:45)
 			✘ Delete Drafts @cancelled(19-04-25 14:45)
 		Procurement Request:
-			☐ Show Procurement Request on click
+			✔ Show Procurement Request on click @done(19-04-27 22:28)
 			☐ Allow confirmation of procurement requests
 			☐ Allow refusal of procurement requests

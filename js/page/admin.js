@@ -156,7 +156,7 @@ function adminLoadBudgetCodes() {
 										}
 
 										$("#adminBudgetCodeDeleteAlertInfo").html("Selected Budget Code: <strong>" + budgetCode.budgetCode + "</strong>"
-											+ "<br>" + owner.firstName + " " + owner.lastName + "  <i>(" + owner.email + ")</i>" +
+											+ "<br>" + owner.firstName + " " + owner.lastName + "  <i>(" + owner.email + ")</i>"
 											+ "<br>" + officer.firstName + " " + officer.lastName + "  <i>(" + officer.email + ")</i>");
 
 										resetBudgetCodeDeleteState();
@@ -525,7 +525,7 @@ addLoadEvent(function () {
 		$.ajax({
 			type: "POST",
 			url: "api/budgetCode/deleteBudgetCode.php", //php to post to
-			data: adminSelectedBudgetCodeRow.children("td")[0].textContent
+			data: JSON.stringify({budgetCode:adminSelectedBudgetCodeRow.children("td")[0].textContent})
 		})
 			.done(function (response) { //successful function
 				window.console.log(response);

@@ -53,7 +53,6 @@ if (isset($_SESSION['user'])) {
 			foreach ($data->items as $item) {
 				$procurement->insertItem($item->itemNumber, $procurementId, $item->name, $item->price, $item->quantity);
 			}
-			error_log("Response??");
 
 			echo json_encode(array(
 				"message" => "Procurement Created."

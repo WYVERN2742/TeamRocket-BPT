@@ -44,11 +44,6 @@ $page = "login";
 		<label for="inputPassword">Password</label>
 	</div>
 
-	<div class="checkbox mb-3 text-center">
-		<label>
-			<input type="checkbox" value="remember-me"> Remember me
-		</label>
-	</div>
 	<button class="btn btn-lg btn-primary btn-block text-center" type="submit">Sign in</button>
 	<p class="mt-5 mb-3 text-muted text-center">Bangor University &copy;2019</p>
 </form>

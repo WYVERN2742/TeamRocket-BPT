@@ -80,8 +80,8 @@ class Admin {
 	}
 
 	/**
-	 * Inserts a new user into the User table. 
-	 * 
+	 * Inserts a new user into the User table.
+	 *
 	 * @param String $password Password
 	 * @param String $firstName First Name
 	 * @param String $lastName Last Name
@@ -105,8 +105,8 @@ class Admin {
 	}
 
 	/**
-	 * Deletes a user from the User table. 
-	 * 
+	 * Deletes a user from the User table.
+	 *
 	 * @param int $userId User ID
 	 * @return bool A return of true means execution was successful
 	 */
@@ -119,7 +119,7 @@ class Admin {
 
 	/**
 	 * Updates an existing users information in the User table.
-	 * 
+	 *
 	 * @param int $userId User ID
 	 * @param String $firstName First Name
 	 * @param String $lastName Last Name
@@ -144,7 +144,7 @@ class Admin {
 
 	/**
 	 * Changes the password for an existing user in the User table.
-	 * 
+	 *
 	 * @param int $userId User ID
 	 * @param String $password Password
 	 * @return bool return of true means execution was successful
@@ -158,8 +158,8 @@ class Admin {
 	}
 
 	/**
-	 * Returns a result set of all budget codes in the BudgetCode table. 
-	 * 
+	 * Returns a result set of all budget codes in the BudgetCode table.
+	 *
 	 * @return array $rs is an array of rows returned from the SQL query
 	 */
 	public function viewAllBudgetCodes() {
@@ -170,7 +170,7 @@ class Admin {
 
 	/**
 	 * Returns information for a specified budget code
-	 * 
+	 *
 	 * @param String $budgetCode Budget code
 	 * @return array $rs is an array containing a single row from the SQL query
 	 */
@@ -182,8 +182,8 @@ class Admin {
 	}
 
 	/**
-	 * Inserts a new budget code into the BudgetCode table. 
-	 * 
+	 * Inserts a new budget code into the BudgetCode table.
+	 *
 	 * @param String $budgetCode Budget code
 	 * @param int $ownerId Owner ID
 	 * @param int $procurementOfficer Procurement Officer (otherwise known as a requisition officer)
@@ -199,8 +199,8 @@ class Admin {
 	}
 
 	/**
-	 * Updates the information of an existing budget code in the BudgetCode table. 
-	 * 
+	 * Updates the information of an existing budget code in the BudgetCode table.
+	 *
 	 * @param String $budgetCode Budget code, the original budget code.
 	 * @param String $newBudgetCode New budget code, the new budget code value
 	 * @param int $ownerId Owner ID
@@ -218,8 +218,8 @@ class Admin {
 	}
 
 	/**
-	 * Gets the user information about a budget code owner for a specified budget code. 
-	 * 
+	 * Gets the user information about a budget code owner for a specified budget code.
+	 *
 	 * @param String $budgetCode
 	 * @return array $rs is an array containing a single row from the SQL query
 	 */
@@ -231,8 +231,22 @@ class Admin {
 	}
 
 	/**
+	 * Gets the user information about a budget code owner for a specified budget code.
+	 *
+	 * @param String $budgetCode
+	 * @return array $rs is an array containing a single row from the SQL query
+	 */
+	public function getBudgetCodeOfficer($budgetCode) {
+		$this->db->query("SELECT firstName, lastName, roomNo, telephoneNo, email FROM User WHERE userId = (SELECT procurementOfficer FROM BudgetCode WHERE budgetCode = :budgetCode) LIMIT 0, 1");
+		$this->db->bind("budgetCode", $budgetCode);
+		$rs = $this->db->single();
+		return $rs;
+	}
+
+
+	/**
 	 * Gets the budget code with the emails for the owner and procurement officer.
-	 * 
+	 *
 	 * @return array Returns an array of rows returned from the SQL query
 	 */
 	public function getBudgetCodeEmails(){
@@ -241,9 +255,9 @@ class Admin {
 	}
 
 	/**
-	 * Deletes a the passed budget code from the BudgetCode table. 
-	 * 
-	 * @param String $budgetCode Budget code 
+	 * Deletes a the passed budget code from the BudgetCode table.
+	 *
+	 * @param String $budgetCode Budget code
 	 * @return bool return of true means execution was successful
 	 */
 	public function removeBudgetCode($budgetCode){
@@ -255,7 +269,7 @@ class Admin {
 
 	/**
 	 * Returns the error message for the last operation. Implemented for debugging purposes.
-	 * 
+	 *
 	 * @return String Error message.
 	 */
 	public function getError() {

@@ -63,11 +63,11 @@ function adminLoadUsers() {
 						$("#adminUserEditEmail").val(user.email);
 						$("#adminUserEditRole").val(user.role);
 
-						adminEnableEdit();
+						adminUserEnableEdit();
 
 						$("#adminUserDeleteAlertInfo").html("Selected user: <strong>" + user.firstName + " " + user.lastName +
 							"</strong> <br> <italic> " + user.email + "</italic> (" + user.telephoneNo + ")");
-						resetDeleteState();
+						resetUserDeleteState();
 
 					},
 
@@ -75,7 +75,7 @@ function adminLoadUsers() {
 						adminUserAlert("<strong> Failed to load user</strong> Response was '" + text + "'", "danger");
 						$("#budgetCodeSpinner").removeClass("spinner-border");
 						$("#budgetCodeSpinner").removeClass("spinner-border-sm");
-						resetDeleteState();
+						resetUserDeleteState();
 					}
 				});
 
@@ -95,7 +95,7 @@ function adminLoadUsers() {
 function adminLoadBudgetCodes() {
 	$.ajax({
 		type: "GET",
-		url: "api/budgetCode/getBudgetCodeEmails.php",
+		url: "api/budgetCode/getAllBudgetCodeEmails.php",
 		contentType: "application/json",
 
 		success: function (rows) {
@@ -111,16 +111,72 @@ function adminLoadBudgetCodes() {
 
 			$("#adminTableBudgetCodes tbody tr").on("click", (function () {
 				adminSelectedBudgetCodeRow = $(this);
-				// let cols = adminSelectedBudgetCodeRow.children("td");
+				let cols = adminSelectedBudgetCodeRow.children("td");
 
 				// Switch colours
 				adminSelectedBudgetCodeRow.addClass("bg-info").siblings().removeClass("bg-info");
 
-			}));
-		},
+				$("#adminBudgetCodeEditSpinner").addClass("spinner-border");
+				$("#adminBudgetCodeEditSpinner").addClass("spinner-border-sm");
+				adminBudgetCodeDisableEdit();
 
-		error: function (xhr, resp, text) {
-			window.console.log(text);
+				// Populate edit fields
+				$.ajax({
+
+					type: "POST",
+					url: "api/budgetCode/getBudgetCode.php",
+					contentType: "application/json",
+					data: JSON.stringify({ budgetCode: cols[0].textContent }),
+
+					success: function (budgetCode) {
+						$.ajax({
+							type: "Post",
+							url: "api/budgetcode/getBudgetCodeOwner.php",
+							contentType: "application/json",
+							data: JSON.stringify(budgetCode.budgetCode),
+
+							success: function (owner) {
+								$.ajax({
+									type: "Post",
+									url: "api/budgetcode/getBudgetCodeOfficer.php",
+									contentType: "application/json",
+									data: JSON.stringify(budgetCode.budgetCode),
+
+									success: function (officer) {
+
+										window.console.log(budgetCode);
+										window.console.log(owner);
+										window.console.log(officer);
+
+										if (budgetCode.budgetCode != cols[0].textContent) {
+											// Ensure the currently selected BudgetCode is the received ajax
+											// In some cases where the request is slow, the user could've clicked
+											// another BudgetCode before we receive the data
+											return;
+										}
+
+										$("#adminBudgetCodeDeleteAlertInfo").html("Selected Budget Code: <strong>" + budgetCode.budgetCode + "</strong>"
+											+ "<br>" + owner.firstName + " " + owner.lastName + "  <i>(" + owner.email + ")</i>" +
+											+ "<br>" + officer.firstName + " " + officer.lastName + "  <i>(" + officer.email + ")</i>");
+
+										resetBudgetCodeDeleteState();
+
+										$("#adminBudgetCodeEditSpinner").removeClass("spinner-border");
+										$("#adminBudgetCodeEditSpinner").removeClass("spinner-border-sm");
+
+										// Populate edit fields
+										$("#adminBudgetCodeEditID").val(budgetCode.budgetCode);
+										$("#adminBudgetCodeEditOwnerEmail").val(owner.email);
+										$("#adminBudgetCodeEditOfficerEmail").val(officer.email);
+
+										adminBudgetCodeEnableEdit();
+									}
+								});
+							},
+						});
+					}
+				});
+			}));
 		}
 	});
 }
@@ -129,7 +185,7 @@ function adminLoadBudgetCodes() {
  * Resets the checkbox and button state of the delete confirmation
  * dialogue.
  */
-function resetDeleteState() {
+function resetUserDeleteState() {
 	window.document.getElementById("adminUserDeleteCheckbox").checked = false;
 	window.document.getElementById("adminUserDeleteButton").disabled = true;
 }
@@ -137,7 +193,7 @@ function resetDeleteState() {
 /**
  * Enable the user editing form.
  */
-function adminDisableEdit() {
+function adminUserDisableEdit() {
 	window.document.getElementById("adminUserEditFirstName").disabled = true;
 	window.document.getElementById("adminUserEditLastName").disabled = true;
 	window.document.getElementById("adminUserEditRoomNumber").disabled = true;
@@ -152,14 +208,14 @@ function adminDisableEdit() {
 	// Reset delete window
 	$("#adminUserDeleteAlertInfo").html("Please select a user from the table above");
 	window.document.getElementById("adminUserDeleteButton").disabled = true;
-	resetDeleteState();
+	resetUserDeleteState();
 
 }
 
 /**
  * Disable the user editing form.
  */
-function adminEnableEdit() {
+function adminUserEnableEdit() {
 	window.document.getElementById("adminUserEditFirstName").disabled = false;
 	window.document.getElementById("adminUserEditLastName").disabled = false;
 	window.document.getElementById("adminUserEditRoomNumber").disabled = false;
@@ -173,8 +229,47 @@ function adminEnableEdit() {
 
 	// Enable delete checkbox
 	window.document.getElementById("adminUserDeleteCheckbox").disabled = false;
-	resetDeleteState();
+	resetUserDeleteState();
 }
+
+/**
+ * Resets the checkbox and button state of the delete confirmation
+ * dialogue.
+ */
+function resetBudgetCodeDeleteState() {
+	window.document.getElementById("adminBudgetCodeDeleteCheckbox").checked = false;
+	window.document.getElementById("adminBudgetCodeDeleteButton").disabled = true;
+}
+
+/**
+ * Enable the BudgetCode editing form.
+ */
+function adminBudgetCodeDisableEdit() {
+	window.document.getElementById("adminBudgetCodeEditID").disabled = true;
+	window.document.getElementById("adminBudgetCodeEditOwnerEmail").disabled = true;
+	window.document.getElementById("adminBudgetCodeEditOfficerEmail").disabled = true;
+	// window.document.getElementById("adminBudgetCodeEditClear").disabled = true;
+
+	// Reset delete window
+	$("#adminBudgetCodeDeleteAlertInfo").html("Please select a budget code from the table above");
+	window.document.getElementById("adminBudgetCodeDeleteButton").disabled = true;
+	resetBudgetCodeDeleteState();
+
+}
+
+/**
+ * Disable the BudgetCode editing form.
+ */
+function adminBudgetCodeEnableEdit() {
+	window.document.getElementById("adminBudgetCodeEditID").disabled = false;
+	window.document.getElementById("adminBudgetCodeEditOwnerEmail").disabled = false;
+	window.document.getElementById("adminBudgetCodeEditOfficerEmail").disabled = false;
+
+	// Enable delete checkbox
+	window.document.getElementById("adminBudgetCodeDeleteCheckbox").disabled = false;
+	resetBudgetCodeDeleteState();
+}
+
 
 /**
  * Create an alert on the admin user page.
@@ -315,13 +410,13 @@ addLoadEvent(function () {
 	$("#adminUserEditClear").on("click", function () {
 		// Reset edit window
 		window.document.getElementById("adminFormUserEdit").reset();
-		adminDisableEdit();
+		adminUserDisableEdit();
 		$("#adminTableUsers tbody tr").removeClass("bg-info");
 
 		// Reset delete window
 		$("#adminUserDeleteAlertInfo").html("Please select a user from the table above");
 
-		resetDeleteState();
+		resetUserDeleteState();
 		window.document.getElementById("adminUserDeleteCheckbox").disabled = true;
 	});
 
@@ -376,10 +471,10 @@ addLoadEvent(function () {
 	});
 
 	$("#adminUserDeleteButton").on("click", function () {
-		resetDeleteState();
+		resetUserDeleteState();
 		if (adminSelectedUserRow === undefined) {
 			// Somehow a row isn't selected?
-			adminDisableEdit();
+			adminUserDisableEdit();
 			adminUserAlert("<strong>Broken state</strong> No User selected for deletion");
 			return;
 		}
@@ -395,7 +490,7 @@ addLoadEvent(function () {
 					adminUserAlert("<strong>User Deleted!</strong> Deleted user successfully", "success");
 					adminLoadUsers();
 					window.document.getElementById("adminUserDeleteForm").reset();
-					adminDisableEdit();
+					adminUserDisableEdit();
 				} else {
 					adminUserAlert("<strong>Failed to delete user!</strong> An error was encountered while trying to delete the user", "danger");
 				}
@@ -414,7 +509,50 @@ addLoadEvent(function () {
 
 	});
 
-	// Fix unreported bootstrap text color issue on modals
+	$("#adminBudgetCodeDeleteCheckbox").on("click", function () {
+		window.document.getElementById("adminBudgetCodeDeleteButton").disabled = !window.document.getElementById("adminBudgetCodeDeleteCheckbox").checked;
+	});
+
+	$("#adminBudgetCodeDeleteButton").on("click", function () {
+		// resetBudgetCodeDeleteState();
+		if (adminSelectedBudgetCodeRow === undefined) {
+			// Somehow a row isn't selected?
+			// adminBudgetCodeDisableEdit();
+			adminBudgetCodeAlert("<strong>Broken state</strong> No Budget Code selected for deletion");
+			return;
+		}
+
+		$.ajax({
+			type: "POST",
+			url: "api/budgetCode/deleteBudgetCode.php", //php to post to
+			data: adminSelectedBudgetCodeRow.children("td")[0].textContent
+		})
+			.done(function (response) { //successful function
+				window.console.log(response);
+				if (response === true) {
+					adminBudgetCodeAlert("<strong>Budget Code Deleted!</strong> Deleted Budget Code successfully", "success");
+					adminLoadBudgetCodes();
+					window.document.getElementById("adminBudgetCodeDeleteForm").reset();
+					// adminBudgetCodeDisableEdit();
+				} else {
+					adminBudgetCodeAlert("<strong>Failed to delete Budget Code!</strong> An error was encountered while trying to delete the Budget Code", "danger");
+				}
+			})
+			.fail(function (response) {
+				window.console.log(response);
+				try {
+					adminBudgetCodeAlert("<strong>Failed to delete Budget Code!</strong> " + response.responseJSON.message, "danger");
+				} catch (TypeError) {
+					adminBudgetCodeAlert("<strong>Failed to delete Budget Code!</strong> Unable to send request to server.<br> Response: <strong>" + response.status + "</strong>: '" + response.statusText + "'", "danger");
+				}
+			});
+
+		// to prevent refreshing the whole page page
+		return false;
+
+	});
+
+	// Fix unreported bootstrap text c  olor issue on modals
 	bindLinkFix();
 
 	$("#adminFormUserNew").submit(function () {

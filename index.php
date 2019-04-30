@@ -191,8 +191,8 @@ include "pageSections/header.php";
 			</div>
 			<div class="modal-footer">
 				<div class="col">
-					<button type="button" class="btn btn-outline-success" data-dismiss="modal">Accept Request</button>
-					<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Deny Request</button>
+					<button type="button" id="acceptRequest" class="btn btn-outline-success" data-dismiss="modal" disabled="true">Accept Request</button>
+					<button type="button" id="denyRequest" class="btn btn-outline-danger" data-dismiss="modal" disabled="true">Deny Request</button>
 				</div>
 			</div>
 		</div>

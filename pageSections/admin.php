@@ -191,7 +191,7 @@
 										<div class="row">
 											<div class="col">
 												<button type="submit" class="btn btn-success col-sm-4" id="adminUserEditSubmit" disabled>Update User</button>
-												<button type="reset" class="btn btn-outline-danger col-sm-4" id="adminUserEditClear" disabled>Clear</button>
+												<button type="reset" class="btn btn-outline-warning col-sm-4" id="adminUserEditClear" disabled>Clear</button>
 											</div>
 										</div>
 									</form>
@@ -311,7 +311,10 @@
 															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
 															<input type="email" list="userEmails" class="form-control" name="email" id="adminBudgetCodeNewOwnerEmail" required>
 															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
-															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeNewOwnerID"></div><div id="adminBudgetCodeNewOwnerEmailSpinner"></div></span></div>
+															<div class="input-group-append"><span class="input-group-text">
+																	<div id="adminBudgetCodeNewOwnerID"></div>
+																	<div id="adminBudgetCodeNewOwnerEmailSpinner"></div>
+																</span></div>
 															<div class="valid-feedback is-valid" id="adminBudgetCodeNewOwnerEmailResponse"></div>
 														</div>
 													</div>
@@ -327,7 +330,10 @@
 															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
 															<input type="email" list="officerEmails" class="form-control" name="email" id="adminBudgetCodeNewOfficerEmail" required>
 															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
-															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeNewOfficerID"></div><div id="adminBudgetCodeNewOfficerEmailSpinner"></div></span></div>
+															<div class="input-group-append"><span class="input-group-text">
+																	<div id="adminBudgetCodeNewOfficerID"></div>
+																	<div id="adminBudgetCodeNewOfficerEmailSpinner"></div>
+																</span></div>
 															<div class="valid-feedback is-valid" id="adminBudgetCodeNewOfficerEmailResponse"></div>
 														</div>
 													</div>
@@ -338,7 +344,7 @@
 								</div>
 								<!-- Edit Budget Code -->
 								<div id="adminBudgetCodeEdit" role="tabpanel" class="tab-pane fade">
-								<form id="adminFormBudgetCodeEdit" method="post">
+									<form id="adminFormBudgetCodeEdit" method="post">
 										<div class="row">
 											<div class="col">
 												<div class="row">
@@ -351,7 +357,8 @@
 												</div>
 												<div class="row">
 													<div class="col">
-														<button type="submit" name="adminBudgetCodeEditButton" id="adminBudgetCodeEditButton" class="btn btn-primary btn-lg btn-block">Update Budget Code</button>
+														<button type="submit" class="btn btn-success col-sm-6" id="adminBudgetCodeEditSubmit" disabled>Update Budget Code</button>
+														<button type="reset" class="btn btn-outline-warning col-sm-4" id="adminBudgetCodeEditClear" disabled>Clear</button>
 													</div>
 												</div>
 											</div>
@@ -363,9 +370,12 @@
 													<div class="card-body">
 														<div class="input-group">
 															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
-															<input type="email" list="userEmails" class="form-control" name="email" id="adminBudgetCodeEditOwnerEmail" required disabled>
+															<input type="email" list="userEmails" class="form-control" name="ownerEmail" id="adminBudgetCodeEditOwnerEmail" required disabled>
 															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
-															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeEditOwnerID"></div><div id="adminBudgetCodeEditOwnerEmailSpinner"></div></span></div>
+															<div class="input-group-append"><span class="input-group-text">
+																	<div id="adminBudgetCodeEditOwnerID"></div>
+																	<div id="adminBudgetCodeEditOwnerEmailSpinner"></div>
+																</span></div>
 															<div class="valid-feedback is-valid" id="adminBudgetCodeEditOwnerEmailResponse"></div>
 														</div>
 													</div>
@@ -379,9 +389,12 @@
 													<div class="card-body">
 														<div class="input-group">
 															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
-															<input type="email" list="officerEmails" class="form-control" name="email" id="adminBudgetCodeEditOfficerEmail" required disabled>
+															<input type="email" list="officerEmails" class="form-control" name="officerEmail" id="adminBudgetCodeEditOfficerEmail" required disabled>
 															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
-															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeEditOfficerID"></div><div id="adminBudgetCodeEditOfficerEmailSpinner"></div></span></div>
+															<div class="input-group-append"><span class="input-group-text">
+																	<div id="adminBudgetCodeEditOfficerID"></div>
+																	<div id="adminBudgetCodeEditOfficerEmailSpinner"></div>
+																</span></div>
 															<div class="valid-feedback is-valid" id="adminBudgetCodeEditOfficerEmailResponse"></div>
 														</div>
 													</div>

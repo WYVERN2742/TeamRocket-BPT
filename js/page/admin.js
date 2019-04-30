@@ -223,8 +223,9 @@ function adminUserEnableEdit() {
 	window.document.getElementById("adminUserEditTelephone").disabled = false;
 	window.document.getElementById("adminUserEditRole").disabled = false;
 	window.document.getElementById("adminUserEditPassword").disabled = false;
-	window.document.getElementById("adminUserEditSubmit").disabled = false;
 	window.document.getElementById("adminUserEditFirstName").disabled = false;
+
+	window.document.getElementById("adminUserEditSubmit").disabled = false;
 	window.document.getElementById("adminUserEditClear").disabled = false;
 
 	// Enable delete checkbox
@@ -248,13 +249,33 @@ function adminBudgetCodeDisableEdit() {
 	window.document.getElementById("adminBudgetCodeEditID").disabled = true;
 	window.document.getElementById("adminBudgetCodeEditOwnerEmail").disabled = true;
 	window.document.getElementById("adminBudgetCodeEditOfficerEmail").disabled = true;
-	// window.document.getElementById("adminBudgetCodeEditClear").disabled = true;
+
+	window.document.getElementById("adminBudgetCodeEditSubmit").disabled = true;
+	window.document.getElementById("adminBudgetCodeEditClear").disabled = true;
 
 	// Reset delete window
 	$("#adminBudgetCodeDeleteAlertInfo").html("Please select a budget code from the table above");
 	window.document.getElementById("adminBudgetCodeDeleteButton").disabled = true;
 	resetBudgetCodeDeleteState();
 
+
+	// Remove spinners and validation messages
+	$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border");
+	$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border-sm");
+
+	$("#adminBudgetCodeEditOwnerEmailResponse").removeClass("valid-feedback");
+	$("#adminBudgetCodeEditOwnerEmailResponse").removeClass("invalid-feedbac");
+	$("#adminBudgetCodeEditOwnerEmailResponse").html("");
+	$("#adminBudgetCodeEditOwnerEmail").val("");
+	$("#adminBudgetCodeEditOwnerEmail").removeClass("is-valid");
+	$("#adminBudgetCodeEditOwnerEmail").removeClass("is-invalid");
+
+	$("#adminBudgetCodeEditOfficerEmailResponse").removeClass("valid-feedback");
+	$("#adminBudgetCodeEditOfficerEmailResponse").removeClass("invalid-feedbac");
+	$("#adminBudgetCodeEditOfficerEmailResponse").html("");
+	$("#adminBudgetCodeEditOfficerEmail").val("");
+	$("#adminBudgetCodeEditOfficerEmail").removeClass("is-valid");
+	$("#adminBudgetCodeEditOfficerEmail").removeClass("is-invalid");
 }
 
 /**
@@ -265,8 +286,15 @@ function adminBudgetCodeEnableEdit() {
 	window.document.getElementById("adminBudgetCodeEditOwnerEmail").disabled = false;
 	window.document.getElementById("adminBudgetCodeEditOfficerEmail").disabled = false;
 
+	window.document.getElementById("adminBudgetCodeEditSubmit").disabled = false;
+	window.document.getElementById("adminBudgetCodeEditClear").disabled = false;
+
 	// Enable delete checkbox
 	window.document.getElementById("adminBudgetCodeDeleteCheckbox").disabled = false;
+
+
+	validateEditBudgetCodeOfficerEmail();
+	validateEditBudgetCodeOwnerEmail();
 	resetBudgetCodeDeleteState();
 }
 
@@ -400,6 +428,102 @@ function bindLinkFix() {
 	$("#adminLinkBudgetCodeDelete").addClass("text-primary");
 }
 
+function validateEditBudgetCodeOwnerEmail() {
+	let response = $("#adminBudgetCodeEditOwnerEmailResponse");
+	let emailInput = $("#adminBudgetCodeEditOwnerEmail");
+
+	// Make all emails lowercase for comparison
+	let lEmail = adminUserEmails.map(function (elem) { return elem.toLowerCase(); });
+
+	if ((lEmail.includes(emailInput.val().toLowerCase()))) {
+		response.text("Loading info...");
+		emailInput.addClass("is-valid");
+		emailInput.removeClass("is-invalid");
+		response.removeClass("invalid-feedback");
+		response.addClass("valid-feedback");
+
+		$("#adminBudgetCodeEditOwnerID").html("");
+		$("#adminBudgetCodeEditOwnerEmailSpinner").addClass("spinner-border");
+		$("#adminBudgetCodeEditOwnerEmailSpinner").addClass("spinner-border-sm");
+
+		$.ajax({
+			type: "POST",
+			url: "api/user/getUserFromEmail.php",
+			contentType: "application/json",
+			data: JSON.stringify(emailInput.val()),
+
+			success: function (row) {
+				$("#adminBudgetCodeEditOwnerEmailSpinner").removeClass("spinner-border");
+				$("#adminBudgetCodeEditOwnerEmailSpinner").removeClass("spinner-border-sm");
+				response.html("<strong>" + row.firstName + " " + row.lastName + "</strong>\n" + row.email);
+				$("#adminBudgetCodeEditOwnerID").html(row.userId);
+
+			},
+
+			error: function (xhr, resp, text) {
+				window.console.log(text);
+				$("#adminBudgetCodeEditOwnerEmailSpinner").removeClass("spinner-border");
+				$("#adminBudgetCodeEditOwnerEmailSpinner").removeClass("spinner-border-sm");
+			}
+		});
+
+	} else {
+		response.text("Not Found! - Existing User Email Required");
+		emailInput.removeClass("is-valid");
+		emailInput.addClass("is-invalid");
+		response.removeClass("valid-feedback");
+		response.addClass("invalid-feedback");
+	}
+}
+
+function validateEditBudgetCodeOfficerEmail() {
+	let response = $("#adminBudgetCodeEditOfficerEmailResponse");
+	let emailInput = $("#adminBudgetCodeEditOfficerEmail");
+
+	// Make all emails lowercase for comparison
+	let lEmail = adminOfficerEmails.map(function (elem) { return elem.toLowerCase(); });
+
+	if ((lEmail.includes(emailInput.val().toLowerCase()))) {
+		response.text("Loading info...");
+		emailInput.addClass("is-valid");
+		emailInput.removeClass("is-invalid");
+		response.removeClass("invalid-feedback");
+		response.addClass("valid-feedback");
+
+		$("#adminBudgetCodeEditOfficerID").html("");
+		$("#adminBudgetCodeEditOfficerEmailSpinner").addClass("spinner-border");
+		$("#adminBudgetCodeEditOfficerEmailSpinner").addClass("spinner-border-sm");
+
+		$.ajax({
+			type: "POST",
+			url: "api/user/getUserFromEmail.php",
+			contentType: "application/json",
+			data: JSON.stringify(emailInput.val()),
+
+			success: function (row) {
+				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border");
+				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border-sm");
+				window.console.log(row);
+				response.html("<strong>" + row.firstName + " " + row.lastName + "</strong>\n" + row.email);
+				$("#adminBudgetCodeEditOfficerID").html(row.userId);
+			},
+
+			error: function (xhr, resp, text) {
+				window.console.log(text);
+				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border");
+				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border-sm");
+			}
+		});
+
+	} else {
+		response.text("Not Found! - Existing User Email Required");
+		emailInput.removeClass("is-valid");
+		emailInput.addClass("is-invalid");
+		response.removeClass("valid-feedback");
+		response.addClass("invalid-feedback");
+	}
+}
+
 // Postpone javascript execution until window is loaded
 addLoadEvent(function () {
 	// Link search to admin table
@@ -419,6 +543,20 @@ addLoadEvent(function () {
 		resetUserDeleteState();
 		window.document.getElementById("adminUserDeleteCheckbox").disabled = true;
 	});
+
+	$("#adminBudgetCodeEditClear").on("click", function () {
+		// Reset edit window
+		window.document.getElementById("adminFormBudgetCodeEdit").reset();
+		adminBudgetCodeDisableEdit();
+		$("#adminTableBudgetCodes tbody tr").removeClass("bg-info");
+
+		// Reset delete window
+		$("#adminBudgetCodeDeleteAlertInfo").html("Please select a budget code from the table above");
+
+		resetBudgetCodeDeleteState();
+		window.document.getElementById("adminBudgetCodeDeleteCheckbox").disabled = true;
+	});
+
 
 	$("#adminFormUserEdit").submit(function () {
 
@@ -525,7 +663,7 @@ addLoadEvent(function () {
 		$.ajax({
 			type: "POST",
 			url: "api/budgetCode/deleteBudgetCode.php", //php to post to
-			data: JSON.stringify({budgetCode:adminSelectedBudgetCodeRow.children("td")[0].textContent})
+			data: JSON.stringify({ budgetCode: adminSelectedBudgetCodeRow.children("td")[0].textContent })
 		})
 			.done(function (response) { //successful function
 				window.console.log(response);
@@ -552,7 +690,7 @@ addLoadEvent(function () {
 
 	});
 
-	// Fix unreported bootstrap text c  olor issue on modals
+	// Fix unreported bootstrap text color issue on modals
 	bindLinkFix();
 
 	$("#adminFormUserNew").submit(function () {
@@ -728,6 +866,62 @@ addLoadEvent(function () {
 			response.removeClass("valid-feedback");
 			response.addClass("invalid-feedback");
 		}
+	});
+
+	$("#adminFormBudgetCodeEdit").submit(function () {
+		// Validation
+		if (!$("#adminBudgetCodeEditOwnerEmail").hasClass("is-valid")) {
+			return false;
+		}
+
+		if (!$("#adminBudgetCodeEditOfficerEmail").hasClass("is-valid")) {
+			return false;
+		}
+
+		let data = {
+			budgetCode: adminSelectedBudgetCodeRow.children("td")[0].textContent,
+			newBudgetCode: $("#adminBudgetCodeEditID").val(),
+			ownerId: $("#adminBudgetCodeEditOwnerID").html(),
+			procurementOfficer: $("#adminBudgetCodeEditOfficerID").html(),
+		};
+
+		window.console.log(JSON.stringify(data));
+
+		$.ajax({
+			type: "POST",
+			url: "api/budgetCode/editBudgetCode.php",
+			contentType: "application/json",
+			data: JSON.stringify(data) //serializes all the form data to be sent as a post
+		})
+			.done(function (response) { //successful function
+				window.console.log(response);
+				if (response === true) {
+					adminBudgetCodeAlert("<strong>Budget Code Created!</strong> Created a edit budget code successfully", "success");
+					window.document.getElementById("adminFormBudgetCodeEdit").reset();
+					adminLoadBudgetCodes();
+				} else {
+					adminBudgetCodeAlert("<strong>Failed to create budget code!</strong> An error was encountered while trying to create a edit budget code", "danger");
+				}
+			})
+			.fail(function (response) {
+				// failure function
+				try {
+					adminBudgetCodeAlert("<strong>Failed to create budget code!</strong> " + response.responseJSON.message, "danger");
+				} catch (TypeError) {
+					adminBudgetCodeAlert("<strong>Failed to create budget code!</strong> Unable to send request to server.<br> Response: <strong>" + response.status + "</strong>: '" + response.statusText + "'", "danger");
+				}
+			});
+
+		// Prevent redirect
+		return false;
+	});
+
+	$("#adminBudgetCodeEditOwnerEmail").on("input", function () {
+		validateEditBudgetCodeOwnerEmail();
+	});
+
+	$("#adminBudgetCodeEditOfficerEmail").on("input", function () {
+		validateEditBudgetCodeOfficerEmail();
 	});
 
 	$.ajax({

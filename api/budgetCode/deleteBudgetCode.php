@@ -17,8 +17,8 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
 	try {
-        $rs = $Admin->removeBudgetCode($data->budgetCode);
-        
+		$rs = $Admin->removeBudgetCode($data->budgetCode);
+
 		// Respond with 200 if $rs is true
 		if ($rs) {
 			http_response_code(200);

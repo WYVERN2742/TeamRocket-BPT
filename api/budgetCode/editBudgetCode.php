@@ -17,9 +17,8 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
 	try {
-        $rs = $Admin->editBudgetCode($data->budgetCode, $data->newBudgetCode, $data->ownerId, $data->procurementOfficer);
-        //$rs = $Admin->editBudgetCode("xn822339", "Banana", "4", "7");
-        
+		$rs = $Admin->editBudgetCode($data->budgetCode, $data->newBudgetCode, $data->ownerId, $data->procurementOfficer);
+
 		// Respond with 200 if $rs is true
 		if ($rs) {
 			http_response_code(200);

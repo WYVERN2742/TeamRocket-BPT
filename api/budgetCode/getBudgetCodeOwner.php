@@ -24,7 +24,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (isset($_SESSION['user'])) {
 	$rs = $Admin->getBudgetCodeOwner($data);
-	error_log($data);
+
 	http_response_code(200);
 	echo json_encode($rs);
 } else {

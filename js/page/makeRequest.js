@@ -140,8 +140,7 @@ addLoadEvent(function () {
 					$("#budgetCodeEmail").text(row.email);
 				},
 
-				error: function (xhr, resp, text) {
-					window.console.log(text);
+				error: function () {
 					$("#budgetCodeSpinner").removeClass("spinner-border");
 					$("#budgetCodeSpinner").removeClass("spinner-border-sm");
 				}
@@ -185,7 +184,6 @@ addLoadEvent(function () {
 				data: JSON.stringify(inputS.val()),
 
 				success: function (row) {
-					window.console.log(row);
 					$("#supplierSpinner").removeClass("spinner-border");
 					$("#supplierSpinner").removeClass("spinner-border-sm");
 
@@ -197,11 +195,10 @@ addLoadEvent(function () {
 					supplierID = row.supplierId;
 				},
 
-				error: function (xhr, resp, text) {
+				error: function () {
 					$("#supplierSpinner").removeClass("spinner-border");
 					$("#supplierSpinner").removeClass("spinner-border-sm");
 
-					window.console.log(text);
 				}
 			});
 		} else {
@@ -370,8 +367,6 @@ addLoadEvent(function () {
 			return;
 		}
 
-		window.console.log(JSON.stringify(request));
-
 		$.ajax({
 			type: "POST",
 			url: "api/request/submitRequest.php",
@@ -379,12 +374,8 @@ addLoadEvent(function () {
 			data: JSON.stringify(request),
 
 			success: function () {
-				window.console.log("success");
 				window.location.href = "index.php";
 			},
-			error: function (resp) {
-				window.console.log(resp);
-			}
 		});
 	});
 

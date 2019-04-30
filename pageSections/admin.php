@@ -338,8 +338,56 @@
 								</div>
 								<!-- Edit Budget Code -->
 								<div id="adminBudgetCodeEdit" role="tabpanel" class="tab-pane fade">
-									<form id="adminFormBudgetCodeEdit" method="post">
-										<div class="display-1">Edit Budget Code</div>
+								<form id="adminFormBudgetCodeEdit" method="post">
+										<div class="row">
+											<div class="col">
+												<div class="row">
+													<div class="col">
+														<div class="input-group">
+															<div class="input-group-prepend"><span class="input-group-text">ID</span></div>
+															<input type="text" name="id" id="adminBudgetCodeEditID" class="form-control" placeholder="XX######" required disabled>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col">
+														<button type="submit" name="adminBudgetCodeEditButton" id="adminBudgetCodeEditButton" class="btn btn-primary btn-lg btn-block">Update Budget Code</button>
+													</div>
+												</div>
+											</div>
+											<div class="col">
+												<div class="card">
+													<div class="card-header">
+														Budget Code Owner
+													</div>
+													<div class="card-body">
+														<div class="input-group">
+															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
+															<input type="email" list="userEmails" class="form-control" name="email" id="adminBudgetCodeEditOwnerEmail" required disabled>
+															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
+															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeEditOwnerID"></div><div id="adminBudgetCodeEditOwnerEmailSpinner"></div></span></div>
+															<div class="valid-feedback is-valid" id="adminBudgetCodeEditOwnerEmailResponse"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col">
+												<div class="card">
+													<div class="card-header">
+														Procurement Officer
+													</div>
+													<div class="card-body">
+														<div class="input-group">
+															<div class="input-group-prepend"><span class="input-group-text">Email</span></div>
+															<input type="email" list="officerEmails" class="form-control" name="email" id="adminBudgetCodeEditOfficerEmail" required disabled>
+															<div class="input-group-append"><span class="input-group-text">ID:</span></div>
+															<div class="input-group-append"><span class="input-group-text"><div id="adminBudgetCodeEditOfficerID"></div><div id="adminBudgetCodeEditOfficerEmailSpinner"></div></span></div>
+															<div class="valid-feedback is-valid" id="adminBudgetCodeEditOfficerEmailResponse"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</form>
 								</div>
 								<!-- Delete Budget Code -->

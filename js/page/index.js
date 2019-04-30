@@ -14,6 +14,7 @@ addLoadEvent(function () {
 
 			success: function (rows) {
 				const numRows = rows.length;
+				$("#pending_requests")[0].innerHTML = numRows;
 				let showAmount = 15;
 
 				const viewMore = $("#viewInput");
@@ -130,11 +131,11 @@ addLoadEvent(function () {
 							});
 
 							// ACCEPT AND DENY REQUESTS
+							acceptButton.off("click");
 							acceptButton.on("click", function() {
-								//e.stopImmediatePropagation();
 								window.console.log("clicked");
 								window.console.log(data.procurementInfo.procurementId);
-								/*$.ajax({
+								$.ajax({
 									type: "POST",
 									url: "api/request/updateRequestStatus.php",
 									contentType: "application/json",
@@ -146,9 +147,10 @@ addLoadEvent(function () {
 									success: function () {
 										loadRequests();
 									}
-								});*/
+								});
 							});
 
+							denyButton.off("click");
 							denyButton.on("click", function () {
 								$.ajax({
 									type: "POST",

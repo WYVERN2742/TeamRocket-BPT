@@ -81,10 +81,6 @@ function adminLoadUsers() {
 
 			}));
 		},
-
-		error: function (xhr, resp, text) {
-			window.console.log(text);
-		}
 	});
 }
 
@@ -143,11 +139,6 @@ function adminLoadBudgetCodes() {
 									data: JSON.stringify(budgetCode.budgetCode),
 
 									success: function (officer) {
-
-										window.console.log(budgetCode);
-										window.console.log(owner);
-										window.console.log(officer);
-
 										if (budgetCode.budgetCode != cols[0].textContent) {
 											// Ensure the currently selected BudgetCode is the received ajax
 											// In some cases where the request is slow, the user could've clicked
@@ -460,8 +451,7 @@ function validateEditBudgetCodeOwnerEmail() {
 
 			},
 
-			error: function (xhr, resp, text) {
-				window.console.log(text);
+			error: function () {
 				$("#adminBudgetCodeEditOwnerEmailSpinner").removeClass("spinner-border");
 				$("#adminBudgetCodeEditOwnerEmailSpinner").removeClass("spinner-border-sm");
 			}
@@ -503,13 +493,11 @@ function validateEditBudgetCodeOfficerEmail() {
 			success: function (row) {
 				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border");
 				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border-sm");
-				window.console.log(row);
 				response.html("<strong>" + row.firstName + " " + row.lastName + "</strong>\n" + row.email);
 				$("#adminBudgetCodeEditOfficerID").html(row.userId);
 			},
 
-			error: function (xhr, resp, text) {
-				window.console.log(text);
+			error: function () {
 				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border");
 				$("#adminBudgetCodeEditOfficerEmailSpinner").removeClass("spinner-border-sm");
 			}
@@ -580,7 +568,6 @@ addLoadEvent(function () {
 			data: data
 		})
 			.done(function (response) {
-				window.console.log(response);
 				if (response === true) {
 					adminUserAlert("<strong>User Updated!</strong> User was updated successfully", "success");
 					adminLoadUsers();
@@ -592,7 +579,6 @@ addLoadEvent(function () {
 				}
 			})
 			.fail(function (response) {
-				window.console.log(response);
 				try {
 					adminUserAlert("<strong>Failed to update user!</strong> " + response.responseJSON.message, "danger");
 				} catch (TypeError) {
@@ -623,7 +609,6 @@ addLoadEvent(function () {
 			data: adminSelectedUserRow.children("td")[0].textContent
 		})
 			.done(function (response) { //successful function
-				window.console.log(response);
 				if (response === true) {
 					adminUserAlert("<strong>User Deleted!</strong> Deleted user successfully", "success");
 					adminLoadUsers();
@@ -634,7 +619,6 @@ addLoadEvent(function () {
 				}
 			})
 			.fail(function (response) {
-				window.console.log(response);
 				try {
 					adminUserAlert("<strong>Failed to delete user!</strong> " + response.responseJSON.message, "danger");
 				} catch (TypeError) {
@@ -666,7 +650,6 @@ addLoadEvent(function () {
 			data: JSON.stringify({ budgetCode: adminSelectedBudgetCodeRow.children("td")[0].textContent })
 		})
 			.done(function (response) { //successful function
-				window.console.log(response);
 				if (response === true) {
 					adminBudgetCodeAlert("<strong>Budget Code Deleted!</strong> Deleted Budget Code successfully", "success");
 					adminLoadBudgetCodes();
@@ -677,7 +660,6 @@ addLoadEvent(function () {
 				}
 			})
 			.fail(function (response) {
-				window.console.log(response);
 				try {
 					adminBudgetCodeAlert("<strong>Failed to delete Budget Code!</strong> " + response.responseJSON.message, "danger");
 				} catch (TypeError) {
@@ -701,7 +683,6 @@ addLoadEvent(function () {
 			data: $(this).serializeObject() //serializes all the form data to be sent as a post
 		})
 			.done(function (response) { //successful function
-				window.console.log(response);
 				if (response === true) {
 					adminUserAlert("<strong>User Created!</strong> Created a new user successfully", "success");
 					window.document.getElementById("adminFormUserNew").reset();
@@ -712,7 +693,6 @@ addLoadEvent(function () {
 			})
 			.fail(function (response) {
 				//failure function
-				window.console.log(response);
 				try {
 					adminUserAlert("<strong>Failed to create user!</strong> " + response.responseJSON.message, "danger");
 				} catch (TypeError) {
@@ -741,8 +721,6 @@ addLoadEvent(function () {
 			procurementOfficer: $("#adminBudgetCodeNewOfficerID").html(),
 		};
 
-		window.console.log(JSON.stringify(data));
-
 		$.ajax({
 			type: "POST",
 			url: "api/budgetCode/newBudgetCode.php",
@@ -750,7 +728,6 @@ addLoadEvent(function () {
 			data: JSON.stringify(data)  //serializes all the form data to be sent as a post
 		})
 			.done(function (response) { //successful function
-				window.console.log(response);
 				if (response === true) {
 					adminBudgetCodeAlert("<strong>Budget Code Created!</strong> Created a new budget code successfully", "success");
 					window.document.getElementById("adminFormBudgetCodeNew").reset();
@@ -804,8 +781,7 @@ addLoadEvent(function () {
 
 				},
 
-				error: function (xhr, resp, text) {
-					window.console.log(text);
+				error: function () {
 					$("#adminBudgetCodeNewOwnerEmailSpinner").removeClass("spinner-border");
 					$("#adminBudgetCodeNewOwnerEmailSpinner").removeClass("spinner-border-sm");
 				}
@@ -847,13 +823,11 @@ addLoadEvent(function () {
 				success: function (row) {
 					$("#adminBudgetCodeNewOfficerEmailSpinner").removeClass("spinner-border");
 					$("#adminBudgetCodeNewOfficerEmailSpinner").removeClass("spinner-border-sm");
-					window.console.log(row);
 					response.html("<strong>" + row.firstName + " " + row.lastName + "</strong>\n" + row.email);
 					$("#adminBudgetCodeNewOfficerID").html(row.userId);
 				},
 
-				error: function (xhr, resp, text) {
-					window.console.log(text);
+				error: function () {
 					$("#adminBudgetCodeNewOfficerEmailSpinner").removeClass("spinner-border");
 					$("#adminBudgetCodeNewOfficerEmailSpinner").removeClass("spinner-border-sm");
 				}
@@ -885,8 +859,6 @@ addLoadEvent(function () {
 			procurementOfficer: $("#adminBudgetCodeEditOfficerID").html(),
 		};
 
-		window.console.log(JSON.stringify(data));
-
 		$.ajax({
 			type: "POST",
 			url: "api/budgetCode/editBudgetCode.php",
@@ -894,7 +866,6 @@ addLoadEvent(function () {
 			data: JSON.stringify(data) //serializes all the form data to be sent as a post
 		})
 			.done(function (response) { //successful function
-				window.console.log(response);
 				if (response === true) {
 					adminBudgetCodeAlert("<strong>Budget Code Created!</strong> Created a edit budget code successfully", "success");
 					window.document.getElementById("adminFormBudgetCodeEdit").reset();

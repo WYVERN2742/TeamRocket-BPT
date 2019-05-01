@@ -184,13 +184,13 @@ addLoadEvent(function () {
 									"<td class=\"text-left\"> " + element.name + " </td>" +
 									"<td> " + element.quantity + " </td>" +
 									"<td> " + element.price + " </td>" +
-									"<td> £" + sub + " </td>" +
+									"<td> £" + parseFloat(sub).toFixed(2) + " </td>" +
 									"</tr>");
 
 							});
 
 							$("#labelAmount").html("(" + totalQuant + " item" + (totalQuant === 1 ? "" : "s") + ")");
-							$("#labelCost").html("£" + total);
+							$("#labelCost").html("£" + total.toFixed(2));
 
 							let recurring = data.procurementInfo.recurring === "1";
 

@@ -103,7 +103,7 @@ include "pageSections/header.php";
 					<div class="col col-3">
 						<div class="card">
 							<div class="card-header">
-								Budget Code Owner <div id="budgetCodeSpinner"></div>
+								Budget Code <div id="budgetCodeSpinner"></div>
 							</div>
 							<div class="card-body">
 								<div class="card-text">
@@ -153,8 +153,8 @@ include "pageSections/header.php";
 								Overview
 							</div>
 							<div class="card-body text-center">
-								<h1 class="card-title" id="labelCost">£8.53</h1>
-								<small id="labelAmount">(3 items)</small>
+								<h1 class="card-title" id="labelCost">£0.00</h1>
+								<small id="labelAmount">(p items)</small>
 							</div>
 							<div class="card-footer">
 								<div class="form-check">

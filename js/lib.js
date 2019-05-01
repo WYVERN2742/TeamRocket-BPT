@@ -39,8 +39,8 @@ function dynamicTable() {
 				case "DONE":
 					c = "<strong><span class=\"badge badge-success badge-pill\">Ordered</span></strong>";
 					break;
-				case "DENIED":
-					c = "<strong><span class=\"badge badge-danger badge-pill\">Denied</span></strong>";
+				case "DECLINED":
+					c = "<strong><span class=\"badge badge-danger badge-pill\">Declined</span></strong>";
 					break;
 				}
 				row += "<td>" + c + "</td>";

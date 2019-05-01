@@ -22,7 +22,7 @@ class Procurement {
 	 * @return resultSet list of requests
 	 */
 	public function getAllProcurements($userID) {
-		$this->db->query("SELECT p.*, (SELECT email FROM User u WHERE u.userId = requesterId) AS 'requesterEmail' FROM Procurement p WHERE p.requesterId = :requesterId OR p.budgetCode IN (SELECT b.budgetCode FROM BudgetCode b WHERE b.ownerId = :requesterId) OR p.budgetCode IN (SELECT b.budgetCode FROM BudgetCode b WHERE procurementOfficer = :requesterId) ORDER BY `date` DESC");
+		$this->db->query("SELECT p.*, (SELECT email FROM User u WHERE u.userId = requesterId) AS 'requesterEmail' FROM Procurement p WHERE p.requesterId = :requesterId OR p.budgetCode IN (SELECT b.budgetCode FROM BudgetCode b WHERE b.ownerId = :requesterId) OR p.budgetCode IN (SELECT b.budgetCode FROM BudgetCode b WHERE procurementOfficer = :requesterId) OR (status = 'BEFORE_FINANCE_APPROVAL' AND (SELECT role FROM User WHERE userId = :requesterId) = 'CENTRAL_FINANCE') ORDER BY `date` DESC");
 		$this->db->bind(":requesterId", $userID);
 		$rs = $this->db->resultSet();
 		return $rs;

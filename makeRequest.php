@@ -122,9 +122,9 @@ include "pageSections/header.php";
 				<div class="col align-self-start">
 					<button type="button" name="buttonSubmit" id="buttonSubmit" class="btn btn-success btn-lg btn-block">Submit</button>
 				</div>
-				<div class="col align-self-end">
+				<!-- <div class="col align-self-end">
 					<button type="button" name="buttonDraft" id="buttonDraft" class="btn btn-primary btn-lg btn-block" disabled>Save Draft</button>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="col-md-8">

@@ -221,11 +221,4 @@ addLoadEvent(function () {
 			}
 		});
 	}
-
-
-
-
-
-
-
 });

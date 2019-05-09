@@ -1,7 +1,7 @@
 <?php
 //used the and modified code from tutorial
 class Database {
-	private $host = "2.120.112.205";
+	private $host = "2.120.114.27";
 	private $db_name = "TRPT";
 	private $username = "teamrocketuser";
 	private $password = "teamrocket";
@@ -79,7 +79,7 @@ class Database {
 
 	/**
 	 * Executes prepared statement and return the result set.
-	 * @return array 
+	 * @return array
 	 */
 	public function resultSet() {
 		$this->execute();
@@ -105,7 +105,7 @@ class Database {
 
 	/**
 	 * Returns the extended error message for the last operation
-	 * @return string 
+	 * @return string
 	 */
 	public function getError() {
 		return $this->stmt->errorInfo();
